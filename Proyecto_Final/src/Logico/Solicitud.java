@@ -11,7 +11,7 @@ public class Solicitud {
 	private int anoExp;
 	private Date graduacion;
 	private ArrayList<String> oficios;
-	
+	//
 	public Solicitud(String tipo, String carrera, String areaTrabajo, int anoExp, Date graduacion,
 			ArrayList<String> oficios) {
 		super();
