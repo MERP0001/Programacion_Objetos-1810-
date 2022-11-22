@@ -3,71 +3,75 @@ package Logico;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Solicitud {
+public abstract class Solicitud {
 	
-	private String tipo;
-	private String carrera;
-	private String areaTrabajo;
-	private int anoExp;
-	private Date graduacion;
-	private ArrayList<String> oficios;
-	//
-	public Solicitud(String tipo, String carrera, String areaTrabajo, int anoExp, Date graduacion,
-			ArrayList<String> oficios) {
+	protected String codigo;
+	protected String categoriaLaboral;
+	protected String provincia;
+	protected String estado;
+	protected float salario;
+	protected int horaslaborales;
+	
+	public Solicitud(String codigo, String categoriaLaboral, String provincia, String estado, float salario,
+			int horaslaborales) {
 		super();
-		this.tipo = tipo;
-		this.carrera = carrera;
-		this.areaTrabajo = areaTrabajo;
-		this.anoExp = anoExp;
-		this.graduacion = graduacion;
-		this.oficios = oficios;
+		this.codigo = codigo;
+		this.categoriaLaboral = categoriaLaboral;
+		this.provincia = provincia;
+		this.estado = estado;
+		this.salario = salario;
+		this.horaslaborales = horaslaborales;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public String getCodigo() {
+		return codigo;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
-	public String getCarrera() {
-		return carrera;
+	public String getCategoriaLaboral() {
+		return categoriaLaboral;
 	}
 
-	public void setCarrera(String carrera) {
-		this.carrera = carrera;
+	public void setCategoriaLaboral(String categoriaLaboral) {
+		this.categoriaLaboral = categoriaLaboral;
 	}
 
-	public String getAreaTrabajo() {
-		return areaTrabajo;
+	public String getProvincia() {
+		return provincia;
 	}
 
-	public void setAreaTrabajo(String areaTrabajo) {
-		this.areaTrabajo = areaTrabajo;
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
 	}
 
-	public int getAnoExp() {
-		return anoExp;
+	public String getEstado() {
+		return estado;
 	}
 
-	public void setAnoExp(int anoExp) {
-		this.anoExp = anoExp;
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
-	public Date getGraduacion() {
-		return graduacion;
+	public float getSalario() {
+		return salario;
 	}
 
-	public void setGraduacion(Date graduacion) {
-		this.graduacion = graduacion;
+	public void setSalario(float salario) {
+		this.salario = salario;
 	}
 
-	public ArrayList<String> getOficios() {
-		return oficios;
+	public int getHoraslaborales() {
+		return horaslaborales;
 	}
 
-	public void setOficios(ArrayList<String> oficios) {
-		this.oficios = oficios;
+	public void setHoraslaborales(int horaslaborales) {
+		this.horaslaborales = horaslaborales;
 	}
-}
+	
+	
+	
+	
+}	
