@@ -7,12 +7,14 @@ public class BolsaEmpleo {
 	private ArrayList<Persona> misPersonas;
 	private ArrayList<Empresa> misEmpleos;
 	private ArrayList<Solicitud> misSolicitudes;
+	private ArrayList<Usuario> misUsuarios;
 	
 	public BolsaEmpleo() {
 		super();
 		this.misPersonas = new ArrayList<Persona>();
 		this.misEmpleos = new ArrayList<Empresa>();
 		this.misSolicitudes = new ArrayList<Solicitud>();
+		this.misUsuarios = new ArrayList<Usuario>();
 	}
 
 	public ArrayList<Persona> getMisPersonas() {
@@ -23,6 +25,10 @@ public class BolsaEmpleo {
 		return misEmpleos;
 	}
 	
+	public void crearUsuario(Usuario user) {
+		misUsuarios.add(user);
+	}
+	
 	public void crearPersona(Persona p1) {
 		misPersonas.add(p1);
 	}
@@ -30,7 +36,27 @@ public class BolsaEmpleo {
 	public void crearEmpresa(Empresa emp) {
 		misEmpleos.add(emp);
 	}
+	
+	public ArrayList<Solicitud> getMisSolicitudes() {
+		return misSolicitudes;
+	}
 
+	public ArrayList<Usuario> getMisUsuarios() {
+		return misUsuarios;
+	}
+	
+	
+	public boolean buscarUsuario(String user, String password) {
+		int ind = 0;
+		boolean existe = false;
+		while(ind < misUsuarios.size() && misUsuarios.get(ind).getUserId().equalsIgnoreCase(user)) {
+			ind++;
+		}
+		if(misUsuarios.get(ind).getPassword().equalsIgnoreCase(password)) {
+			existe = true;
+		}
+		return existe;
+	}
 	public Persona buscarPersona(String cedula) {
 		int ind = 0;
 		while(ind < misPersonas.size() && misPersonas.get(ind).getCedula().equalsIgnoreCase(cedula)) {
@@ -62,6 +88,6 @@ public class BolsaEmpleo {
 		}
 		misPersonas.remove(ind);
 	}
-	
+
 	
 }

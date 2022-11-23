@@ -9,18 +9,22 @@ public abstract class Solicitud {
 	protected String categoriaLaboral;
 	protected String provincia;
 	protected String estado;
+	protected String sexo;
 	protected float salario;
 	protected int horaslaborales;
+	protected Date fechaVencimiento;
 	
 	public Solicitud(String codigo, String categoriaLaboral, String provincia, String estado, float salario,
-			int horaslaborales) {
+			int horaslaborales, Date fechaVencimiento, String sexo) {
 		super();
 		this.codigo = codigo;
 		this.categoriaLaboral = categoriaLaboral;
 		this.provincia = provincia;
-		this.estado = estado;
+		this.estado = "Activo";
 		this.salario = salario;
 		this.horaslaborales = horaslaborales;
+		this.fechaVencimiento = fechaVencimiento;
+		this.sexo = sexo;
 	}
 
 	public String getCodigo() {
@@ -47,14 +51,6 @@ public abstract class Solicitud {
 		this.provincia = provincia;
 	}
 
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
 	public float getSalario() {
 		return salario;
 	}
@@ -69,6 +65,30 @@ public abstract class Solicitud {
 
 	public void setHoraslaborales(int horaslaborales) {
 		this.horaslaborales = horaslaborales;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public Date getFechaVencimiento() {
+		return fechaVencimiento;
+	}
+
+	public void setFechaVencimiento(Date fechaVencimiento) {
+		this.fechaVencimiento = fechaVencimiento;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
 	
 	
