@@ -1,11 +1,14 @@
 package Logico;
 
+import java.util.Date;
+
 public abstract class Persona {
 	protected String cedula;
 	protected String nombre;
 	protected String telefono;
 	protected String direccion;
 	protected String estado;
+	
 	
 	public Persona(String cedula, String nombre, String telefono, String direccion, String estado) {
 		super();

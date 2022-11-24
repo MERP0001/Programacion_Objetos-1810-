@@ -88,6 +88,8 @@ public class BolsaEmpleo {
 		}
 		misPersonas.remove(ind);
 	}
+	
+	
 
 	
 }

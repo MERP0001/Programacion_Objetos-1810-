@@ -1,6 +1,5 @@
 package Logico;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public abstract class Solicitud {
@@ -10,7 +9,6 @@ public abstract class Solicitud {
 	protected String provincia;
 	protected String estado;
 	protected String sexo;
-	protected float salario;
 	protected int horaslaborales;
 	protected Date fechaVencimiento;
 	
@@ -21,7 +19,6 @@ public abstract class Solicitud {
 		this.categoriaLaboral = categoriaLaboral;
 		this.provincia = provincia;
 		this.estado = "Activo";
-		this.salario = salario;
 		this.horaslaborales = horaslaborales;
 		this.fechaVencimiento = fechaVencimiento;
 		this.sexo = sexo;
@@ -51,13 +48,7 @@ public abstract class Solicitud {
 		this.provincia = provincia;
 	}
 
-	public float getSalario() {
-		return salario;
-	}
-
-	public void setSalario(float salario) {
-		this.salario = salario;
-	}
+	
 
 	public int getHoraslaborales() {
 		return horaslaborales;
