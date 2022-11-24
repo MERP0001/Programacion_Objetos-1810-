@@ -69,20 +69,33 @@ public class BolsaEmpleo {
 		}
 		return existe;
 	}
+	
 	public Persona buscarPersona(String cedula) {
-		int ind = 0;
-		while(ind < misPersonas.size() && misPersonas.get(ind).getCedula().equalsIgnoreCase(cedula)) {
-			ind++;
+		Persona auxPersona = null;
+		boolean encontrar = false;
+		int i = 0;
+		while(i<misPersonas.size() && !encontrar) {
+			if(misPersonas.get(i).getCedula().equalsIgnoreCase(cedula)) {
+				auxPersona = misPersonas.get(i);
+				encontrar = true;
+			}
+			i++;
 		}
-		return misPersonas.get(ind);
+		return auxPersona;
 	}
 	
-	public int buscarPersonaIndex(String cedula) {
-		int ind = 0;
-		while(ind < misPersonas.size() && misPersonas.get(ind).getCedula().equalsIgnoreCase(cedula)) {
-			ind++;
+	private int buscarIndPersona(String cedula) {
+		int indPersona = -1;
+		int i = 0;
+		boolean encontrado = false;
+		while (!encontrado && i < misPersonas.size()) {
+			if (misPersonas.get(i).getCedula().equalsIgnoreCase(cedula)) {
+				encontrado = true;
+				indPersona = i;
+			}
+			i++;
 		}
-		return ind;
+		return indPersona;
 	}
 	
 	public Empresa buscarEmpresa(String rcn) {
@@ -101,20 +114,28 @@ public class BolsaEmpleo {
 		misEmpleos.remove(ind);
 	}
 	
-	public void eliminarPersona(String cedula) {
-		int ind = 0;
-		while(ind < misPersonas.size() && misPersonas.get(ind).getCedula().equalsIgnoreCase(cedula)) {
-			ind++;
-		}
-		misPersonas.remove(ind);
+	public void eliminarPersona(Persona auxPersona) {
+		misPersonas.remove(auxPersona);
 	}
-
 	public void modificarPersona(Persona auxPersona) {
-		int ind = buscarPersonaIndex(auxPersona.getCedula());
-		misPersonas.set(ind, auxPersona);
+		int ind = buscarIndPersona(auxPersona.getCedula());
+		if(ind != -1) {
+			misPersonas.get(ind).setNombre(auxPersona.getNombre());
+			misPersonas.get(ind).setCedula(auxPersona.getCedula());
+			misPersonas.get(ind).setTelefono(auxPersona.getTelefono());
+			misPersonas.get(ind).setDireccion(auxPersona.getDireccion());
+			misPersonas.get(ind).setFechaNacimiento(auxPersona.getFechaNacimiento());
+			
+			if(misPersonas.get(ind) instanceof Universitario) {
+				((Universitario) misPersonas.get(ind)).setCarrera(((Universitario) auxPersona).getCarrera());
+				((Universitario) misPersonas.get(ind)).setAnoGruaduacion(((Universitario) auxPersona).getAnoGruaduacion());
+			}
+			if(misPersonas.get(ind) instanceof Tecnico) {
+				((Tecnico) misPersonas.get(ind)).setAreaTrabajo(((Tecnico) auxPersona).getAreaTrabajo());
+				((Tecnico) misPersonas.get(ind)).setAnosExp(((Tecnico) auxPersona).getAnosExp());
+				
+			}
+		
+		}
 	}
-	
-	
-
-	
 }

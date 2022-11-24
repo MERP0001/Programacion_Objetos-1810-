@@ -99,7 +99,7 @@ public class ListarPersana extends JDialog {
 						int option = 0;
 						option = JOptionPane.showConfirmDialog(null, "Esta Seguro que desea elminar esta Persona?", "Confirmacion", JOptionPane.YES_NO_OPTION);
 					if(option ==  JOptionPane.OK_OPTION) {
-						 BolsaEmpleo.getInstance().eliminarPersona(aux.getCedula());
+						 BolsaEmpleo.getInstance().eliminarPersona(aux);
 						 loadPersonas();
 						}
 					}

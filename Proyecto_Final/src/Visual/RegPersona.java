@@ -444,20 +444,4 @@ public class RegPersona extends JDialog {
 		txtExperiencia.setText("");
 		txtCarrera.setText("");
 	}
-	protected void loadPersona() {
-	if(auxPersona != null) {
-		txtNombre.setText(auxPersona.getNombre());
-		txtDireccion.setText(auxPersona.getDireccion());
-		txtCedula.setValue(auxPersona.getCedula());
-		txtTelefono.setValue(auxPersona.getTelefono());
-		txtFecha.setValue(auxPersona.getFechaNacimiento());
-		cbxEstado.setSelectedIndex(0);
-		txtGraduacion.setText("");
-		txtArea.setText("");
-		txtOficio.setText("");
-		txtExperiencia.setText("");
-		txtCarrera.setText("");
-	}
-		
-	}
 }
