@@ -55,10 +55,21 @@ public class Principal extends JFrame {
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RegPersona regPersona = new RegPersona(null);
+				regPersona.setModal(true);
 				regPersona.setVisible(true);
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Listar Personas");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ListarPersana listper = new ListarPersana();
+				listper.setModal(true);
+				listper.setVisible(true);
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_1);
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

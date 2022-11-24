@@ -62,16 +62,6 @@ public class RegPersona extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		try {
-			RegPersona dialog = new RegPersona(null);
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 	/**
 	 * Create the dialog.
 	 */
@@ -83,6 +73,17 @@ public class RegPersona extends JDialog {
 			setTitle("Registrar Persona");
 		}else {
 			setTitle("Modificar Persona");
+			if(persona instanceof Universitario) {
+				
+			}
+			
+			if(persona instanceof Tecnico) {
+				
+			}
+			
+			if(persona instanceof Obrero) {
+				
+			}
 		}
 		setBounds(100, 100, 535, 394);
 		setLocationRelativeTo(null);
@@ -386,6 +387,7 @@ public class RegPersona extends JDialog {
 							}
 							BolsaEmpleo.getInstance().insertarPersona(p1);
 							JOptionPane.showMessageDialog(null, "Registro Exitoso", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+							System.out.println(BolsaEmpleo.getInstance().getMisPersonas().size());
 							clean();
 						}
 						else {
@@ -441,5 +443,21 @@ public class RegPersona extends JDialog {
 		txtOficio.setText("");
 		txtExperiencia.setText("");
 		txtCarrera.setText("");
+	}
+	protected void loadPersona() {
+	if(auxPersona != null) {
+		txtNombre.setText(auxPersona.getNombre());
+		txtDireccion.setText(auxPersona.getDireccion());
+		txtCedula.setValue(auxPersona.getCedula());
+		txtTelefono.setValue(auxPersona.getTelefono());
+		txtFecha.setValue(auxPersona.getFechaNacimiento());
+		cbxEstado.setSelectedIndex(0);
+		txtGraduacion.setText("");
+		txtArea.setText("");
+		txtOficio.setText("");
+		txtExperiencia.setText("");
+		txtCarrera.setText("");
+	}
+		
 	}
 }

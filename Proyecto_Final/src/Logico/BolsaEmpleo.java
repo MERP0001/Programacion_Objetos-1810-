@@ -77,6 +77,14 @@ public class BolsaEmpleo {
 		return misPersonas.get(ind);
 	}
 	
+	public int buscarPersonaIndex(String cedula) {
+		int ind = 0;
+		while(ind < misPersonas.size() && misPersonas.get(ind).getCedula().equalsIgnoreCase(cedula)) {
+			ind++;
+		}
+		return ind;
+	}
+	
 	public Empresa buscarEmpresa(String rcn) {
 		int ind = 0;
 		while(ind < misEmpleos.size() && misEmpleos.get(ind).getRcn().equalsIgnoreCase(rcn)) {
@@ -102,8 +110,8 @@ public class BolsaEmpleo {
 	}
 
 	public void modificarPersona(Persona auxPersona) {
-		// TODO Auto-generated method stub
-		
+		int ind = buscarPersonaIndex(auxPersona.getCedula());
+		misPersonas.set(ind, auxPersona);
 	}
 	
 	
