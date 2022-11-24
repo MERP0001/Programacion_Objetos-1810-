@@ -8,6 +8,7 @@ public class BolsaEmpleo {
 	private ArrayList<Empresa> misEmpleos;
 	private ArrayList<Solicitud> misSolicitudes;
 	private ArrayList<Usuario> misUsuarios;
+    public static BolsaEmpleo bolsaEmpleo;
 	
 	public BolsaEmpleo() {
 		super();
@@ -15,6 +16,17 @@ public class BolsaEmpleo {
 		this.misEmpleos = new ArrayList<Empresa>();
 		this.misSolicitudes = new ArrayList<Solicitud>();
 		this.misUsuarios = new ArrayList<Usuario>();
+	}
+	
+	public static BolsaEmpleo getInstance() {
+		if(bolsaEmpleo == null) {
+			bolsaEmpleo = new BolsaEmpleo();
+		}
+		return bolsaEmpleo;
+	}
+	
+	public void insertarPersona(Persona auxPersona) {
+		misPersonas.add(auxPersona);
 	}
 
 	public ArrayList<Persona> getMisPersonas() {
@@ -87,6 +99,11 @@ public class BolsaEmpleo {
 			ind++;
 		}
 		misPersonas.remove(ind);
+	}
+
+	public void modificarPersona(Persona auxPersona) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

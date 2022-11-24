@@ -1,14 +1,12 @@
 package Logico;
 
-import java.util.Date;
-
 public class Universitario extends Persona {
 
 	private String carrera;
-	private Date anoGruaduacion;
+	private String anoGruaduacion;
 	
-	public Universitario(String cedula, String nombre, String telefono, String direccion, String estado, String carrera, Date anoGruaduacion) {
-		super(cedula, nombre, telefono, direccion, estado);
+	public Universitario(String cedula, String nombre, String telefono, String direccion, String estado, String carrera, String anoGruaduacion, String fechaNacimiento) {
+		super(cedula, nombre, telefono, direccion, estado, fechaNacimiento);
 		
 		this.carrera = carrera;
 		this.anoGruaduacion = anoGruaduacion;
@@ -22,14 +20,11 @@ public class Universitario extends Persona {
 		this.carrera = carrera;
 	}
 
-	public Date getAnoGruaduacion() {
+	public String getAnoGruaduacion() {
 		return anoGruaduacion;
 	}
 
-	public void setAnoGruaduacion(Date anoGruaduacion) {
+	public void setAnoGruaduacion(String anoGruaduacion) {
 		this.anoGruaduacion = anoGruaduacion;
 	}
-	
-	
-
 }

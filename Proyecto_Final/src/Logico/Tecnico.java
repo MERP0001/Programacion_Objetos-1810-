@@ -1,16 +1,15 @@
 package Logico;
 
-public abstract class Tecnico extends Persona {
+public class Tecnico extends Persona {
 
 	private String areaTrabajo;
 	private int anosExp;
 	
-	public Tecnico(String cedula, String nombre, String telefono, String direccion, String estado, String areaTrabajo, int anosExp) {
-		super(cedula, nombre, telefono, direccion, estado);
+	public Tecnico(String cedula, String nombre, String telefono, String direccion, String estado, String areaTrabajo, int anosExp, String fechaNacimiento) {
+		super(cedula, nombre, telefono, direccion, estado, fechaNacimiento);
 		
 		this.anosExp = anosExp;
 		this.areaTrabajo = areaTrabajo;
-	
 	}
 
 	public String getAreaTrabajo() {
@@ -28,6 +27,4 @@ public abstract class Tecnico extends Persona {
 	public void setAnosExp(int anosExp) {
 		this.anosExp = anosExp;
 	}
-
-	
 }

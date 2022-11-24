@@ -1,24 +1,24 @@
 package Logico;
 
-import java.util.Date;
-
 public abstract class Persona {
+	
 	protected String cedula;
 	protected String nombre;
 	protected String telefono;
 	protected String direccion;
 	protected String estado;
+	protected String fechaNacimiento;
 	
-	
-	public Persona(String cedula, String nombre, String telefono, String direccion, String estado) {
+	public Persona(String cedula, String nombre, String telefono, String direccion, String estado,
+			String fechaNacimiento) {
 		super();
 		this.cedula = cedula;
 		this.nombre = nombre;
 		this.telefono = telefono;
 		this.direccion = direccion;
 		this.estado = estado;
+		this.fechaNacimiento = fechaNacimiento;
 	}
-
 
 	public String getCedula() {
 		return cedula;
@@ -59,5 +59,12 @@ public abstract class Persona {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	
+
+	public String getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
+	public void setFechaNacimiento(String fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
 }
