@@ -1,20 +1,20 @@
 package Logico;
 
+import java.util.ArrayList;
+
 public class Empresa {
 	
 	private String rcn;
 	private String direccion;
 	private String nombreEmpresa;
-	private float percentageMatch;
-	private float sueldo;
+	private ArrayList<Persona>empleados;
 	
-	public Empresa(String rcn, String direccion, String nombreEmpresa, float percentageMatch, float sueldo) {
+	public Empresa(String rcn, String direccion, String nombreEmpresa) {
 		super();
 		this.rcn = rcn;
 		this.direccion = direccion;
 		this.nombreEmpresa = nombreEmpresa;
-		this.percentageMatch = percentageMatch;
-		this.sueldo = sueldo;
+		this.empleados = new ArrayList<Persona>();
 	}
 
 	public String getRcn() {
@@ -41,19 +41,15 @@ public class Empresa {
 		this.nombreEmpresa = nombreEmpresa;
 	}
 
-	public float getPercentageMatch() {
-		return percentageMatch;
+	public ArrayList<Persona> getEmpleados() {
+		return empleados;
 	}
 
-	public void setPercentageMatch(float percentageMatch) {
-		this.percentageMatch = percentageMatch;
+	public void setEmpleados(ArrayList<Persona> empleados) {
+		this.empleados = empleados;
 	}
 
-	public float getSueldo() {
-		return sueldo;
-	}
 
-	public void setSueldo(float sueldo) {
-		this.sueldo = sueldo;
-	}
+
+	
 }

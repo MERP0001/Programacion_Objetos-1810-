@@ -33,6 +33,10 @@ public class ListarPersana extends JDialog {
 	private static DefaultTableModel model;
 	private static Object[] rows;
 	private Persona aux = null;
+	private JButton macheobtn;
+	private JButton creaSolicitudbtn;
+	private JButton Eliminarbtn;
+	private JButton Modificarbtn;
 
 	/**
 	 * Launch the application.
@@ -77,6 +81,10 @@ public class ListarPersana extends JDialog {
 						public void mouseClicked(MouseEvent e) {
 							int rowSelecte = -1;
 							rowSelecte = table.getSelectedRow();
+							Eliminarbtn.setEnabled(true);
+							Modificarbtn.setEnabled(true);
+							creaSolicitudbtn.setEnabled(true);
+							macheobtn.setEnabled(true);
 							aux = BolsaEmpleo.getInstance().buscarPersona(table.getValueAt(rowSelecte,0).toString());
 						}
 					});
@@ -93,32 +101,42 @@ public class ListarPersana extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("Eliminar");
-				okButton.addActionListener(new ActionListener() {
+				Eliminarbtn = new JButton("Eliminar");
+				Eliminarbtn.setEnabled(false);
+				Eliminarbtn.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						int option = 0;
 						option = JOptionPane.showConfirmDialog(null, "Esta Seguro que desea elminar esta Persona?", "Confirmacion", JOptionPane.YES_NO_OPTION);
 					if(option ==  JOptionPane.OK_OPTION) {
 						 BolsaEmpleo.getInstance().eliminarPersona(aux);
 						 loadPersonas();
+						 Eliminarbtn.setEnabled(false);
+						 Modificarbtn.setEnabled(false);
+						 creaSolicitudbtn.setEnabled(false);
+						 macheobtn.setEnabled(false);
 						}
 					}
 				});
 				{
-					JButton btnNewButton = new JButton("Modificar");
-					btnNewButton.addActionListener(new ActionListener() {
+					Modificarbtn = new JButton("Modificar");
+					Modificarbtn.setEnabled(false);
+					Modificarbtn.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							RegPersona regper = new RegPersona(aux);
 							regper.setModal(true);
 							regper.setVisible(true);
 							loadPersonas();
+							Eliminarbtn.setEnabled(false);
+							Modificarbtn.setEnabled(false);
+							creaSolicitudbtn.setEnabled(false);
+							macheobtn.setEnabled(false);
 						}
 					});
-					buttonPane.add(btnNewButton);
+					buttonPane.add(Modificarbtn);
 				}
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
+				Eliminarbtn.setActionCommand("OK");
+				buttonPane.add(Eliminarbtn);
+				getRootPane().setDefaultButton(Eliminarbtn);
 			}
 			{
 				JButton cancelButton = new JButton("Cancelar");
@@ -127,6 +145,16 @@ public class ListarPersana extends JDialog {
 						dispose();
 					}
 				});
+				{
+					creaSolicitudbtn = new JButton("Crear Solicitud");
+					creaSolicitudbtn.setEnabled(false);
+					buttonPane.add(creaSolicitudbtn);
+				}
+				{
+					macheobtn = new JButton("Buscar Empleo");
+					macheobtn.setEnabled(false);
+					buttonPane.add(macheobtn);
+				}
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}

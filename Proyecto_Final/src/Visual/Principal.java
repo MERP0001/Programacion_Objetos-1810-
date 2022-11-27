@@ -71,6 +71,22 @@ public class Principal extends JFrame {
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);
 		
+		JMenu mnNewMenu_1 = new JMenu("Empresas");
+		menuBar.add(mnNewMenu_1);
+		
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Registrar Empresa");
+		mnNewMenu_1.add(mntmNewMenuItem_2);
+		
+		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Listar Empresas");
+		mntmNewMenuItem_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListarEmpresa listEmp = new ListarEmpresa();
+				listEmp.setModal(true);
+				listEmp.setVisible(true);
+			}
+		});
+		mnNewMenu_1.add(mntmNewMenuItem_3);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

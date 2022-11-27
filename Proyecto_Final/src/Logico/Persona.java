@@ -8,6 +8,7 @@ public abstract class Persona {
 	protected String direccion;
 	protected String estado;
 	protected String fechaNacimiento;
+	protected String condicion;
 	
 	public Persona(String cedula, String nombre, String telefono, String direccion, String estado,
 			String fechaNacimiento) {
@@ -18,6 +19,7 @@ public abstract class Persona {
 		this.direccion = direccion;
 		this.estado = estado;
 		this.fechaNacimiento = fechaNacimiento;
+		this.condicion = "Desempleado";
 	}
 
 	public String getCedula() {
@@ -66,5 +68,13 @@ public abstract class Persona {
 
 	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
+	}
+
+	public String getCondicion() {
+		return condicion;
+	}
+
+	public void setCondicion(String condicion) {
+		this.condicion = condicion;
 	}
 }
