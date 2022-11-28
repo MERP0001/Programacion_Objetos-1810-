@@ -99,19 +99,22 @@ public class BolsaEmpleo {
 	}
 	
 	public Empresa buscarEmpresa(String rcn) {
-		int ind = 0;
-		while(ind < misEmpleos.size() && misEmpleos.get(ind).getRcn().equalsIgnoreCase(rcn)) {
-			ind++;
+		Empresa auxEmpresa = null;
+		boolean encontrar = false;
+		int i = 0;
+		while(i<misEmpleos.size() && !encontrar) {
+			if(misEmpleos.get(i).getRcn().equalsIgnoreCase(rcn)) {
+				auxEmpresa = misEmpleos.get(i);
+				encontrar = true;
+			}
+			i++;
 		}
-		return misEmpleos.get(ind);
+		return auxEmpresa;
+
 	}
 	
-	public void eliminarEmpresa(String rcn) {
-		int ind = 0;
-		while(ind < misEmpleos.size() && misEmpleos.get(ind).getRcn().equalsIgnoreCase(rcn)) {
-			ind++;
-		}
-		misEmpleos.remove(ind);
+	public void eliminarEmpresa(Empresa auxEmpresa) {
+		misEmpleos.remove(auxEmpresa);
 	}
 	
 	public void eliminarPersona(Persona auxPersona) {
@@ -136,6 +139,30 @@ public class BolsaEmpleo {
 				
 			}
 		
+		}
+	}
+	public void insertarEmpresa(Empresa auxEmpresa) {
+		misEmpleos.add(auxEmpresa);
+	}
+	private int buscarIndEmpresa(String rcn) {
+		int indEmpresa = -1;
+		int i = 0;
+		boolean encontrado = false;
+		while (!encontrado && i < misEmpleos.size()) {
+			if (misEmpleos.get(i).getRcn().equalsIgnoreCase(rcn)) {
+				encontrado = true;
+				indEmpresa = i;
+			}
+			i++;
+		}
+		return indEmpresa;
+	}
+	public void modificarEmpresa(Empresa auxEmpresa) {
+		int ind = buscarIndEmpresa(auxEmpresa.getRcn());
+		if(ind != -1) {
+			misEmpleos.get(ind).setNombreEmpresa(auxEmpresa.getNombreEmpresa());
+			misEmpleos.get(ind).setRcn(auxEmpresa.getRcn());
+			misEmpleos.get(ind).setDireccion(auxEmpresa.getDireccion());
 		}
 	}
 }

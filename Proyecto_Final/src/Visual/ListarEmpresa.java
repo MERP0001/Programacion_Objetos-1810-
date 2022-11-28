@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
@@ -70,7 +71,7 @@ public class ListarEmpresa extends JDialog {
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
 					model = new DefaultTableModel();
-					String[] columnas = {"RCN","Nombre","Codigo"};
+					String[] columnas = {"RCN","Nombre","Direccion"};
 					model.setColumnIdentifiers(columnas);
 					table = new JTable();
 					table.addMouseListener(new MouseAdapter() {
@@ -97,13 +98,26 @@ public class ListarEmpresa extends JDialog {
 				btnEliminar = new JButton("Eliminar");
 				btnEliminar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						
+					    int option = 0;
+						option = JOptionPane.showConfirmDialog(null, "Esta Seguro que desea elminar esta Persona?", "Confirmacion", JOptionPane.YES_NO_OPTION);
+					    if(option ==  JOptionPane.OK_OPTION) {
+					    	BolsaEmpleo.getInstance().eliminarEmpresa(aux);
+							loadEmpresas();
+					    }
 					}
 				});
 				buttonPane.add(btnEliminar);
 			}
 			{
 				btnModificar = new JButton("Modificar");
+				btnModificar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						RegEmpresa regEmpresa = new RegEmpresa(aux);
+						regEmpresa.setModal(true);
+						regEmpresa.setVisible(true);
+						loadEmpresas();
+					}
+				});
 				btnModificar.setActionCommand("OK");
 				buttonPane.add(btnModificar);
 				getRootPane().setDefaultButton(btnModificar);
