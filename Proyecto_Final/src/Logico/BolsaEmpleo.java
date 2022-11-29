@@ -212,6 +212,9 @@ public class BolsaEmpleo {
 	}
 	//cierre de Modificadores=======================================================================================================================
 	public double Macheo() {
+		double porcentae;
+		
+		
 		return 0.0;
 	}
 
