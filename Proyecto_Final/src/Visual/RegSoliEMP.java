@@ -115,13 +115,13 @@ public class RegSoliEMP extends JDialog {
 			label_5.setBounds(10, 133, 108, 14);
 			panel_1.add(label_5);
 			
-			JComboBox cbxProvincia = new JComboBox();
+			final JComboBox cbxProvincia = new JComboBox();
 			cbxProvincia.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Azua", "Bahoruco", "Barahona", "Dajab\u00F3n", "Duarte", "El Seibo", "El\u00EDas Pi\u00F1a", "Espaillat", "Hato Mayor", "Hermanas Mirabal", "Independencia", "La Altagracia", "La Romana", "La Vega", "Maria Trinidad S\u00E1nchez", "Monse\u00F1or Nouel", "Monte Cristi", "Monte Plata", "Pedernales", "Peravia", "Puerto Plata", "Saman\u00E1", "San Cristobal", "San Jos\u00E9 De Ocoa", "San Juan", "San Pedro De Macoris", "S\u00E1nchez Ram\u00EDrez", "Santiago", "Santiago Rodr\u00EDguez", "Santo Domingo", "Valverde", "Distrito Nacional"}));
 			cbxProvincia.setEnabled(false);
 			cbxProvincia.setBounds(10, 97, 260, 25);
 			panel_1.add(cbxProvincia);
 			
-			JComboBox cbxGenero = new JComboBox();
+			final JComboBox cbxGenero = new JComboBox();
 			cbxGenero.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Hombre ", "Mujer", "Otro"}));
 			cbxGenero.setEnabled(false);
 			cbxGenero.setBounds(10, 158, 260, 25);
@@ -144,7 +144,7 @@ public class RegSoliEMP extends JDialog {
 			label_7.setBounds(10, 255, 163, 14);
 			panel_1.add(label_7);
 			
-			JRadioButton rdbtnViajarSi = new JRadioButton("Si");
+			final JRadioButton rdbtnViajarSi = new JRadioButton("Si");
 			rdbtnViajarSi.setEnabled(false);
 			rdbtnViajarSi.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			rdbtnViajarSi.setBounds(201, 251, 109, 23);
@@ -161,7 +161,7 @@ public class RegSoliEMP extends JDialog {
 			label_8.setBounds(10, 291, 150, 14);
 			panel_1.add(label_8);
 			
-			JRadioButton rdbtnVehiculoSi = new JRadioButton("Si");
+			final JRadioButton rdbtnVehiculoSi = new JRadioButton("Si");
 			rdbtnVehiculoSi.setEnabled(false);
 			rdbtnVehiculoSi.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			rdbtnVehiculoSi.setBounds(201, 287, 109, 23);
@@ -261,7 +261,7 @@ public class RegSoliEMP extends JDialog {
 			label_14.setBounds(280, 150, 180, 14);
 			panel_2.add(label_14);
 			
-			JSpinner spnAnnosExp = new JSpinner();
+			final JSpinner spnAnnosExp = new JSpinner();
 			spnAnnosExp.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 			spnAnnosExp.setBounds(472, 146, 74, 25);
 			panel_2.add(spnAnnosExp);
@@ -271,7 +271,7 @@ public class RegSoliEMP extends JDialog {
 			label_15.setBounds(10, 243, 108, 14);
 			panel_2.add(label_15);
 			
-			JComboBox cbxOficio = new JComboBox();
+			final JComboBox cbxOficio = new JComboBox();
 			cbxOficio.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Alba\u00F1il", "Asistente de tienda", "Bibliotecario", "Bombero", "Carnicero", "Carpintero", "Cartero", "Chofer", "Electricista", "Florista", "Granjero", "Jardinero", "Limpiador", "Mec\u00E1nico", "Panadero", "Peluquero", "Plomero", "Secretario", "Sastre"}));
 			cbxOficio.setEnabled(false);
 			cbxOficio.setBounds(10, 268, 260, 25);
@@ -282,12 +282,12 @@ public class RegSoliEMP extends JDialog {
 			label_16.setBounds(280, 182, 266, 14);
 			panel_2.add(label_16);
 			
-			JSpinner spnSalarioMin = new JSpinner();
+			final JSpinner spnSalarioMin = new JSpinner();
 			spnSalarioMin.setModel(new SpinnerNumberModel(new Integer(12000), new Integer(12000), null, new Integer(1)));
 			spnSalarioMin.setBounds(280, 207, 266, 25);
 			panel_2.add(spnSalarioMin);
 			
-			JComboBox cbxCategoriaLaboral = new JComboBox();
+			final JComboBox cbxCategoriaLaboral = new JComboBox();
 			cbxCategoriaLaboral.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Mercado Financiero", "Crecimiento Econ\u00F3mico", "Biotecnolog\u00EDa y Seguridad Qu\u00EDmica", "Desarrollo Regional y Rural Urbano", "Turismo", "Medio Ambiente", "Comercio", "Asuntos Sociales y Bienestar", "Pymes y Emprendimiento", "Tecnolog\u00EDa de la Informaci\u00F3n y Comunicaciones", "Energ\u00EDa", "Legal", "Seguros y Pensiones", "Educaci\u00F3n", "Migraci\u00F3n", "Industrias y Servicios", "Inversiones", "Gobierno y Administraci\u00F3n P\u00FAblica", "Agricultura", "Pesca", "Salud", "Contabilidad"}));
 			cbxCategoriaLaboral.setBounds(10, 85, 260, 25);
 			panel_2.add(cbxCategoriaLaboral);

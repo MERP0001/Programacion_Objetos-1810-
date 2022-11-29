@@ -45,7 +45,7 @@ public class RegOferta extends JDialog {
 	private JComboBox cbxTipoDeContrato;
 	private JSpinner spnFechaVencimiento;
 	
-	public RegOferta(Empresa user) {
+	public RegOferta(final Empresa user) {
 		setTitle("Crear oferta de trabajo");
 		setBounds(100, 100, 532, 581);
 
@@ -53,10 +53,10 @@ public class RegOferta extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
-		JRadioButton rdbtnVehiculo = new JRadioButton("Vehiculo propio necesario");
+		final JRadioButton rdbtnVehiculo = new JRadioButton("Vehiculo propio necesario");
 		JPanel panel = new JPanel();
 		contentPanel.add(panel, BorderLayout.CENTER);
-		JRadioButton rdbtnViajar = new JRadioButton("Disponibilidad para viajar necesaria");
+		final JRadioButton rdbtnViajar = new JRadioButton("Disponibilidad para viajar necesaria");
 		panel.setLayout(null);
 		
 		JLabel lblNombreDeLa = new JLabel("Nombre de la empresa> ");
@@ -72,11 +72,11 @@ public class RegOferta extends JDialog {
 		txtNombre.setColumns(10);
 		txtNombre.setBounds(142, 20, 238, 25);
 		txtNombre.setText(((Empresa)user).getNombreEmpresa());
-		JLabel lblCarrera = new JLabel("Carrera:");
+		final JLabel lblCarrera = new JLabel("Carrera:");
 		panel.add(txtNombre);
-		JSpinner spnExperiencia = new JSpinner();
+		final JSpinner spnExperiencia = new JSpinner();
 		
-		JSpinner spnVacantes = new JSpinner();
+		final JSpinner spnVacantes = new JSpinner();
 		spnVacantes.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		spnVacantes.setBounds(182, 203, 65, 25);
 		panel.add(spnVacantes);
@@ -85,7 +85,7 @@ public class RegOferta extends JDialog {
 		lblProvincia.setBounds(257, 178, 122, 14);
 		panel.add(lblProvincia);
 		
-		JComboBox cbxProvincia = new JComboBox();
+		final JComboBox cbxProvincia = new JComboBox();
 		cbxProvincia.setEnabled(false);
 		cbxProvincia.setModel(new DefaultComboBoxModel(new String[] {"Azua", "Bahoruco", "Barahona", "Dajab\u00F3n", "Duarte", "El Seibo", "El\u00EDas Pi\u00F1a", "Espaillat", "Hato Mayor", "Hermanas Mirabal", "Independencia", "La Altagracia", "La Romana", "La Vega", "Maria Trinidad S\u00E1nchez", "Monse\u00F1or Nouel", "Monte Cristi", "Monte Plata", "Pedernales", "Peravia", "Puerto Plata", "Saman\u00E1", "San Cristobal", "San Jos\u00E9 De Ocoa", "San Juan", "San Pedro De Macoris", "S\u00E1nchez Ram\u00EDrez", "Santiago", "Santiago Rodr\u00EDguez", "Santo Domingo", "Valverde", "Distrito Nacional"}));
 		cbxProvincia.setBounds(257, 203, 239, 25);
@@ -100,7 +100,7 @@ public class RegOferta extends JDialog {
 		lblSalario.setBounds(10, 342, 122, 14);
 		panel.add(lblSalario);
 		
-		JSpinner spnSalario = new JSpinner();
+		final JSpinner spnSalario = new JSpinner();
 		spnSalario.setModel(new SpinnerNumberModel(new Integer(12000), new Integer(12000), null, new Integer(1)));
 		spnSalario.setBounds(10, 367, 237, 25);
 		panel.add(spnSalario);
@@ -114,7 +114,7 @@ public class RegOferta extends JDialog {
 		lblPeriodoDePago.setBounds(257, 283, 122, 14);
 		panel.add(lblPeriodoDePago);
 		
-		JComboBox cbxJornada = new JComboBox();
+		final JComboBox cbxJornada = new JComboBox();
 		cbxJornada.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Tiempo completo", "Medio tiempo"}));
 		cbxJornada.setBounds(10, 428, 239, 25);
 		panel.add(cbxJornada);
@@ -136,12 +136,12 @@ public class RegOferta extends JDialog {
 		lblFechaDeVencimiento.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblFechaDeVencimiento.setBounds(10, 464, 136, 14);
 		panel.add(lblFechaDeVencimiento);
-		JComboBox cbxCategoriaLab = new JComboBox();
-		JSpinner spnPorciento = new JSpinner();
+		final JComboBox cbxCategoriaLab = new JComboBox();
+		final JSpinner spnPorciento = new JSpinner();
 		cbxCategoriaLab.setEnabled(false);
 		JButton button = new JButton("Crear oferta");
-		JComboBox cbxNivelEstudio = new JComboBox();
-		JComboBox cbxVariable = new JComboBox();
+		final JComboBox cbxNivelEstudio = new JComboBox();
+		final JComboBox cbxVariable = new JComboBox();
 		cbxVariable.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Administraci\u00F3n hotelera", "Arquitectura", "Comunicaci\u00F3n social", "Derecho", "Dise\u00F1o e interiorismo", "Econom\u00EDa", "Eduaci\u00F3n", "Estomatolog\u00EDa", "Filosof\u00EDa", "Gesti\u00F3n financiera", "Ingenier\u00EDa civil", "Ingenieria m\u00E9canica", "Ingenier\u00EDa el\u00E9ctrica", "Ingenier\u00EDa industrial", "Ingenier\u00EDa mecatr\u00F3nica", "Ingenier\u00EDa de ciencias de la computaci\u00F3n", "Ingenier\u00EDa telem\u00E1tica", "Ingenier\u00EDa Ambiental", "Medic\u00EDna", "Marketing", "Nutrici\u00F3n", "Psicolog\u00EDa", "Terapia f\u00EDsica", "Trabajo social", "Hospitalidad y turismo"}));
 		cbxNivelEstudio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
