@@ -147,6 +147,14 @@ public class ListarPersana extends JDialog {
 				});
 				{
 					creaSolicitudbtn = new JButton("Crear Solicitud");
+					creaSolicitudbtn.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							RegSoliEMP regi = new RegSoliEMP(aux);
+							regi.setModal(true);
+							regi.setVisible(true);
+						}
+						
+					});
 					creaSolicitudbtn.setEnabled(false);
 					buttonPane.add(creaSolicitudbtn);
 				}

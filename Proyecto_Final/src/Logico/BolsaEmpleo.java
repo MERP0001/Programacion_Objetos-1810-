@@ -9,6 +9,8 @@ public class BolsaEmpleo {
 	private ArrayList<Solicitud> misSolicitudes;
 	private ArrayList<Usuario> misUsuarios;
     public static BolsaEmpleo bolsaEmpleo;
+    private int generadoEmpSol = 0;
+	private int generadoqPerSol = 0;
 	
 	public BolsaEmpleo() {
 		super();
@@ -25,16 +27,33 @@ public class BolsaEmpleo {
 		return bolsaEmpleo;
 	}
 	
-	public void insertarPersona(Persona auxPersona) {
-		misPersonas.add(auxPersona);
+	public ArrayList<Solicitud> getMisSolicitudes() {
+		return misSolicitudes;
 	}
 
+	public ArrayList<Usuario> getMisUsuarios() {
+		return misUsuarios;
+	}
+	
 	public ArrayList<Persona> getMisPersonas() {
 		return misPersonas;
 	}
 
 	public ArrayList<Empresa> getMisEmpleos() {
 		return misEmpleos;
+	}
+	
+	public int getGeneradoEmpSol() {
+		return generadoEmpSol;
+	}
+
+	public int getGeneradoqPerSol() {
+		return generadoqPerSol;
+	}
+
+	//Creacion========================================================================================================================
+	public void insertarPersona(Persona auxPersona) {
+		misPersonas.add(auxPersona);
 	}
 	
 	public void crearUsuario(Usuario user) {
@@ -49,15 +68,28 @@ public class BolsaEmpleo {
 		misEmpleos.add(emp);
 	}
 	
-	public ArrayList<Solicitud> getMisSolicitudes() {
-		return misSolicitudes;
-	}
-
-	public ArrayList<Usuario> getMisUsuarios() {
-		return misUsuarios;
+	public void crearSolicitud(Solicitud auxSol) {
+		if(auxSol instanceof SolEmpresa) {
+			generadoEmpSol++;
+			misSolicitudes.add(auxSol);
+		}
+		
+		if(auxSol instanceof SolPersona) {
+			generadoqPerSol++;
+			misSolicitudes.add(auxSol);
+		}
+		
 	}
 	
+	public void insertarEmpresa(Empresa auxEmpresa) {
+		misEmpleos.add(auxEmpresa);
+	}
+	//Cierre de creaciones==========================================================================================================
 	
+	
+	
+	
+	//Buscadores===================================================================================================================
 	public boolean buscarUsuario(String user, String password) {
 		int ind = 0;
 		boolean existe = false;
@@ -98,6 +130,14 @@ public class BolsaEmpleo {
 		return indPersona;
 	}
 	
+	public int buscarIndSolicitud(String codigo) {
+		int ind = 0;
+		while(ind < misSolicitudes.size() && misSolicitudes.get(ind).getCodigo().equalsIgnoreCase(codigo)) {
+			ind++;
+		}
+		return ind;
+	}
+	
 	public Empresa buscarEmpresa(String rcn) {
 		Empresa auxEmpresa = null;
 		boolean encontrar = false;
@@ -113,6 +153,22 @@ public class BolsaEmpleo {
 
 	}
 	
+	private int buscarIndEmpresa(String rcn) {
+		int indEmpresa = -1;
+		int i = 0;
+		boolean encontrado = false;
+		while (!encontrado && i < misEmpleos.size()) {
+			if (misEmpleos.get(i).getRcn().equalsIgnoreCase(rcn)) {
+				encontrado = true;
+				indEmpresa = i;
+			}
+			i++;
+		}
+		return indEmpresa;
+	}
+	//Cierre de Buscadores==============================================================================================================================
+	
+	//Eliminadores========================================================================================================================================
 	public void eliminarEmpresa(Empresa auxEmpresa) {
 		misEmpleos.remove(auxEmpresa);
 	}
@@ -120,6 +176,9 @@ public class BolsaEmpleo {
 	public void eliminarPersona(Persona auxPersona) {
 		misPersonas.remove(auxPersona);
 	}
+	//Cierre de Eliminadores===================================================================================================================================
+	
+	//Modificadores========================================================================================================================================
 	public void modificarPersona(Persona auxPersona) {
 		int ind = buscarIndPersona(auxPersona.getCedula());
 		if(ind != -1) {
@@ -141,22 +200,8 @@ public class BolsaEmpleo {
 		
 		}
 	}
-	public void insertarEmpresa(Empresa auxEmpresa) {
-		misEmpleos.add(auxEmpresa);
-	}
-	private int buscarIndEmpresa(String rcn) {
-		int indEmpresa = -1;
-		int i = 0;
-		boolean encontrado = false;
-		while (!encontrado && i < misEmpleos.size()) {
-			if (misEmpleos.get(i).getRcn().equalsIgnoreCase(rcn)) {
-				encontrado = true;
-				indEmpresa = i;
-			}
-			i++;
-		}
-		return indEmpresa;
-	}
+	
+	
 	public void modificarEmpresa(Empresa auxEmpresa) {
 		int ind = buscarIndEmpresa(auxEmpresa.getRcn());
 		if(ind != -1) {
@@ -165,4 +210,5 @@ public class BolsaEmpleo {
 			misEmpleos.get(ind).setDireccion(auxEmpresa.getDireccion());
 		}
 	}
+	//cierre de Modificadores=======================================================================================================================
 }

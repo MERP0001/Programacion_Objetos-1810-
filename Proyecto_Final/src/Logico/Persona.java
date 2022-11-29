@@ -1,5 +1,7 @@
 package Logico;
 
+import java.util.ArrayList;
+
 public abstract class Persona {
 	
 	protected String cedula;
@@ -9,6 +11,7 @@ public abstract class Persona {
 	protected String estado;
 	protected String fechaNacimiento;
 	protected String condicion;
+	protected ArrayList<SolPersona>misSolicitudes;
 	
 	public Persona(String cedula, String nombre, String telefono, String direccion, String estado,
 			String fechaNacimiento) {
@@ -20,6 +23,7 @@ public abstract class Persona {
 		this.estado = estado;
 		this.fechaNacimiento = fechaNacimiento;
 		this.condicion = "Desempleado";
+		this.misSolicitudes = new ArrayList<SolPersona>();
 	}
 
 	public String getCedula() {
@@ -76,5 +80,17 @@ public abstract class Persona {
 
 	public void setCondicion(String condicion) {
 		this.condicion = condicion;
+	}
+
+	public ArrayList<SolPersona> getMisSolicitudes() {
+		return misSolicitudes;
+	}
+
+	public void setMisSolicitudes(ArrayList<SolPersona> misSolicitudes) {
+		this.misSolicitudes = misSolicitudes;
+	}
+	
+	public void ingresarSolicitud(SolPersona aux) {
+		misSolicitudes.add(aux);
 	}
 }

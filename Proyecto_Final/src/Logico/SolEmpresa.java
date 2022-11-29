@@ -9,20 +9,22 @@ public class SolEmpresa extends Solicitud {
 	private double porcientoMach;
 	private int cantVacantes;
 	private String ofertaLaboral;
-	private int cantidadContratados = 0;
 	private boolean viajar;
 	private boolean vehiculo;
-	private int salario;
 	
 	public SolEmpresa(String codigo, String categoriaLaboral, String provincia, String estado, float salario,
 			int horaslaborales, Date fechaVencimiento, String sexo, Empresa empresa, int añosMinimosExp, double porcientoMach
-			,int cantVacantes) {
+			,int cantVacantes, boolean viajar, boolean vehiculo) {
 		super(codigo, categoriaLaboral, provincia, estado, salario, horaslaborales, fechaVencimiento, sexo);
 		
-		this.setEmpresa(empresa);
-		this.setAñosMinimosExp(añosMinimosExp);
-		this.setPorcientoMach(porcientoMach);
-		this.setCantVacantes(cantVacantes);
+		this.empresa = empresa;
+		this.añosMinimosExp = añosMinimosExp;
+		this.porcientoMach = porcientoMach;
+		this.cantVacantes = cantVacantes;
+		this.ofertaLaboral = ofertaLaboral;
+		this.viajar = viajar;
+		this.vehiculo = vehiculo;
+		
 	}
 
 	public int getAñosMinimosExp() {
@@ -71,26 +73,6 @@ public class SolEmpresa extends Solicitud {
 
 	public void setOfertaLaboral(String ofertaLaboral) {
 		this.ofertaLaboral = ofertaLaboral;
-	}
-
-	public int getCantidadContratados() {
-		return cantidadContratados;
-	}
-
-	public void setCantidadContratados(int cantidadContratados) {
-		this.cantidadContratados = cantidadContratados;
-	}
-	
-	public void aumentarContratados(){
-		cantidadContratados++;
-	}
-
-	public int getSalario() {
-		return salario;
-	}
-
-	public void setSalario(int salario) {
-		this.salario = salario;
 	}
 
 	public boolean isVehiculo() {

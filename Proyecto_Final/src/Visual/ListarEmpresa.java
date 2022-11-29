@@ -124,6 +124,13 @@ public class ListarEmpresa extends JDialog {
 			}
 			{
 				btnCrearSoli = new JButton("Crear Solicitud");
+				btnCrearSoli.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						RegOferta regOf = new RegOferta(aux);
+						regOf.setModal(true);
+						regOf.setVisible(true);
+					}
+				});
 				buttonPane.add(btnCrearSoli);
 			}
 			{

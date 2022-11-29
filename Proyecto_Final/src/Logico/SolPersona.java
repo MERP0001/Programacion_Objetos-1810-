@@ -6,15 +6,20 @@ public class SolPersona extends Solicitud {
 
 	private Persona buscaEmpleos;
 	private int añosExp;
-	protected int porcientoMatch;
-	protected int salarioMinimo;
+	private int porcientoMatch;
+	private float salarioMinimo;
+	private boolean trasnporte;
+	private boolean viajar;
 	
 	public SolPersona(String codigo, String categoriaLaboral, String provincia, String estado,
-			int horaslaborales, Date fechaVencimiento, String sexo, Persona trabajador, int añosExp) {
+			int horaslaborales, Date fechaVencimiento, String sexo, Persona buscaEmpleos, int añosExp,float salarioMinino ,boolean transporte, boolean viajar) {
 		super(codigo, categoriaLaboral, provincia, estado, horaslaborales, añosExp, fechaVencimiento, sexo);
 		
-		this.setBuscaEmpleos(trabajador);
-		this.setAñosExp(añosExp);
+		this.buscaEmpleos = buscaEmpleos;
+		this.añosExp = añosExp;
+		this.salarioMinimo = salarioMinino;
+		this.trasnporte= transporte;
+		this.viajar = viajar;
 	}
 
 	public Persona getBuscaEmpleos() {
@@ -41,7 +46,27 @@ public class SolPersona extends Solicitud {
 		this.porcientoMatch = porcientoMatch;
 	}
 	
-	public int getSalarioMinimo() {
+	public float getSalarioMinimo() {
 		return salarioMinimo;
+	}
+
+	public boolean isTrasnporte() {
+		return trasnporte;
+	}
+
+	public void setTrasnporte(boolean trasnporte) {
+		this.trasnporte = trasnporte;
+	}
+
+	public void setSalarioMinimo(float salarioMinimo) {
+		this.salarioMinimo = salarioMinimo;
+	}
+
+	public boolean isViajar() {
+		return viajar;
+	}
+
+	public void setViajar(boolean viajar) {
+		this.viajar = viajar;
 	}
 }

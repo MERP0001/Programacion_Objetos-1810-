@@ -8,6 +8,7 @@ public class Empresa {
 	private String direccion;
 	private String nombreEmpresa;
 	private ArrayList<Persona>empleados;
+	private ArrayList<SolEmpresa>misSolicitudes;
 	
 	public Empresa(String rcn, String direccion, String nombreEmpresa) {
 		super();
@@ -15,6 +16,7 @@ public class Empresa {
 		this.direccion = direccion;
 		this.nombreEmpresa = nombreEmpresa;
 		this.empleados = new ArrayList<Persona>();
+		this.misSolicitudes  = new ArrayList<SolEmpresa>();
 	}
 
 	public String getRcn() {
@@ -49,6 +51,21 @@ public class Empresa {
 		this.empleados = empleados;
 	}
 
+	public ArrayList<SolEmpresa> getMisSolicitudes() {
+		return misSolicitudes;
+	}
+
+	public void setMisSolicitudes(ArrayList<SolEmpresa> misSolicitudes) {
+		this.misSolicitudes = misSolicitudes;
+	}
+	
+	public void IngresarEmpleado (Persona p1) {
+		empleados.add(p1);
+	}
+	
+	public void ingresarSolicitud(SolEmpresa aux) {
+		misSolicitudes.add(aux);
+	}
 
 
 	
