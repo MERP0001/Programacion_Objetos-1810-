@@ -211,11 +211,15 @@ public class BolsaEmpleo {
 		}
 	}
 	//cierre de Modificadores=======================================================================================================================
-	public double Macheo() {
+	public double MacheoForEmpresa() {
 		double porcentae;
 		
 		
 		return 0.0;
+	}
+	public double MacheoForPersona() {
+		double porcentaje = 0;
+		return porcentaje;
 	}
 
 
