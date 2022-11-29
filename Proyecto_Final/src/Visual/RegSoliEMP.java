@@ -26,6 +26,7 @@ import javax.swing.border.EtchedBorder;
 import Logico.BolsaEmpleo;
 import Logico.Obrero;
 import Logico.Persona;
+import Logico.SolPersona;
 import Logico.Tecnico;
 import Logico.Universitario;
 import javax.swing.border.LineBorder;
@@ -83,6 +84,7 @@ public class RegSoliEMP extends JDialog {
 			txtNombre.setEditable(false);
 			txtNombre.setColumns(10);
 			txtNombre.setBounds(10, 36, 260, 25);
+			txtNombre.setText(aux.getEstado());
 			panel_1.add(txtNombre);
 			
 
@@ -90,6 +92,7 @@ public class RegSoliEMP extends JDialog {
 			txtCedula.setEditable(false);
 			txtCedula.setColumns(10);
 			txtCedula.setBounds(280, 36, 266, 25);
+			txtCedula.setText(aux.getCedula());
 			panel_1.add(txtCedula);
 			
 			JLabel label = new JLabel("Nombre:");
@@ -128,6 +131,7 @@ public class RegSoliEMP extends JDialog {
 			txtTelefono.setEditable(false);
 			txtTelefono.setColumns(10);
 			txtTelefono.setBounds(280, 156, 266, 25);
+			txtTelefono.setText(aux.getTelefono());
 			panel_1.add(txtTelefono);
 			
 			JLabel lblTelfono = new JLabel("Tel\u00E9fono:");
@@ -179,6 +183,7 @@ public class RegSoliEMP extends JDialog {
 			txtDireccion.setEditable(false);
 			txtDireccion.setColumns(10);
 			txtDireccion.setBounds(280, 97, 266, 25);
+			txtDireccion.setText(aux.getDireccion());
 			panel_1.add(txtDireccion);
 			
 			JLabel lblDireccion = new JLabel("Direcci\u00F3n:");
@@ -190,6 +195,7 @@ public class RegSoliEMP extends JDialog {
 			txtFechaNacimiento.setEditable(false);
 			txtFechaNacimiento.setColumns(10);
 			txtFechaNacimiento.setBounds(10, 219, 260, 25);
+			txtFechaNacimiento.setText(aux.getFechaNacimiento());
 			panel_1.add(txtFechaNacimiento);
 			
 			JPanel panel_2 = new JPanel();
@@ -367,24 +373,34 @@ public class RegSoliEMP extends JDialog {
 			
 			
 			btnCrearPost.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
+				public void actionPerformed(ActionEvent arg0) {			
+					boolean trasp , viaje ;
+					trasp = viaje = false;
+					if(rdbtnViajarSi.isSelected()) {
+						viaje = true;
+					}
+					if(rdbtnVehiculoSi.isSelected()) {
+						trasp = true;
+					}
+					/*SolPersona solPer = new SolPersona("CP -"+String.valueOf(BolsaEmpleo.getInstance().getGeneradoqPerSol()),cbxCategoriaLaboral.getSelectedItem().toString(), 
+							cbxProvincia.getSelectedItem().toString(),"Desempleado", 
+							cbxProvincia.getSelectedItem().toString(), aux.getFechaNacimiento(), 
+							cbxGenero.getSelectedItem().toString(), aux, 
+							Integer.valueOf(spnAnnosExp.getValue().toString()), Integer.valueOf(spnSalarioMin.getValue().toString()), 
+							viaje, trasp);*/
 					
+					SolPersona solPer = new SolPersona("CP -"+String.valueOf(BolsaEmpleo.getInstance().getGeneradoqPerSol()), cbxCategoriaLaboral.getSelectedItem().toString(), 
+							cbxProvincia.getSelectedItem().toString(), "Desempleado", Integer.valueOf(spnAnnosExp.getValue().toString()), 
+							 null, cbxGenero.getSelectedItem().toString(), aux, 
+							 Integer.valueOf(spnAnnosExp.getValue().toString()), Float.valueOf(spnSalarioMin.getValue().toString()), 
+							 trasp, viaje);
+					BolsaEmpleo.getInstance().crearSolicitud(solPer);
 					
-						
 					JOptionPane.showMessageDialog(null, "La solicitud se ha creado exitosamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
 					
 					dispose();
-					RegSoliEMP list = new RegSoliEMP(user);
-					list.setVisible(true);
 				}
 			});
-			
-			/*txtNombre.setText(user.getNombre());
-			txtCedula.setText(user.getCedula());
-			cbxProvincia.setSelectedItem(user.getDireccion());
-			txtDireccion.setText(user.getDireccion());
-			cbxGenero.setSelectedItem(user.getSexo());
-			txtTelefono.setText(user.getTelefono());*/
 			
 			
 			

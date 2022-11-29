@@ -94,6 +94,19 @@ public class Principal extends JFrame {
 		});
 		mnNewMenu_1.add(mntmNewMenuItem_3);
 		
+		JMenu mnNewMenu_2 = new JMenu("Sistema De Bolsa");
+		menuBar.add(mnNewMenu_2);
+		
+		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Listar Solicitudes");
+		mntmNewMenuItem_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListarSolicitudes listSo = new ListarSolicitudes(null);
+				listSo.setModal(true);
+				listSo.setVisible(true);
+			}
+		});
+		mnNewMenu_2.add(mntmNewMenuItem_4);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
