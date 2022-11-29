@@ -219,6 +219,9 @@ public class BolsaEmpleo {
 	}
 	public double MacheoForPersona() {
 		double porcentaje = 0;
+		
+		
+		
 		return porcentaje;
 	}
 
