@@ -70,3 +70,4 @@ public class SolPersona extends Solicitud {
 		this.viajar = viajar;
 	}
 }
+//hola probando
