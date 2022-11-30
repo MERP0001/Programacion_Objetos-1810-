@@ -11,6 +11,7 @@ public abstract class Solicitud {
 	protected String sexo;
 	protected int horaslaborales;
 	protected Date fechaVencimiento;
+	protected float salario;
 	
 	public Solicitud(String codigo, String categoriaLaboral, String provincia, String estado, float salario,
 			int horaslaborales, Date fechaVencimiento, String sexo) {
@@ -80,6 +81,14 @@ public abstract class Solicitud {
 
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
+	}
+
+	public float getSalario() {
+		return salario;
+	}
+
+	public void setSalario(float salario) {
+		this.salario = salario;
 	}
 	
 	
