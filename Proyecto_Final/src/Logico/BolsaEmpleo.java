@@ -9,6 +9,8 @@ public class BolsaEmpleo {
 	private ArrayList<Persona> misPersonas;
 	private ArrayList<Empresa> misEmpleos;
 	private ArrayList<Solicitud> misSolicitudes;
+	private ArrayList<SolPersona> misSolPersonas;
+	private ArrayList<SolEmpresa> misSolEmpresas;
 	private ArrayList<Usuario> misUsuarios;
     public static BolsaEmpleo bolsaEmpleo;
     private int generadoEmpSol = 0;
@@ -81,6 +83,12 @@ public class BolsaEmpleo {
 			misSolicitudes.add(auxSol);
 		}
 		
+	}
+	public void insertarSolempresa(SolEmpresa aux) {
+		misSolEmpresas.add(aux);
+	}
+	public void insertarSolpersonas(SolPersona aux) {
+		misSolPersonas.add(aux);
 	}
 	
 	public void insertarEmpresa(Empresa auxEmpresa) {
@@ -216,41 +224,41 @@ public class BolsaEmpleo {
 	public ArrayList<Persona> Macheo (SolEmpresa solEmpresa) {
 		ArrayList<Persona>candidatos = new ArrayList<Persona>();
 		for (Solicitud solictud : misSolicitudes) {
-			if(comparacionSolicitudes((SolPersona)solictud, solEmpresa) != null) {
+			if(comparacionSolicitudes(solictud, solEmpresa) != null) {
 				candidatos.add(comparacionSolicitudes((SolPersona)solictud, solEmpresa));
 			}
 		}
 		return candidatos;
 		
 	}
-	public Persona comparacionSolicitudes(SolPersona persona, SolEmpresa empresa) {
+	public Persona comparacionSolicitudes(Solicitud solictud, SolEmpresa empresa) {
 		double cantComun = 0;
-		if(persona.getEstado().equalsIgnoreCase("Activo")) {
+		if(solictud.getEstado().equalsIgnoreCase("Activo")) {
 			
-			if(persona.getCategoriaLaboral().equalsIgnoreCase(empresa.getCategoriaLaboral())) {
+			if(solictud.getCategoriaLaboral().equalsIgnoreCase(empresa.getCategoriaLaboral())) {
 				cantComun += 20;
 			}
-			if(persona.getAñosExp() >= empresa.getAñosMinimosExp()){
-				cantComun += 10;
-			}
-			if(persona.getHoraslaborales() <= persona.getHoraslaborales()) {
-				cantComun += 10;
-			}
-			if(persona.getProvincia().equalsIgnoreCase(empresa.getProvincia())) {
-				cantComun += 10;
-			}
-			if(persona.getSalarioMinimo() <= empresa.getSalario()) {
+			if(solictud.getAñosExp() >= empresa.getAñosMinimosExp()){
 				cantComun += 20;
 			}
-			if(persona.isTrasnporte() == true && empresa.isVehiculo() == true) {
-				
+			if(solictud.getHoraslaborales() <= solictud.getHoraslaborales()) {
+				cantComun += 10;
 			}
-			if(persona.isViajar() == true && empresa.isViajar() == true) {
-				
+			if(solictud.getProvincia().equalsIgnoreCase(empresa.getProvincia())) {
+				cantComun += 10;
+			}
+			if(solictud.getSalarioMinimo() <= empresa.getSalario()) {
+				cantComun += 30;
+			}
+			if(solictud.isTrasnporte() == true && empresa.isVehiculo() == true) {
+				cantComun += 5;
+			}
+			if(solictud.isViajar() == true && empresa.isViajar() == true) {
+				cantComun += 5;
 			}
 		}
 		if(empresa.getPorcientoMach() >= cantComun) {
-			return persona.getBuscaEmpleos();
+			return solictud.getBuscaEmpleos();
 		}
 		return null;
 	}
