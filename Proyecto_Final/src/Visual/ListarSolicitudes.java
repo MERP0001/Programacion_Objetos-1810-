@@ -122,22 +122,20 @@ public class ListarSolicitudes extends JDialog {
 	private void loadSolicitudes() {
 		model.setRowCount(0);
 		rows = new Object[model.getColumnCount()];
-		for (Solicitud solic : BolsaEmpleo.getInstance().getMisSolicitudes()) {
-			if(solic instanceof SolEmpresa) {
+		for (SolEmpresa solic : BolsaEmpleo.getInstance().getMisSolEmpresas()) {
 				rows[0] = solic.getCodigo(); 
 				rows[1] = solic.getCategoriaLaboral(); 
 				rows[2] = solic.getEstado(); 
 				rows[3] = solic.getFechaVencimiento();
-				rows[4] = "Empresa";
-			}
-			if(solic instanceof SolPersona) {
+				rows[4] = "Empresa";	
+		model.addRow(rows);
+		}
+		for (SolPersona solic : BolsaEmpleo.getInstance().getMisSolPersonas()) {
 				rows[0] = solic.getCodigo(); 
 				rows[1] = solic.getCategoriaLaboral(); 
 				rows[2] = solic.getEstado(); 
 				rows[3] = solic.getFechaVencimiento();
-				rows[4] = "Persona";
-			}
-			
+				rows[4] = "Persona";	
 		model.addRow(rows);
 		}
 		

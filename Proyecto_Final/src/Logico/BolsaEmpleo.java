@@ -8,7 +8,7 @@ public class BolsaEmpleo {
 
 	private ArrayList<Persona> misPersonas;
 	private ArrayList<Empresa> misEmpleos;
-	private ArrayList<Solicitud> misSolicitudes;
+	//private ArrayList<Solicitud> misSolicitudes;
 	private ArrayList<SolPersona> misSolPersonas;
 	private ArrayList<SolEmpresa> misSolEmpresas;
 	private ArrayList<Usuario> misUsuarios;
@@ -20,7 +20,9 @@ public class BolsaEmpleo {
 		super();
 		this.misPersonas = new ArrayList<Persona>();
 		this.misEmpleos = new ArrayList<Empresa>();
-		this.misSolicitudes = new ArrayList<Solicitud>();
+		//this.misSolicitudes = new ArrayList<Solicitud>();
+		this.misSolEmpresas = new ArrayList<SolEmpresa>(); 
+		this.misSolPersonas = new ArrayList<SolPersona>();
 		this.misUsuarios = new ArrayList<Usuario>();
 	}
 	
@@ -30,11 +32,11 @@ public class BolsaEmpleo {
 		}
 		return bolsaEmpleo;
 	}
-	
+	/*
 	public ArrayList<Solicitud> getMisSolicitudes() {
 		return misSolicitudes;
 	}
-
+	*/
 	public ArrayList<Usuario> getMisUsuarios() {
 		return misUsuarios;
 	}
@@ -55,6 +57,14 @@ public class BolsaEmpleo {
 		return generadoqPerSol;
 	}
 
+	public ArrayList<SolPersona> getMisSolPersonas() {
+		return misSolPersonas;
+	}
+
+	public ArrayList<SolEmpresa> getMisSolEmpresas() {
+		return misSolEmpresas;
+	}
+
 	//Creacion========================================================================================================================
 	public void insertarPersona(Persona auxPersona) {
 		misPersonas.add(auxPersona);
@@ -72,18 +82,6 @@ public class BolsaEmpleo {
 		misEmpleos.add(emp);
 	}
 	
-	public void crearSolicitud(Solicitud auxSol) {
-		if(auxSol instanceof SolEmpresa) {
-			generadoEmpSol++;
-			misSolicitudes.add(auxSol);
-		}
-		
-		if(auxSol instanceof SolPersona) {
-			generadoqPerSol++;
-			misSolicitudes.add(auxSol);
-		}
-		
-	}
 	public void insertarSolempresa(SolEmpresa aux) {
 		misSolEmpresas.add(aux);
 	}
@@ -140,9 +138,17 @@ public class BolsaEmpleo {
 		return indPersona;
 	}
 	
-	public int buscarIndSolicitud(String codigo) {
+	public int buscarIndSolicitudEmpresa(String codigo) {
 		int ind = 0;
-		while(ind < misSolicitudes.size() && misSolicitudes.get(ind).getCodigo().equalsIgnoreCase(codigo)) {
+		while(ind < misSolEmpresas.size() && misSolEmpresas.get(ind).getCodigo().equalsIgnoreCase(codigo)) {
+			ind++;
+		}
+		return ind;
+	}
+	
+	public int buscarIndSolicitudPersona(String codigo) {
+		int ind = 0;
+		while(ind < misSolPersonas.size() && misSolPersonas.get(ind).getCodigo().equalsIgnoreCase(codigo)) {
 			ind++;
 		}
 		return ind;
@@ -223,15 +229,15 @@ public class BolsaEmpleo {
 	//cierre de Modificadores=======================================================================================================================
 	public ArrayList<Persona> Macheo (SolEmpresa solEmpresa) {
 		ArrayList<Persona>candidatos = new ArrayList<Persona>();
-		for (Solicitud solictud : misSolicitudes) {
+		for (SolPersona solictud : misSolPersonas) {
 			if(comparacionSolicitudes(solictud, solEmpresa) != null) {
-				candidatos.add(comparacionSolicitudes((SolPersona)solictud, solEmpresa));
+				candidatos.add(comparacionSolicitudes(solictud, solEmpresa));
 			}
 		}
 		return candidatos;
 		
 	}
-	public Persona comparacionSolicitudes(Solicitud solictud, SolEmpresa empresa) {
+	public Persona comparacionSolicitudes(SolPersona solictud, SolEmpresa empresa) {
 		double cantComun = 0;
 		if(solictud.getEstado().equalsIgnoreCase("Activo")) {
 			
@@ -257,7 +263,9 @@ public class BolsaEmpleo {
 				cantComun += 5;
 			}
 		}
-		if(empresa.getPorcientoMach() >= cantComun) {
+		System.out.println("Resutado = "+cantComun+" "+empresa.getPorcientoMach());
+		if(empresa.getPorcientoMach() <= cantComun) {
+			System.out.println("se logro");
 			return solictud.getBuscaEmpleos();
 		}
 		return null;

@@ -190,7 +190,7 @@ public class RegOferta extends JDialog {
 						user, Integer.valueOf(spnExperiencia.getValue().toString()), 
 						Double.valueOf(spnPorciento.getValue().toString()),Integer.valueOf(spnVacantes.getValue().toString()), 
 						viaDip, transDip);
-				BolsaEmpleo.getInstance().crearSolicitud(auxOferta);
+				BolsaEmpleo.getInstance().insertarSolempresa(auxOferta);
 				JOptionPane.showMessageDialog(null, "La oferta se ha creado exitosamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
 				clean();
 			}

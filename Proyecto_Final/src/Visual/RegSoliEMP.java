@@ -323,7 +323,7 @@ public class RegSoliEMP extends JDialog {
 				rdbtnTecnico.setSelected(false);
 				txtCentroeducativo.setEnabled(true);
 				txtCentroeducativo.setEditable(true);
-				rdbtnEducacionBasica.setSelected(false);
+				rdbtnEducacionBasica.setSelected(true);
 				cbxAreaTecnica.setEnabled(false);
 				cbxOficio.setEnabled(false);
 				cbxCarrera.setEnabled(true);
@@ -394,7 +394,7 @@ public class RegSoliEMP extends JDialog {
 							 null, cbxGenero.getSelectedItem().toString(), aux, 
 							 Integer.valueOf(spnAnnosExp.getValue().toString()), Float.valueOf(spnSalarioMin.getValue().toString()), 
 							 trasp, viaje);
-					BolsaEmpleo.getInstance().crearSolicitud(solPer);
+					BolsaEmpleo.getInstance().insertarSolpersonas(solPer);
 					
 					JOptionPane.showMessageDialog(null, "La solicitud se ha creado exitosamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
 					
