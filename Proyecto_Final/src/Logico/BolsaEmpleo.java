@@ -1,11 +1,21 @@
 package Logico;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import sun.nio.cs.ext.ISCII91;
 
-public class BolsaEmpleo {
-
+public class BolsaEmpleo implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private ArrayList<Persona> misPersonas;
 	private ArrayList<Empresa> misEmpleos;
 	//private ArrayList<Solicitud> misSolicitudes;

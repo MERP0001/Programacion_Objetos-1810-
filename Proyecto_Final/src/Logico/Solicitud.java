@@ -1,8 +1,9 @@
 package Logico;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public abstract class Solicitud {
+public abstract class Solicitud implements Serializable{
 	
 	protected String codigo;
 	protected String categoriaLaboral;

@@ -1,9 +1,15 @@
 package Logico;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class SolPersona{
+public class SolPersona implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Persona buscaEmpleos;
 	private int añosExp;
 	private int porcientoMatch;

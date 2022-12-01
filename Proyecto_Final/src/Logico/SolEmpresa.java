@@ -1,10 +1,16 @@
 package Logico;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class SolEmpresa{
+public class SolEmpresa implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Empresa empresa;
 	private int añosMinimosExp;
 	private double porcientoMach;

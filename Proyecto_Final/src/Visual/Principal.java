@@ -7,11 +7,22 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Logico.BolsaEmpleo;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class Principal extends JFrame {
 
@@ -24,6 +35,30 @@ public class Principal extends JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				try {
+					FileInputStream arch = new FileInputStream("C:/java/guardado.dat");
+					ObjectInputStream oos = new ObjectInputStream(arch);
+					BolsaEmpleo.bolsaEmpleo = (BolsaEmpleo)oos.readObject();
+					arch.close();
+					oos.close();
+				}catch (FileNotFoundException e1) {
+					 try {
+							FileOutputStream arch1 = new FileOutputStream("C:/java/guardado.dat");
+							ObjectOutputStream oos1 = new ObjectOutputStream(arch1);
+							oos1.writeObject(BolsaEmpleo.getInstance());
+							arch1.close();
+							oos1.close();
+						}catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
 				try {
 					Principal frame = new Principal();
 					frame.setVisible(true);
@@ -38,6 +73,23 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Principal() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				 try {
+						FileOutputStream arch1 = new FileOutputStream("C:/java/guardado.dat");
+						ObjectOutputStream oos1 = new ObjectOutputStream(arch1);
+						oos1.writeObject(BolsaEmpleo.getInstance());
+						arch1.close();
+						oos1.close();
+					}catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+			}
+		});
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		
