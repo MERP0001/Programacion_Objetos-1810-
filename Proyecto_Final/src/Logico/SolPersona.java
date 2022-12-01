@@ -11,17 +11,18 @@ public class SolPersona{
 	private boolean trasnporte;
 	private boolean viajar;
 	//comparativo
-	protected String codigo;
-	protected String categoriaLaboral;
-	protected String provincia;
-	protected String estado;
-	protected String sexo;
-	protected int horaslaborales;
-	protected Date fechaVencimiento;
-	protected float salario;
+	private String codigo;
+	private String categoriaLaboral;
+	private String provincia;
+	private String estado;
+	private String sexo;
+	private int horaslaborales;
+	private Date fechaVencimiento;
+	private float salario;
+	private String formAcademic;
 	
 	public SolPersona(String codigo, String categoriaLaboral, String provincia, String estado,
-			int horaslaborales, Date fechaVencimiento, String sexo, Persona buscaEmpleos, int añosExp,float salarioMinino ,boolean transporte, boolean viajar) {
+			int horaslaborales, Date fechaVencimiento, String sexo,String formAcademic, Persona buscaEmpleos, int añosExp,float salarioMinino ,boolean transporte, boolean viajar) {
 		
 		this.buscaEmpleos = buscaEmpleos;
 		this.añosExp = añosExp;
@@ -36,6 +37,7 @@ public class SolPersona{
 		this.horaslaborales = horaslaborales;
 		this.fechaVencimiento = fechaVencimiento;
 		this.sexo = sexo;
+		this.formAcademic = formAcademic;
 	}
 
 	public Persona getBuscaEmpleos() {
@@ -149,5 +151,12 @@ public class SolPersona{
 	public void setSalario(float salario) {
 		this.salario = salario;
 	}
+
+	public String getFormAcademic() {
+		return formAcademic;
+	}
+
+	public void setFormAcademic(String formAcademic) {
+		this.formAcademic = formAcademic;
+	}
 }
-//hola probando

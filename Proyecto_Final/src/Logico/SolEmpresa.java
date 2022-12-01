@@ -1,5 +1,6 @@
 package Logico;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class SolEmpresa{
@@ -12,17 +13,21 @@ public class SolEmpresa{
 	private boolean viajar;
 	private boolean vehiculo;
     //Comparativos
-	protected String codigo;
-	protected String categoriaLaboral;
-	protected String provincia;
-	protected String estado;
-	protected String sexo;
-	protected int horaslaborales;
-	protected Date fechaVencimiento;
-	protected float salario;
+	private String codigo;
+	private String categoriaLaboral;
+	private String provincia;
+	private String estado;
+	private String sexo;
+	private int horaslaborales;
+	private Date fechaVencimiento;
+	private float salario;
+	private String formAca;
+	private String carreraNec;
+	private String areatecnicoNec;
+	private ArrayList<String> oficioNec;
 	
 	public SolEmpresa(String codigo, String categoriaLaboral, String provincia, String estado, float salario,
-			int horaslaborales, Date fechaVencimiento, String sexo, Empresa empresa, int añosMinimosExp, double porcientoMach
+			int horaslaborales, Date fechaVencimiento, String sexo,String formAca, Empresa empresa, int añosMinimosExp, double porcientoMach
 			,int cantVacantes, boolean viajar, boolean vehiculo) {
 		
 		this.empresa = empresa;
@@ -40,6 +45,7 @@ public class SolEmpresa{
 		this.horaslaborales = horaslaborales;
 		this.fechaVencimiento = fechaVencimiento;
 		this.sexo = sexo;
+		this.formAca = formAca;
 		
 	}
 

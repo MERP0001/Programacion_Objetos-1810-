@@ -182,6 +182,7 @@ public class BolsaEmpleo {
 		}
 		return indEmpresa;
 	}
+	
 	//Cierre de Buscadores==============================================================================================================================
 	
 	//Eliminadores========================================================================================================================================
@@ -239,40 +240,122 @@ public class BolsaEmpleo {
 	}
 	public Persona comparacionSolicitudes(SolPersona solictud, SolEmpresa empresa) {
 		double cantComun = 0;
+		double diferencia = ((solictud.getSalarioMinimo() - empresa.getSalario()) / empresa.getSalario()) * 100;
 		if(solictud.getEstado().equalsIgnoreCase("Activo")) {
-			
-			if(solictud.getCategoriaLaboral().equalsIgnoreCase(empresa.getCategoriaLaboral())) {
-				cantComun += 20;
+			if(solictud.getFormAcademic().equalsIgnoreCase("Universitario")) {
+				if(((Universitario)solictud.getBuscaEmpleos()).getCarrera().equalsIgnoreCase(empresa.getCarreraNec)) {
+					cantComun += 10;	
+				}
+				if(solictud.getCategoriaLaboral().equalsIgnoreCase(empresa.getCategoriaLaboral())) {
+					cantComun += 20;
+				}
+				if(solictud.getAñosExp() >= empresa.getAñosMinimosExp()){
+					cantComun += 20;
+				}
+				if(solictud.getHoraslaborales() <= empresa.getHoraslaborales()) {
+					cantComun += 10;
+				}
+				if(solictud.getProvincia().equalsIgnoreCase(empresa.getProvincia())) {
+					cantComun += 10;
+				}
+				
+				if(solictud.getSalarioMinimo() <= empresa.getSalario()) {
+					if(diferencia <= 0.10) {
+						cantComun += 20;
+					}
+				}
+				else if(solictud.getSalarioMinimo() >= empresa.getSalario()) {
+					cantComun += 20;
+				}
+				if(solictud.isTrasnporte() && empresa.isVehiculo()) {
+					cantComun += 5;
+				}
+				if(solictud.isViajar() && empresa.isViajar()) {
+					cantComun += 5;
+					
 			}
-			if(solictud.getAñosExp() >= empresa.getAñosMinimosExp()){
-				cantComun += 20;
 			}
-			if(solictud.getHoraslaborales() <= solictud.getHoraslaborales()) {
-				cantComun += 10;
+			else if(solictud.getFormAcademic().equalsIgnoreCase("Tecnico")) {
+				if(((Tecnico)solictud.getBuscaEmpleos()).getAreaTrabajo().equalsIgnoreCase(empresa.getAreatecnicoNec)) {
+					cantComun += 10;	
+				}
+				if(solictud.getCategoriaLaboral().equalsIgnoreCase(empresa.getCategoriaLaboral())) {
+					cantComun += 20;
+				}
+				if(solictud.getAñosExp() >= empresa.getAñosMinimosExp()){
+					cantComun += 20;
+				}
+				if(solictud.getHoraslaborales() <= empresa.getHoraslaborales()) {
+					cantComun += 10;
+				}
+				if(solictud.getProvincia().equalsIgnoreCase(empresa.getProvincia())) {
+					cantComun += 10;
+				}
+				
+				if(solictud.getSalarioMinimo() <= empresa.getSalario()) {
+					if(diferencia <= 0.10) {
+						cantComun += 20;
+					}
+				}
+				else if(solictud.getSalarioMinimo() >= empresa.getSalario()) {
+					cantComun += 20;
+				}
+				if(solictud.isTrasnporte() && empresa.isVehiculo()) {
+					cantComun += 5;
+				}
+				if(solictud.isViajar() && empresa.isViajar()) {
+					cantComun += 5;	
 			}
-			if(solictud.getProvincia().equalsIgnoreCase(empresa.getProvincia())) {
-				cantComun += 10;
 			}
-			if(solictud.getSalarioMinimo() <= empresa.getSalario()) {
-				cantComun += 30;
+			else if(solictud.getFormAcademic().equalsIgnoreCase("Obrero")) { 
+				if(solictud.getCategoriaLaboral().equalsIgnoreCase(empresa.getCategoriaLaboral())) {
+					cantComun += 20;
+				}
+				if(solictud.getAñosExp() >= empresa.getAñosMinimosExp()){
+					cantComun += 20;
+				}
+				if(solictud.getHoraslaborales() <= empresa.getHoraslaborales()) {
+					cantComun += 10;
+				}
+				if(solictud.getProvincia().equalsIgnoreCase(empresa.getProvincia())) {
+					cantComun += 10;
+				}
+				
+				if(solictud.getSalarioMinimo() <= empresa.getSalario()) {
+					if(diferencia <= 0.10) {
+						cantComun += 20;
+					}
+				}
+				else if(solictud.getSalarioMinimo() >= empresa.getSalario()) {
+					cantComun += 20;
+				}
+				if(solictud.isTrasnporte() && empresa.isVehiculo()) {
+					cantComun += 5;
+				}
+				if(solictud.isViajar() && empresa.isViajar()) {
+					cantComun += 5;	
 			}
-			if(solictud.isTrasnporte() == true && empresa.isVehiculo() == true) {
-				cantComun += 5;
-			}
-			if(solictud.isViajar() == true && empresa.isViajar() == true) {
-				cantComun += 5;
 			}
 		}
-		System.out.println("Resutado = "+cantComun+" "+empresa.getPorcientoMach());
+		System.out.println("Resultado = "+cantComun+" "+empresa.getPorcientoMach());
 		if(empresa.getPorcientoMach() <= cantComun) {
 			System.out.println("se logro");
 			return solictud.getBuscaEmpleos();
 		}
 		return null;
 	}
-	/*
-	 
-	 */
+	
+	public int compareOficios(ArrayList<String> oficiosPersona, ArrayList<String> oficiosNec) {
+		int ind = 0;
+		for (String string : oficiosPersona) {
+            for (String string2 : oficiosNec) {
+                if(string2.equalsIgnoreCase(string)) {
+                	ind++;
+                }
+            }
+        }
+		return ind;
+	}
 
 
 

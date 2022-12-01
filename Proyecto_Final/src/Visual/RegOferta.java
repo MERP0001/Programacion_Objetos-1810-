@@ -27,6 +27,8 @@ import Logico.BolsaEmpleo;
 import Logico.Empresa;
 import Logico.SolEmpresa;
 import Logico.Usuario;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 
 
 public class RegOferta extends JDialog {
@@ -44,6 +46,8 @@ public class RegOferta extends JDialog {
 	private JComboBox cbxJornada;
 	private JComboBox cbxTipoDeContrato;
 	private JSpinner spnFechaVencimiento;
+	private JComboBox cbxAreaTecnica;
+	private JComboBox cbxGenero;
 	
 	public RegOferta(final Empresa user) {
 		setTitle("Crear oferta de trabajo");
@@ -55,6 +59,7 @@ public class RegOferta extends JDialog {
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		final JRadioButton rdbtnVehiculo = new JRadioButton("Vehiculo propio necesario");
 		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		contentPanel.add(panel, BorderLayout.CENTER);
 		final JRadioButton rdbtnViajar = new JRadioButton("Disponibilidad para viajar necesaria");
 		panel.setLayout(null);
@@ -86,7 +91,6 @@ public class RegOferta extends JDialog {
 		panel.add(lblProvincia);
 		
 		final JComboBox cbxProvincia = new JComboBox();
-		cbxProvincia.setEnabled(false);
 		cbxProvincia.setModel(new DefaultComboBoxModel(new String[] {"Azua", "Bahoruco", "Barahona", "Dajab\u00F3n", "Duarte", "El Seibo", "El\u00EDas Pi\u00F1a", "Espaillat", "Hato Mayor", "Hermanas Mirabal", "Independencia", "La Altagracia", "La Romana", "La Vega", "Maria Trinidad S\u00E1nchez", "Monse\u00F1or Nouel", "Monte Cristi", "Monte Plata", "Pedernales", "Peravia", "Puerto Plata", "Saman\u00E1", "San Cristobal", "San Jos\u00E9 De Ocoa", "San Juan", "San Pedro De Macoris", "S\u00E1nchez Ram\u00EDrez", "Santiago", "Santiago Rodr\u00EDguez", "Santo Domingo", "Valverde", "Distrito Nacional"}));
 		cbxProvincia.setBounds(257, 203, 239, 25);
 		cbxProvincia.setSelectedItem(((Empresa)user).getDireccion());
@@ -131,29 +135,27 @@ public class RegOferta extends JDialog {
 		JLabel lblJornada = new JLabel("Jornada:");
 		lblJornada.setBounds(10, 403, 122, 14);
 		panel.add(lblJornada);
-		JSpinner spnFechaVencimiento = new JSpinner();
-		JLabel lblFechaDeVencimiento = new JLabel("Fecha de vencimiento:");
-		lblFechaDeVencimiento.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblFechaDeVencimiento.setBounds(10, 464, 136, 14);
+		JLabel lblFechaDeVencimiento = new JLabel("Genero:");
+		lblFechaDeVencimiento.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblFechaDeVencimiento.setBounds(10, 481, 136, 14);
 		panel.add(lblFechaDeVencimiento);
 		final JComboBox cbxCategoriaLab = new JComboBox();
 		final JSpinner spnPorciento = new JSpinner();
-		cbxCategoriaLab.setEnabled(false);
 		JButton button = new JButton("Crear oferta");
-		final JComboBox cbxNivelEstudio = new JComboBox();
+		cbxAreaTecnica = new JComboBox();
 		final JComboBox cbxVariable = new JComboBox();
 		cbxVariable.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Administraci\u00F3n hotelera", "Arquitectura", "Comunicaci\u00F3n social", "Derecho", "Dise\u00F1o e interiorismo", "Econom\u00EDa", "Eduaci\u00F3n", "Estomatolog\u00EDa", "Filosof\u00EDa", "Gesti\u00F3n financiera", "Ingenier\u00EDa civil", "Ingenieria m\u00E9canica", "Ingenier\u00EDa el\u00E9ctrica", "Ingenier\u00EDa industrial", "Ingenier\u00EDa mecatr\u00F3nica", "Ingenier\u00EDa de ciencias de la computaci\u00F3n", "Ingenier\u00EDa telem\u00E1tica", "Ingenier\u00EDa Ambiental", "Medic\u00EDna", "Marketing", "Nutrici\u00F3n", "Psicolog\u00EDa", "Terapia f\u00EDsica", "Trabajo social", "Hospitalidad y turismo"}));
-		cbxNivelEstudio.addActionListener(new ActionListener() {
+		cbxAreaTecnica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(cbxNivelEstudio.getSelectedItem().toString().equalsIgnoreCase("Universitario")) {
+				if(cbxAreaTecnica.getSelectedItem().toString().equalsIgnoreCase("Universitario")) {
 					cbxVariable.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Administraci\u00F3n hotelera", "Arquitectura", "Comunicaci\u00F3n social", "Derecho", "Dise\u00F1o e interiorismo", "Econom\u00EDa", "Eduaci\u00F3n", "Estomatolog\u00EDa", "Filosof\u00EDa", "Gesti\u00F3n financiera", "Ingenier\u00EDa civil", "Ingenieria m\u00E9canica", "Ingenier\u00EDa el\u00E9ctrica", "Ingenier\u00EDa industrial", "Ingenier\u00EDa mecatr\u00F3nica", "Ingenier\u00EDa de ciencias de la computaci\u00F3n", "Ingenier\u00EDa telem\u00E1tica", "Ingenier\u00EDa Ambiental", "Medic\u00EDna", "Marketing", "Nutrici\u00F3n", "Psicolog\u00EDa", "Terapia f\u00EDsica", "Trabajo social", "Hospitalidad y turismo"}));
 					lblCarrera.setText("Carrera:");
 				}
-				if(cbxNivelEstudio.getSelectedItem().toString().equalsIgnoreCase("Educación Básica")) {
+				if(cbxAreaTecnica.getSelectedItem().toString().equalsIgnoreCase("Educación Básica")) {
 					cbxVariable.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Alba\u00F1il", "Asistente de tienda", "Bibliotecario", "Bombero", "Carnicero", "Carpintero", "Cartero", "Chofer", "Electricista", "Florista", "Granjero", "Jardinero", "Limpiador", "Mec\u00E1nico", "Panadero", "Peluquero", "Plomero", "Secretario", "Sastre"}));
 					lblCarrera.setText("Oficio:");
 				}
-				if(cbxNivelEstudio.getSelectedItem().toString().equalsIgnoreCase("Técnico")) {
+				if(cbxAreaTecnica.getSelectedItem().toString().equalsIgnoreCase("Técnico")) {
 					cbxVariable.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Automatizaci\u00F3n", "Artes culinarias", "Admistracion de empresas", "Dise\u00F1o gr\u00E1fico", "Enfermer\u00EDa", "Gesti\u00F3n social", "Logistica integral", "Microfinanzas", "Mercado", "Programaci\u00F3n web", "Publicidad", "Redes de datos"}));
 					lblCarrera.setText("Área técnica:");
 				}
@@ -162,7 +164,7 @@ public class RegOferta extends JDialog {
 		
 			
 		txtOfertaLab = new JTextField();
-		cbxNivelEstudio.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Universitario", "T\u00E9cnico", "Educaci\u00F3n b\u00E1sica"}));
+		cbxAreaTecnica.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Universitario", "T\u00E9cnico", "Educaci\u00F3n b\u00E1sica"}));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int jornada = 0;
@@ -182,26 +184,18 @@ public class RegOferta extends JDialog {
 				}
 				
 				
-				
-				SolEmpresa auxOferta = new SolEmpresa("CS-"+String.valueOf(BolsaEmpleo.getInstance().getGeneradoEmpSol()), String.valueOf(cbxCategoriaLab.getSelectedItem()), 
+				SolEmpresa auxOferta1 = new SolEmpresa("CS-"+String.valueOf(BolsaEmpleo.getInstance().getGeneradoEmpSol()), String.valueOf(cbxCategoriaLab.getSelectedItem()), 
 						String.valueOf(cbxProvincia.getSelectedItem()), "Activo", 
-						Float.valueOf(String.valueOf(spnSalario.getValue().toString())), jornada, 
-						null, null, 
-						user, Integer.valueOf(spnExperiencia.getValue().toString()), 
-						Double.valueOf(spnPorciento.getValue().toString()),Integer.valueOf(spnVacantes.getValue().toString()), 
-						viaDip, transDip);
-				BolsaEmpleo.getInstance().insertarSolempresa(auxOferta);
+						Float.valueOf(String.valueOf(spnSalario.getValue().toString())), jornada, null, cbxGenero.getSelectedItem().toString(), cbxAreaTecnica.getSelectedItem().toString(), user, Integer.valueOf(spnExperiencia.getValue().toString()), 
+						Double.valueOf(spnPorciento.getValue().toString()),Integer.valueOf(spnVacantes.getValue().toString()), viaDip, transDip);
+				BolsaEmpleo.getInstance().insertarSolempresa(auxOferta1);
 				JOptionPane.showMessageDialog(null, "La oferta se ha creado exitosamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
 				clean();
 			}
 		});
-		button.setBounds(301, 481, 195, 35);
+		
+		button.setBounds(301, 489, 195, 32);
 		panel.add(button);
-		
-		
-		spnFechaVencimiento.setModel(new SpinnerDateModel(new Date(), new Date(), null, Calendar.DAY_OF_YEAR));
-		spnFechaVencimiento.setBounds(10, 489, 242, 25);
-		panel.add(spnFechaVencimiento);
 		
 		JLabel lblCategoriaLaboral = new JLabel("Categoria laboral:");
 		lblCategoriaLaboral.setBounds(10, 56, 238, 14);
@@ -214,8 +208,8 @@ public class RegOferta extends JDialog {
 		//cbxCategoriaLab.setSelectedItem(((Empresa)user).getCategoriaLaboral());
 		
 		
-		cbxNivelEstudio.setBounds(9, 142, 239, 25);
-		panel.add(cbxNivelEstudio);
+		cbxAreaTecnica.setBounds(9, 142, 239, 25);
+		panel.add(cbxAreaTecnica);
 		
 		JLabel lblNivelDeEstudio = new JLabel("Nivel de estudio requerido:");
 		lblNivelDeEstudio.setBounds(9, 117, 238, 14);
@@ -259,6 +253,11 @@ public class RegOferta extends JDialog {
 		
 		rdbtnViajar.setBounds(256, 243, 242, 23);
 		panel.add(rdbtnViajar);
+		
+		cbxGenero = new JComboBox();
+		cbxGenero.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Hombre", "Mujer", "Otro"}));
+		cbxGenero.setBounds(54, 478, 193, 20);
+		panel.add(cbxGenero);
 	}
 	
 	private void clean() {

@@ -117,13 +117,12 @@ public class RegSoliEMP extends JDialog {
 			
 			final JComboBox cbxProvincia = new JComboBox();
 			cbxProvincia.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Azua", "Bahoruco", "Barahona", "Dajab\u00F3n", "Duarte", "El Seibo", "El\u00EDas Pi\u00F1a", "Espaillat", "Hato Mayor", "Hermanas Mirabal", "Independencia", "La Altagracia", "La Romana", "La Vega", "Maria Trinidad S\u00E1nchez", "Monse\u00F1or Nouel", "Monte Cristi", "Monte Plata", "Pedernales", "Peravia", "Puerto Plata", "Saman\u00E1", "San Cristobal", "San Jos\u00E9 De Ocoa", "San Juan", "San Pedro De Macoris", "S\u00E1nchez Ram\u00EDrez", "Santiago", "Santiago Rodr\u00EDguez", "Santo Domingo", "Valverde", "Distrito Nacional"}));
-			cbxProvincia.setEnabled(false);
 			cbxProvincia.setBounds(10, 97, 260, 25);
 			panel_1.add(cbxProvincia);
 			
 			final JComboBox cbxGenero = new JComboBox();
+			cbxGenero.setEditable(true);
 			cbxGenero.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Hombre ", "Mujer", "Otro"}));
-			cbxGenero.setEnabled(false);
 			cbxGenero.setBounds(10, 158, 260, 25);
 			panel_1.add(cbxGenero);
 			
@@ -145,13 +144,11 @@ public class RegSoliEMP extends JDialog {
 			panel_1.add(label_7);
 			
 			final JRadioButton rdbtnViajarSi = new JRadioButton("Si");
-			rdbtnViajarSi.setEnabled(false);
 			rdbtnViajarSi.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			rdbtnViajarSi.setBounds(201, 251, 109, 23);
 			panel_1.add(rdbtnViajarSi);
 			
 			JRadioButton rdbtnViajar = new JRadioButton("No");
-			rdbtnViajar.setEnabled(false);
 			rdbtnViajar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			rdbtnViajar.setBounds(343, 251, 109, 23);
 			panel_1.add(rdbtnViajar);
@@ -162,13 +159,11 @@ public class RegSoliEMP extends JDialog {
 			panel_1.add(label_8);
 			
 			final JRadioButton rdbtnVehiculoSi = new JRadioButton("Si");
-			rdbtnVehiculoSi.setEnabled(false);
 			rdbtnVehiculoSi.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			rdbtnVehiculoSi.setBounds(201, 287, 109, 23);
 			panel_1.add(rdbtnVehiculoSi);
 			
 			JRadioButton rdbtnVehiculoNo = new JRadioButton("No");
-			rdbtnVehiculoNo.setEnabled(false);
 			rdbtnVehiculoNo.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			rdbtnVehiculoNo.setBounds(343, 287, 109, 23);
 			panel_1.add(rdbtnVehiculoNo);
@@ -246,13 +241,14 @@ public class RegSoliEMP extends JDialog {
 			panel_2.add(label_13);
 			
 			JComboBox cbxCarrera = new JComboBox();
+			cbxCarrera.setEditable(true);
 			cbxCarrera.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Administraci\u00F3n hotelera", "Arquitectura", "Comunicaci\u00F3n social", "Derecho", "Dise\u00F1o e interiorismo", "Econom\u00EDa", "Eduaci\u00F3n", "Estomatolog\u00EDa", "Filosof\u00EDa", "Gesti\u00F3n financiera", "Ingenier\u00EDa civil", "Ingenieria m\u00E9canica", "Ingenier\u00EDa el\u00E9ctrica", "Ingenier\u00EDa industrial", "Ingenier\u00EDa mecatr\u00F3nica", "Ingenier\u00EDa de ciencias de la computaci\u00F3n", "Ingenier\u00EDa telem\u00E1tica", "Ingenier\u00EDa Ambiental", "Medic\u00EDna", "Marketing", "Nutrici\u00F3n", "Psicolog\u00EDa", "Terapia f\u00EDsica", "Trabajo social", "Hospitalidad y turismo"}));
 			cbxCarrera.setBounds(280, 85, 266, 25);
 			panel_2.add(cbxCarrera);
 			
 			JComboBox cbxAreaTecnica = new JComboBox();
+			cbxAreaTecnica.setEditable(true);
 			cbxAreaTecnica.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Automatizaci\u00F3n", "Artes culinarias", "Admistracion de empresas", "Dise\u00F1o gr\u00E1fico", "Enfermer\u00EDa", "Gesti\u00F3n social", "Logistica integral", "Microfinanzas", "Mercado", "Programaci\u00F3n web", "Publicidad", "Redes de datos"}));
-			cbxAreaTecnica.setEnabled(false);
 			cbxAreaTecnica.setBounds(10, 207, 260, 25);
 			panel_2.add(cbxAreaTecnica);
 			
@@ -272,8 +268,8 @@ public class RegSoliEMP extends JDialog {
 			panel_2.add(label_15);
 			
 			final JComboBox cbxOficio = new JComboBox();
+			cbxOficio.setEditable(true);
 			cbxOficio.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Alba\u00F1il", "Asistente de tienda", "Bibliotecario", "Bombero", "Carnicero", "Carpintero", "Cartero", "Chofer", "Electricista", "Florista", "Granjero", "Jardinero", "Limpiador", "Mec\u00E1nico", "Panadero", "Peluquero", "Plomero", "Secretario", "Sastre"}));
-			cbxOficio.setEnabled(false);
 			cbxOficio.setBounds(10, 268, 260, 25);
 			panel_2.add(cbxOficio);
 			
@@ -313,8 +309,6 @@ public class RegSoliEMP extends JDialog {
 					JOptionPane.showMessageDialog(null, "El oficio se ha agregado a la lista de oficios", "Información", JOptionPane.INFORMATION_MESSAGE);
 				}
 			});
-			
-			btnAnadirLista.setEnabled(false);
 			btnAnadirLista.setBounds(10, 304, 153, 23);
 			panel_2.add(btnAnadirLista);
 			
@@ -389,9 +383,9 @@ public class RegSoliEMP extends JDialog {
 							Integer.valueOf(spnAnnosExp.getValue().toString()), Integer.valueOf(spnSalarioMin.getValue().toString()), 
 							viaje, trasp);*/
 					
-					SolPersona solPer = new SolPersona("CP -"+String.valueOf(BolsaEmpleo.getInstance().getGeneradoqPerSol()), cbxCategoriaLaboral.getSelectedItem().toString(), 
+					SolPersona solPer = new SolPersona("CP-"+String.valueOf(BolsaEmpleo.getInstance().getGeneradoqPerSol()), cbxCategoriaLaboral.getSelectedItem().toString(), 
 							cbxProvincia.getSelectedItem().toString(), "Desempleado", Integer.valueOf(spnAnnosExp.getValue().toString()), 
-							 null, cbxGenero.getSelectedItem().toString(), aux, 
+							 null, cbxGenero.getSelectedItem().toString(),cbxAreaTecnica.getSelectedItem().toString(), aux, 
 							 Integer.valueOf(spnAnnosExp.getValue().toString()), Float.valueOf(spnSalarioMin.getValue().toString()), 
 							 trasp, viaje);
 					BolsaEmpleo.getInstance().insertarSolpersonas(solPer);
