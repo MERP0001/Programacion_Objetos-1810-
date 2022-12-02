@@ -250,10 +250,12 @@ public class BolsaEmpleo implements Serializable {
 	}
 	public Persona comparacionSolicitudes(SolPersona solictud, SolEmpresa empresa) {
 		double cantComun = 0;
+		Obrero obreros = (Obrero)solictud.getBuscaEmpleos();
+		
 		double diferencia = ((solictud.getSalarioMinimo() - empresa.getSalario()) / empresa.getSalario()) * 100;
 		if(solictud.getEstado().equalsIgnoreCase("Activo")) {
 			if(solictud.getFormAcademic().equalsIgnoreCase("Universitario")) {
-				if(((Universitario)solictud.getBuscaEmpleos()).getCarrera().equalsIgnoreCase(empresa.getCarreraNec)) {
+				if(((Universitario)solictud.getBuscaEmpleos()).getCarrera().equalsIgnoreCase(empresa.getCarreraNec())) {
 					cantComun += 10;	
 				}
 				if(solictud.getCategoriaLaboral().equalsIgnoreCase(empresa.getCategoriaLaboral())) {
@@ -286,7 +288,7 @@ public class BolsaEmpleo implements Serializable {
 			}
 			}
 			else if(solictud.getFormAcademic().equalsIgnoreCase("Tecnico")) {
-				if(((Tecnico)solictud.getBuscaEmpleos()).getAreaTrabajo().equalsIgnoreCase(empresa.getAreatecnicoNec)) {
+				if(((Tecnico)solictud.getBuscaEmpleos()).getAreaTrabajo().equalsIgnoreCase(empresa.getAreatecnicoNec())) {
 					cantComun += 10;	
 				}
 				if(solictud.getCategoriaLaboral().equalsIgnoreCase(empresa.getCategoriaLaboral())) {
@@ -321,6 +323,12 @@ public class BolsaEmpleo implements Serializable {
 				if(solictud.getCategoriaLaboral().equalsIgnoreCase(empresa.getCategoriaLaboral())) {
 					cantComun += 20;
 				}
+				if(compareOficios(obreros.getOficios(), empresa.getOficioNec()) > 0) {
+					if(compareOficios(obreros.getOficios(), empresa.getOficioNec()) <= 1 ) {
+						cantComun += 10;
+					}
+				}
+				
 				if(solictud.getAñosExp() >= empresa.getAñosMinimosExp()){
 					cantComun += 20;
 				}

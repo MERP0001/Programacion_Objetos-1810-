@@ -31,10 +31,11 @@ public class SolEmpresa implements Serializable{
 	private String carreraNec;
 	private String areatecnicoNec;
 	private ArrayList<String> oficioNec;
+	private int anosExp;
 	
 	public SolEmpresa(String codigo, String categoriaLaboral, String provincia, String estado, float salario,
 			int horaslaborales, Date fechaVencimiento, String sexo,String formAca, Empresa empresa, int añosMinimosExp, double porcientoMach
-			,int cantVacantes, boolean viajar, boolean vehiculo) {
+			,int cantVacantes, boolean viajar, boolean vehiculo,String carreraNec, String ofertaLaboral, String areatecnicoNec, int anosExp,ArrayList<String> oficiosNec) {
 		
 		this.empresa = empresa;
 		this.añosMinimosExp = añosMinimosExp;
@@ -51,10 +52,13 @@ public class SolEmpresa implements Serializable{
 		this.horaslaborales = horaslaborales;
 		this.fechaVencimiento = fechaVencimiento;
 		this.sexo = sexo;
-		this.formAca = formAca;
+		this.setFormAca(formAca);
+		this.setAnosExp(anosExp);
+		this.areatecnicoNec = areatecnicoNec;
+		this.oficioNec = new ArrayList<String>();
 		
 	}
-
+	
 	public int getAñosMinimosExp() {
 		return añosMinimosExp;
 	}
@@ -181,5 +185,45 @@ public class SolEmpresa implements Serializable{
 
 	public void setSalario(float salario) {
 		this.salario = salario;
+	}
+
+	public ArrayList<String> getOficioNec() {
+		return oficioNec;
+	}
+
+	public void setOficioNec(ArrayList<String> oficioNec) {
+		this.oficioNec = oficioNec;
+	}
+
+	public String getAreatecnicoNec() {
+		return areatecnicoNec;
+	}
+
+	public void setAreatecnicoNec(String areatecnicoNec) {
+		this.areatecnicoNec = areatecnicoNec;
+	}
+
+	public String getCarreraNec() {
+		return carreraNec;
+	}
+
+	public void setCarreraNec(String carreraNec) {
+		this.carreraNec = carreraNec;
+	}
+
+	public String getFormAca() {
+		return formAca;
+	}
+
+	public void setFormAca(String formAca) {
+		this.formAca = formAca;
+	}
+
+	public int getAnosExp() {
+		return anosExp;
+	}
+
+	public void setAnosExp(int anosExp) {
+		this.anosExp = anosExp;
 	}
 }

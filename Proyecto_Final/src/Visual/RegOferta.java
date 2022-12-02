@@ -48,10 +48,11 @@ public class RegOferta extends JDialog {
 	private JSpinner spnFechaVencimiento;
 	private JComboBox cbxAreaTecnica;
 	private JComboBox cbxGenero;
+	private JSpinner spnAExp;
 	
 	public RegOferta(final Empresa user) {
 		setTitle("Crear oferta de trabajo");
-		setBounds(100, 100, 532, 581);
+		setBounds(100, 100, 536, 713);
 
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -83,7 +84,7 @@ public class RegOferta extends JDialog {
 		
 		final JSpinner spnVacantes = new JSpinner();
 		spnVacantes.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
-		spnVacantes.setBounds(182, 203, 65, 25);
+		spnVacantes.setBounds(431, 251, 65, 25);
 		panel.add(spnVacantes);
 		
 		JLabel lblProvincia = new JLabel("Provincia:");
@@ -97,47 +98,47 @@ public class RegOferta extends JDialog {
 		panel.add(cbxProvincia);
 		
 		JLabel label_3 = new JLabel("Cantidad de vacantes:");
-		label_3.setBounds(9, 208, 163, 14);
+		label_3.setBounds(258, 256, 163, 14);
 		panel.add(label_3);
 		
 		JLabel lblSalario = new JLabel("Salario:");
-		lblSalario.setBounds(10, 342, 122, 14);
+		lblSalario.setBounds(10, 462, 122, 14);
 		panel.add(lblSalario);
 		
 		final JSpinner spnSalario = new JSpinner();
 		spnSalario.setModel(new SpinnerNumberModel(new Integer(12000), new Integer(12000), null, new Integer(1)));
-		spnSalario.setBounds(10, 367, 237, 25);
+		spnSalario.setBounds(10, 487, 237, 25);
 		panel.add(spnSalario);
 		
 		JComboBox cbxPeriodoPago = new JComboBox();
 		cbxPeriodoPago.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Quincenal", "Mensual"}));
-		cbxPeriodoPago.setBounds(256, 308, 239, 25);
+		cbxPeriodoPago.setBounds(258, 426, 239, 25);
 		panel.add(cbxPeriodoPago);
 		
 		JLabel lblPeriodoDePago = new JLabel("Periodo de pago:");
-		lblPeriodoDePago.setBounds(257, 283, 122, 14);
+		lblPeriodoDePago.setBounds(258, 401, 122, 14);
 		panel.add(lblPeriodoDePago);
 		
 		final JComboBox cbxJornada = new JComboBox();
 		cbxJornada.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Tiempo completo", "Medio tiempo"}));
-		cbxJornada.setBounds(10, 428, 239, 25);
+		cbxJornada.setBounds(8, 548, 239, 25);
 		panel.add(cbxJornada);
 		
 		JComboBox cbxTipoDeContrato = new JComboBox();
 		cbxTipoDeContrato.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Por tiempo indefinido", "Por tiempo definido"}));
-		cbxTipoDeContrato.setBounds(257, 369, 239, 25);
+		cbxTipoDeContrato.setBounds(258, 487, 239, 25);
 		panel.add(cbxTipoDeContrato);
 		
 		JLabel lblTipoDeContrato = new JLabel("Tipo de contrato:");
-		lblTipoDeContrato.setBounds(257, 344, 122, 14);
+		lblTipoDeContrato.setBounds(258, 462, 122, 14);
 		panel.add(lblTipoDeContrato);
 		
 		JLabel lblJornada = new JLabel("Jornada:");
-		lblJornada.setBounds(10, 403, 122, 14);
+		lblJornada.setBounds(10, 523, 122, 14);
 		panel.add(lblJornada);
 		JLabel lblFechaDeVencimiento = new JLabel("Genero:");
 		lblFechaDeVencimiento.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lblFechaDeVencimiento.setBounds(10, 481, 136, 14);
+		lblFechaDeVencimiento.setBounds(10, 208, 136, 14);
 		panel.add(lblFechaDeVencimiento);
 		final JComboBox cbxCategoriaLab = new JComboBox();
 		final JSpinner spnPorciento = new JSpinner();
@@ -187,14 +188,29 @@ public class RegOferta extends JDialog {
 				SolEmpresa auxOferta1 = new SolEmpresa("CS-"+String.valueOf(BolsaEmpleo.getInstance().getGeneradoEmpSol()), String.valueOf(cbxCategoriaLab.getSelectedItem()), 
 						String.valueOf(cbxProvincia.getSelectedItem()), "Activo", 
 						Float.valueOf(String.valueOf(spnSalario.getValue().toString())), jornada, null, cbxGenero.getSelectedItem().toString(), cbxAreaTecnica.getSelectedItem().toString(), user, Integer.valueOf(spnExperiencia.getValue().toString()), 
-						Double.valueOf(spnPorciento.getValue().toString()),Integer.valueOf(spnVacantes.getValue().toString()), viaDip, transDip);
+						Double.valueOf(spnPorciento.getValue().toString()),Integer.valueOf(spnVacantes.getValue().toString()), viaDip, transDip, title);
 				BolsaEmpleo.getInstance().insertarSolempresa(auxOferta1);
 				JOptionPane.showMessageDialog(null, "La oferta se ha creado exitosamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
+				if (cbxAreaTecnica.getSelectedIndex() == 1) {
+					SolEmpresa auxOfertaUni = new SolEmpresa("CS-"+String.valueOf(BolsaEmpleo.getInstance().getGeneradoEmpSol()), String.valueOf(cbxCategoriaLab.getSelectedItem()),
+							String.valueOf(cbxProvincia.getSelectedItem()), "Activo", Float.valueOf(String.valueOf(spnSalario.getValue().toString())),
+							jornada, null, cbxGenero.getSelectedItem().toString(),  cbxAreaTecnica.getSelectedItem().toString(), user, Integer.valueOf(spnExperiencia.getValue().toString()),
+							Double.valueOf(spnPorciento.getValue().toString()), Integer.valueOf(spnVacantes.getValue().toString()), 
+							viaDip, transDip, cbxVariable.getSelectedItem().toString()/*carreraNec*/, null, null, null, null);
+				}
+				if (cbxAreaTecnica.getSelectedIndex() == 2) {
+					SolEmpresa auxOfertaTec = new SolEmpresa("CS-"+String.valueOf(BolsaEmpleo.getInstance().getGeneradoEmpSol()), String.valueOf(cbxCategoriaLab.getSelectedItem()),
+							String.valueOf(cbxProvincia.getSelectedItem()), "Activo", Float.valueOf(String.valueOf(spnSalario.getValue().toString())),
+							jornada, null, cbxGenero.getSelectedItem().toString(),  cbxAreaTecnica.getSelectedItem().toString(), user, Integer.valueOf(spnExperiencia.getValue().toString()),
+							Double.valueOf(spnPorciento.getValue().toString()), Integer.valueOf(spnVacantes.getValue().toString()), 
+							viaDip, transDip, cbxVariable.getSelectedItem().toString()/*TecnicoNec*/,Integer.valueOf(spnAExp.getValue().toString()), null, null, null);
+				}
+
 				clean();
 			}
 		});
 		
-		button.setBounds(301, 489, 195, 32);
+		button.setBounds(309, 621, 195, 32);
 		panel.add(button);
 		
 		JLabel lblCategoriaLaboral = new JLabel("Categoria laboral:");
@@ -230,34 +246,52 @@ public class RegOferta extends JDialog {
 		
 		
 		spnPorciento.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-		spnPorciento.setBounds(259, 430, 237, 25);
+		spnPorciento.setBounds(258, 548, 237, 25);
 		panel.add(spnPorciento);
 		
 		JLabel lblPorcientoDeMatch = new JLabel("Porcentaje para contratar al candidato:");
-		lblPorcientoDeMatch.setBounds(259, 405, 237, 14);
+		lblPorcientoDeMatch.setBounds(258, 523, 237, 14);
 		panel.add(lblPorcientoDeMatch);
 		
 		
 		spnExperiencia.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-		spnExperiencia.setBounds(10, 308, 237, 25);
+		spnExperiencia.setBounds(10, 426, 237, 25);
 		panel.add(spnExperiencia);
 		
 		JLabel lblAnnosexperiencia = new JLabel("A\u00F1os de experiencia requeridos:");
-		lblAnnosexperiencia.setBounds(10, 283, 208, 14);
+		lblAnnosexperiencia.setBounds(10, 401, 208, 14);
 		panel.add(lblAnnosexperiencia);
 		
 		
-		rdbtnVehiculo.setBounds(8, 243, 187, 23);
+		rdbtnVehiculo.setBounds(309, 322, 187, 23);
 		panel.add(rdbtnVehiculo);
 		
 		
-		rdbtnViajar.setBounds(256, 243, 242, 23);
+		rdbtnViajar.setBounds(10, 322, 242, 23);
 		panel.add(rdbtnViajar);
 		
 		cbxGenero = new JComboBox();
 		cbxGenero.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Hombre", "Mujer", "Otro"}));
-		cbxGenero.setBounds(54, 478, 193, 20);
+		cbxGenero.setBounds(54, 205, 193, 20);
 		panel.add(cbxGenero);
+		
+		JLabel lblNewLabel = new JLabel("A\u00F1os de Exp:");
+		lblNewLabel.setBounds(10, 256, 79, 14);
+		panel.add(lblNewLabel);
+		
+		spnAExp = new JSpinner();
+		spnAExp.setBounds(182, 251, 65, 25);
+		panel.add(spnAExp);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_1.setBounds(0, 367, 510, 243);
+		panel.add(panel_1);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_2.setBounds(0, 308, 510, 60);
+		panel.add(panel_2);
 	}
 	
 	private void clean() {
