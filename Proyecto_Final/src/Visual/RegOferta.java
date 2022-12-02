@@ -189,21 +189,30 @@ public class RegOferta extends JDialog {
 						String.valueOf(cbxProvincia.getSelectedItem()), "Activo", 
 						Float.valueOf(String.valueOf(spnSalario.getValue().toString())), jornada, null, cbxGenero.getSelectedItem().toString(), cbxAreaTecnica.getSelectedItem().toString(), user, Integer.valueOf(spnExperiencia.getValue().toString()), 
 						Double.valueOf(spnPorciento.getValue().toString()),Integer.valueOf(spnVacantes.getValue().toString()), viaDip, transDip, title);
+				
 				BolsaEmpleo.getInstance().insertarSolempresa(auxOferta1);
+				
 				JOptionPane.showMessageDialog(null, "La oferta se ha creado exitosamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
 				if (cbxAreaTecnica.getSelectedIndex() == 1) {
 					SolEmpresa auxOfertaUni = new SolEmpresa("CS-"+String.valueOf(BolsaEmpleo.getInstance().getGeneradoEmpSol()), String.valueOf(cbxCategoriaLab.getSelectedItem()),
 							String.valueOf(cbxProvincia.getSelectedItem()), "Activo", Float.valueOf(String.valueOf(spnSalario.getValue().toString())),
 							jornada, null, cbxGenero.getSelectedItem().toString(),  cbxAreaTecnica.getSelectedItem().toString(), user, Integer.valueOf(spnExperiencia.getValue().toString()),
 							Double.valueOf(spnPorciento.getValue().toString()), Integer.valueOf(spnVacantes.getValue().toString()), 
-							viaDip, transDip, cbxVariable.getSelectedItem().toString()/*carreraNec*/, null, null, null, null);
+							viaDip, transDip, cbxVariable.getSelectedItem().toString()/*carreraNec*/, 0, null, null, null);
 				}
 				if (cbxAreaTecnica.getSelectedIndex() == 2) {
 					SolEmpresa auxOfertaTec = new SolEmpresa("CS-"+String.valueOf(BolsaEmpleo.getInstance().getGeneradoEmpSol()), String.valueOf(cbxCategoriaLab.getSelectedItem()),
 							String.valueOf(cbxProvincia.getSelectedItem()), "Activo", Float.valueOf(String.valueOf(spnSalario.getValue().toString())),
 							jornada, null, cbxGenero.getSelectedItem().toString(),  cbxAreaTecnica.getSelectedItem().toString(), user, Integer.valueOf(spnExperiencia.getValue().toString()),
 							Double.valueOf(spnPorciento.getValue().toString()), Integer.valueOf(spnVacantes.getValue().toString()), 
-							viaDip, transDip, cbxVariable.getSelectedItem().toString()/*TecnicoNec*/,Integer.valueOf(spnAExp.getValue().toString()), null, null, null);
+							viaDip, transDip, cbxVariable.getSelectedItem().toString()/*TecnicoNec*/,Integer.valueOf(spnAExp.getValue().toString()),null , null, null);
+				}
+				if(cbxAreaTecnica.getSelectedIndex() == 3) {
+					SolEmpresa auxOfertaTec = new SolEmpresa("CS-"+String.valueOf(BolsaEmpleo.getInstance().getGeneradoEmpSol()), String.valueOf(cbxCategoriaLab.getSelectedItem()),
+							String.valueOf(cbxProvincia.getSelectedItem()), "Activo", Float.valueOf(String.valueOf(spnSalario.getValue().toString())),
+							jornada, null, cbxGenero.getSelectedItem().toString(),  cbxAreaTecnica.getSelectedItem().toString(), user, Integer.valueOf(spnExperiencia.getValue().toString()),
+							Double.valueOf(spnPorciento.getValue().toString()), Integer.valueOf(spnVacantes.getValue().toString()), 
+							viaDip, transDip, cbxVariable.getSelectedItem().toString()/*OficioNec*/,0,null , null, null);
 				}
 
 				clean();
