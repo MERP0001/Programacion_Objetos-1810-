@@ -246,7 +246,7 @@ public class RegSoliEMP extends JDialog {
 			cbxCarrera.setBounds(280, 85, 266, 25);
 			panel_2.add(cbxCarrera);
 			
-			JComboBox cbxAreaTecnica = new JComboBox();
+			final JComboBox cbxAreaTecnica = new JComboBox();
 			cbxAreaTecnica.setEditable(true);
 			cbxAreaTecnica.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Automatizaci\u00F3n", "Artes culinarias", "Admistracion de empresas", "Dise\u00F1o gr\u00E1fico", "Enfermer\u00EDa", "Gesti\u00F3n social", "Logistica integral", "Microfinanzas", "Mercado", "Programaci\u00F3n web", "Publicidad", "Redes de datos"}));
 			cbxAreaTecnica.setBounds(10, 207, 260, 25);

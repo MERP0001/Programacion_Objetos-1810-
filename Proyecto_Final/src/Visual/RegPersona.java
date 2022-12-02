@@ -382,7 +382,7 @@ public class RegPersona extends JDialog {
 								p1 = new Tecnico(cedula, nombre, telefono, direccion, estado, txtArea.getText(), Integer.parseInt(txtExperiencia.getText()), fecha);
 							}
 							if(rdbtnObrero.isSelected()) {
-								p1 = new Obrero(cedula, nombre, telefono, direccion, estado,fecha);
+								p1 = new Obrero(cedula, nombre, telefono, direccion, estado,fecha, null);
 								((Obrero)p1).setOficios(txtOficio.getText());
 							}
 							BolsaEmpleo.getInstance().insertarPersona(p1);
