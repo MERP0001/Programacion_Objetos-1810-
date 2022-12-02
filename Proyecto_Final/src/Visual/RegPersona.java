@@ -39,24 +39,7 @@ public class RegPersona extends JDialog {
 	private JFormattedTextField txtCedula;
 	private JFormattedTextField txtFecha;
 	private JTextField txtDireccion;
-	private JRadioButton rdbtnObrero;
-	private JRadioButton rdbtnTecnico;
-	private JRadioButton rdbtnUniversitario;
 	private JPanel panel_Info;
-	private JPanel panel_Tipo;
-	private JPanel panel_Universitario;
-	private JLabel lblNewLabel_6;
-	private JTextField txtCarrera;
-	private JLabel lblNewLabel_7;
-	private JTextField txtGraduacion;
-	private JPanel panel_Tecnico;
-	private JLabel lblNewLabel_8;
-	private JTextField txtArea;
-	private JLabel lblNewLabel_9;
-	private JTextField txtExperiencia;
-	private JPanel panel_Obrero;
-	private JLabel lblNewLabel_10;
-	private JTextField txtOficio;
 	private JComboBox cbxEstado;
 
 	/**
@@ -66,6 +49,7 @@ public class RegPersona extends JDialog {
 	 * Create the dialog.
 	 */
 	public RegPersona(Persona persona) {
+		setTitle("Registro de Usuario");
 		setResizable(false);
 		setModal(true);
 		auxPersona = persona;
@@ -85,7 +69,7 @@ public class RegPersona extends JDialog {
 				
 			}
 		}
-		setBounds(100, 100, 535, 394);
+		setBounds(100, 100, 535, 245);
 		setLocationRelativeTo(null);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -198,130 +182,21 @@ public class RegPersona extends JDialog {
 		}
 		panel_Info.add(txtDireccion);
 		txtDireccion.setColumns(10);
-		
-		panel_Tipo = new JPanel();
-		panel_Tipo.setBorder(new TitledBorder(null, "Tipo de Persona", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_Tipo.setBounds(10, 160, 505, 70);
-		contentPanel.add(panel_Tipo);
-		panel_Tipo.setLayout(null);
-		
-		rdbtnUniversitario = new JRadioButton("Universitario");
-		rdbtnUniversitario.setSelected(true);
-		rdbtnUniversitario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				rdbtnTecnico.setSelected(false);
-				rdbtnObrero.setSelected(false);
-				panel_Tecnico.setVisible(false);
-				panel_Universitario.setVisible(true);
-				panel_Obrero.setVisible(false);
-			}
-		});
-		rdbtnUniversitario.setBounds(46, 26, 121, 23);
-		panel_Tipo.add(rdbtnUniversitario);
-		
-		rdbtnTecnico = new JRadioButton("Tecnico");
-		rdbtnTecnico.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				rdbtnUniversitario.setSelected(false);
-				rdbtnObrero.setSelected(false);
-				panel_Tecnico.setVisible(true);
-				panel_Universitario.setVisible(false);
-				panel_Obrero.setVisible(false);
-			}
-		});
-		rdbtnTecnico.setBounds(207, 26, 105, 23);
-		panel_Tipo.add(rdbtnTecnico);
-		
-		rdbtnObrero = new JRadioButton("Obrero");
-		rdbtnObrero.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				rdbtnUniversitario.setSelected(false);
-				rdbtnTecnico.setSelected(false);
-				panel_Tecnico.setVisible(false);
-				panel_Universitario.setVisible(false);
-				panel_Obrero.setVisible(true);
-			}
-		});
-		rdbtnObrero.setBounds(348, 26, 105, 23);
-		panel_Tipo.add(rdbtnObrero);
-		
-		panel_Universitario = new JPanel();
-		panel_Universitario.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_Universitario.setBounds(10, 235, 502, 70);
-		contentPanel.add(panel_Universitario);
-		panel_Universitario.setLayout(null);
-		
-		lblNewLabel_6 = new JLabel("Carrera:");
-		lblNewLabel_6.setBounds(12, 13, 56, 16);
-		panel_Universitario.add(lblNewLabel_6);
-		
-		txtCarrera = new JTextField();
-		txtCarrera.setBounds(12, 35, 126, 22);
 		if(auxPersona != null && auxPersona instanceof Universitario) {
 			txtCarrera.setText(((Universitario)auxPersona).getCarrera());
 		}
-		panel_Universitario.add(txtCarrera);
-		txtCarrera.setColumns(10);
-		
-		lblNewLabel_7 = new JLabel("A\u00F1o de Graduacion:");
-		lblNewLabel_7.setBounds(170, 13, 113, 16);
-		panel_Universitario.add(lblNewLabel_7);
-		
-		txtGraduacion = new JTextField();
-		txtGraduacion.setBounds(170, 35, 126, 22);
 		if(auxPersona != null && auxPersona instanceof Universitario) {
 			txtGraduacion.setText(((Universitario)auxPersona).getAnoGruaduacion());
 		}
-		panel_Universitario.add(txtGraduacion);
-		txtGraduacion.setColumns(10);
-		
-		panel_Tecnico = new JPanel();
-		panel_Tecnico.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_Tecnico.setBounds(10, 235, 502, 70);
-		contentPanel.add(panel_Tecnico);
-		panel_Tecnico.setLayout(null);
-		
-		lblNewLabel_8 = new JLabel("Area de Trabajo:");
-		lblNewLabel_8.setBounds(12, 13, 115, 16);
-		panel_Tecnico.add(lblNewLabel_8);
-		
-		txtArea = new JTextField();
-		txtArea.setBounds(12, 35, 126, 22);
 		if(auxPersona != null && auxPersona instanceof Tecnico) {
 			txtArea.setText(((Tecnico)auxPersona).getAreaTrabajo());
 		}
-		panel_Tecnico.add(txtArea);
-		txtArea.setColumns(10);
-		
-		lblNewLabel_9 = new JLabel("A\u00F1os de Experiencia:");
-		lblNewLabel_9.setBounds(170, 13, 120, 16);
-		panel_Tecnico.add(lblNewLabel_9);
-		
-		txtExperiencia = new JTextField();
-		txtExperiencia.setBounds(170, 35, 126, 22);
 		if(auxPersona != null && auxPersona instanceof Tecnico) {
 			txtExperiencia.setText(String.valueOf(((Tecnico)auxPersona).getAnosExp()));
 		}
-		panel_Tecnico.add(txtExperiencia);
-		txtExperiencia.setColumns(10);
-		
-		panel_Obrero = new JPanel();
-		panel_Obrero.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_Obrero.setBounds(10, 235, 502, 70);
-		contentPanel.add(panel_Obrero);
-		panel_Obrero.setLayout(null);
-		
-		lblNewLabel_10 = new JLabel("Oficio(s):");
-		lblNewLabel_10.setBounds(12, 13, 70, 16);
-		panel_Obrero.add(lblNewLabel_10);
-		
-		txtOficio = new JTextField();
-		txtOficio.setBounds(12, 35, 126, 22);
 		if(auxPersona != null && auxPersona instanceof Obrero) {
 			txtOficio.setText(String.valueOf(((Obrero)auxPersona).getOficios()));
 		}
-		panel_Obrero.add(txtOficio);
-		txtOficio.setColumns(10);
 		
 		if(auxPersona instanceof Universitario) {
 			rdbtnTecnico.setEnabled(false);
