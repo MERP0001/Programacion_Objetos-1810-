@@ -140,6 +140,17 @@ public class ListarEmpresa extends JDialog {
 						dispose();
 					}
 				});
+				{
+					JButton btnNewButton = new JButton("Ver Solicitudes");
+					btnNewButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent arg0) {
+							ListarSolicitudes listSol = new ListarSolicitudes(aux,null);
+							listSol.setModal(true);
+							listSol.setVisible(true);
+						}
+					});
+					buttonPane.add(btnNewButton);
+				}
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}

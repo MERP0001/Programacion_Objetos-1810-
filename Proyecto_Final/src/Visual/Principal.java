@@ -1,4 +1,4 @@
-package Visual;
+ package Visual;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -152,7 +152,7 @@ public class Principal extends JFrame {
 		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Listar Solicitudes");
 		mntmNewMenuItem_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ListarSolicitudes listSo = new ListarSolicitudes(null);
+				ListarSolicitudes listSo = new ListarSolicitudes(null,null);
 				listSo.setModal(true);
 				listSo.setVisible(true);
 			}

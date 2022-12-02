@@ -23,6 +23,7 @@ import javax.swing.ListSelectionModel;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -34,27 +35,23 @@ public class ListarSolicitudes extends JDialog {
 	private static Object[] rows;
 	private Solicitud aux = null;
 	private JButton Eliminarbtn;
+	private Empresa empresaAux = null;
+	private Persona personaAux = null;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		try {
-			ListarSolicitudes dialog = new ListarSolicitudes(null);
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 	/**
 	 * Create the dialog.
 	 */
-	public ListarSolicitudes(Empresa empresa) {
-		if(empresa == null) {
+	public ListarSolicitudes(Empresa empresa, Persona persona) {
+		empresaAux = empresa;
+		personaAux = persona;
+		if(empresa == null && persona == null)
 			setTitle("Solicitudes Registradas");
-		}else {
-			setTitle("Solicitudes Registradas de "+empresa.getNombreEmpresa());
+		else if(empresa != null && persona == null)
+			setTitle("Solicitudes Registradas por "+empresa.getNombreEmpresa());
+		else if(empresa == null && persona != null) {
+			setTitle("Solicitudes Registradas por "+personaAux.getNombre());
 		}
 		
 		setBounds(100, 100, 662, 431);
@@ -69,8 +66,17 @@ public class ListarSolicitudes extends JDialog {
 			panel.setLayout(new BorderLayout(0, 0));
 			{
 				model = new DefaultTableModel();
-				String[] columnas = {"Codigo","Categoria Laboral","Estado","Fecha de Vencimiento","Grupo"};
-				model.setColumnIdentifiers(columnas);
+				if(empresa == null && persona == null) {
+					String[] columnas = {"Codigo","Nombre del Dueño","Categoria Laboral","Estado","Grupo"};
+					model.setColumnIdentifiers(columnas);
+				}else if(empresa != null && persona == null){
+					String[] columnas = {"Codigo","Cant. Vacantes","Categoria Laboral","Estado","Grupo"};
+					model.setColumnIdentifiers(columnas);
+				}else if(empresa == null && persona != null) {
+					String[] columnas = {"Codigo","Formacion Academica","Categoria Laboral","Estado","Grupo"};
+					model.setColumnIdentifiers(columnas);
+				}
+				
 				JScrollPane scrollPane = new JScrollPane();
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
@@ -84,10 +90,12 @@ public class ListarSolicitudes extends JDialog {
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 					table.setModel(model);
 					scrollPane.setViewportView(table);
-					if(empresa == null) {
+					if(empresa == null && persona == null) {
 						loadSolicitudes();
-					}else {
-					
+					}else if(empresa != null && persona == null) {
+						loadEmpreSol();
+					}else if(empresa == null && persona != null) {
+						loadPersonaSol();
 					}
 					
 				}
@@ -124,20 +132,47 @@ public class ListarSolicitudes extends JDialog {
 		rows = new Object[model.getColumnCount()];
 		for (SolEmpresa solic : BolsaEmpleo.getInstance().getMisSolEmpresas()) {
 				rows[0] = solic.getCodigo(); 
-				rows[1] = solic.getCategoriaLaboral(); 
-				rows[2] = solic.getEstado(); 
-				rows[3] = solic.getFechaVencimiento();
+				rows[1] = solic.getEmpresa().getNombreEmpresa(); 
+				rows[2] = solic.getCategoriaLaboral(); 
+				rows[3] = solic.getEstado();
 				rows[4] = "Empresa";	
 		model.addRow(rows);
 		}
 		for (SolPersona solic : BolsaEmpleo.getInstance().getMisSolPersonas()) {
 				rows[0] = solic.getCodigo(); 
-				rows[1] = solic.getCategoriaLaboral(); 
-				rows[2] = solic.getEstado(); 
-				rows[3] = solic.getFechaVencimiento();
+				rows[1] = solic.getBuscaEmpleos().getNombre();
+				rows[2] = solic.getCategoriaLaboral(); 
+				rows[3] = solic.getEstado(); 
 				rows[4] = "Persona";	
 		model.addRow(rows);
 		}
 		
+	}
+	private void loadEmpreSol() {
+		ArrayList<SolEmpresa> auxlist = BolsaEmpleo.getInstance().buscarSolEspecico(empresaAux);
+		model.setRowCount(0);
+		rows = new Object[model.getColumnCount()];
+		for (SolEmpresa solic : auxlist) {
+				rows[0] = solic.getCodigo(); 
+				rows[1] = String.valueOf(solic.getCantVacantes()); 
+				rows[2] = solic.getCategoriaLaboral();
+				rows[3] = solic.getEstado(); 
+				rows[4] = "Empresa";	
+		model.addRow(rows);
+		}
+		
+	}
+	private void loadPersonaSol() {
+		ArrayList<SolPersona> auxlist = BolsaEmpleo.getInstance().buscarSolEspecicoPersona(personaAux);
+		model.setRowCount(0);
+		rows = new Object[model.getColumnCount()];
+		for (SolPersona solic : auxlist) {
+				rows[0] = solic.getCodigo(); 
+				rows[1] = solic.getFormAcademic(); 
+				rows[2] = solic.getCategoriaLaboral();
+				rows[3] = solic.getEstado(); 
+				rows[4] = "Persona";	
+		model.addRow(rows);
+		}
 	}
 }

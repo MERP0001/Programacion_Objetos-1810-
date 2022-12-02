@@ -97,10 +97,12 @@ public class BolsaEmpleo implements Serializable {
 	}
 	public void insertarSolpersonas(SolPersona aux) {
 		misSolPersonas.add(aux);
+		generadoqPerSol++;
 	}
 	
 	public void insertarEmpresa(Empresa auxEmpresa) {
 		misEmpleos.add(auxEmpresa);
+		generadoEmpSol++;
 	}
 	//Cierre de creaciones==========================================================================================================
 	
@@ -193,6 +195,25 @@ public class BolsaEmpleo implements Serializable {
 		return indEmpresa;
 	}
 	
+	public ArrayList<SolEmpresa> buscarSolEspecico(Empresa aux){
+		ArrayList<SolEmpresa> listAux = new ArrayList<SolEmpresa>();
+		for (SolEmpresa solEmpresa : misSolEmpresas) {
+			if(solEmpresa.getEmpresa() == aux) {
+				listAux.add(solEmpresa);
+			}
+		}
+		return listAux;
+	}
+	
+	public ArrayList<SolPersona> buscarSolEspecicoPersona(Persona aux){
+		ArrayList<SolPersona> listAux = new ArrayList<SolPersona>();
+		for (SolPersona solEmpresa : misSolPersonas) {
+			if(solEmpresa.getBuscaEmpleos() == aux) {
+				listAux.add(solEmpresa);
+			}
+		}
+		return listAux;
+	}
 	//Cierre de Buscadores==============================================================================================================================
 	
 	//Eliminadores========================================================================================================================================

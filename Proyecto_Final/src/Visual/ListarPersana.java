@@ -159,7 +159,14 @@ public class ListarPersana extends JDialog {
 					buttonPane.add(creaSolicitudbtn);
 				}
 				{
-					macheobtn = new JButton("Buscar Empleo");
+					macheobtn = new JButton("ver Solicitudes");
+					macheobtn.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent arg0) {
+							ListarSolicitudes listSol = new ListarSolicitudes(null,aux);
+							listSol.setModal(true);
+							listSol.setVisible(true);
+						}
+					});
 					macheobtn.setEnabled(false);
 					buttonPane.add(macheobtn);
 				}

@@ -41,6 +41,9 @@ public class RegPersona extends JDialog {
 	private JTextField txtDireccion;
 	private JPanel panel_Info;
 	private JComboBox cbxEstado;
+	private JRadioButton rdbtnUniversitario;
+	private JRadioButton rdbtnTecnico;
+	private JRadioButton rdbtnObrero;
 
 	/**
 	 * Launch the application.
@@ -69,7 +72,7 @@ public class RegPersona extends JDialog {
 				
 			}
 		}
-		setBounds(100, 100, 535, 245);
+		setBounds(100, 100, 535, 302);
 		setLocationRelativeTo(null);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -77,7 +80,7 @@ public class RegPersona extends JDialog {
 		
 		panel_Info = new JPanel();
 		panel_Info.setBorder(new TitledBorder(null, "Informacion Personal", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_Info.setBounds(10, 10, 505, 147);
+		panel_Info.setBounds(10, 10, 505, 137);
 		contentPanel.add(panel_Info);
 		panel_Info.setLayout(null);
 		
@@ -182,51 +185,45 @@ public class RegPersona extends JDialog {
 		}
 		panel_Info.add(txtDireccion);
 		txtDireccion.setColumns(10);
-		if(auxPersona != null && auxPersona instanceof Universitario) {
-			txtCarrera.setText(((Universitario)auxPersona).getCarrera());
-		}
-		if(auxPersona != null && auxPersona instanceof Universitario) {
-			txtGraduacion.setText(((Universitario)auxPersona).getAnoGruaduacion());
-		}
-		if(auxPersona != null && auxPersona instanceof Tecnico) {
-			txtArea.setText(((Tecnico)auxPersona).getAreaTrabajo());
-		}
-		if(auxPersona != null && auxPersona instanceof Tecnico) {
-			txtExperiencia.setText(String.valueOf(((Tecnico)auxPersona).getAnosExp()));
-		}
-		if(auxPersona != null && auxPersona instanceof Obrero) {
-			txtOficio.setText(String.valueOf(((Obrero)auxPersona).getOficios()));
-		}
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel.setBounds(10, 158, 505, 66);
+		contentPanel.add(panel);
+		panel.setLayout(null);
+		
+		rdbtnUniversitario = new JRadioButton("Universitario");
+		rdbtnUniversitario.setBounds(6, 20, 109, 23);
+		panel.add(rdbtnUniversitario);
+		
+		rdbtnTecnico = new JRadioButton("Tecnico");
+		rdbtnTecnico.setBounds(183, 20, 109, 23);
+		panel.add(rdbtnTecnico);
+		
+		rdbtnObrero = new JRadioButton("Obrero");
+		rdbtnObrero.setBounds(354, 20, 109, 23);
+		panel.add(rdbtnObrero);
 		
 		if(auxPersona instanceof Universitario) {
 			rdbtnTecnico.setEnabled(false);
 			rdbtnObrero.setEnabled(false);
 			rdbtnUniversitario.setSelected(true);
-			panel_Tecnico.setVisible(false);
-			panel_Universitario.setVisible(true);
-			panel_Obrero.setVisible(false);
+			
 		}
 		if(auxPersona instanceof Tecnico) {
 			rdbtnTecnico.setSelected(true);
 			rdbtnObrero.setEnabled(false);
 			rdbtnUniversitario.setEnabled(false);
-			panel_Tecnico.setVisible(true);
-			panel_Universitario.setVisible(false);
-			panel_Obrero.setVisible(false);
+			
 		}
 		if(auxPersona instanceof Obrero) {
 			rdbtnTecnico.setEnabled(false);
 			rdbtnObrero.setSelected(true);
 			rdbtnUniversitario.setEnabled(false);
-			panel_Tecnico.setVisible(false);
-			panel_Universitario.setVisible(false);
-			panel_Obrero.setVisible(true);
+			
 		}
 		if(auxPersona == null) {
 			rdbtnUniversitario.setSelected(true);
-			panel_Universitario.setVisible(true);
-			panel_Tecnico.setVisible(false);
-			panel_Obrero.setVisible(false);
 		}
 
 		{
@@ -251,14 +248,14 @@ public class RegPersona extends JDialog {
 							String estado = cbxEstado.getSelectedItem().toString();
 							
 							if(rdbtnUniversitario.isSelected()) {
-								p1 = new Universitario(cedula, nombre, telefono, direccion, estado, txtCarrera.getText(), txtGraduacion.getText(), fecha);
+								p1 = new Universitario(cedula, nombre, telefono, direccion, estado,"", "", fecha);
 							}
 							if(rdbtnTecnico.isSelected()) {
-								p1 = new Tecnico(cedula, nombre, telefono, direccion, estado, txtArea.getText(), Integer.parseInt(txtExperiencia.getText()), fecha);
+								p1 = new Tecnico(cedula, nombre, telefono, direccion, estado, "",0, fecha);
 							}
 							if(rdbtnObrero.isSelected()) {
 								p1 = new Obrero(cedula, nombre, telefono, direccion, estado,fecha, null);
-								((Obrero)p1).setOficios(txtOficio.getText());
+								((Obrero)p1).setOficios("");
 							}
 							BolsaEmpleo.getInstance().insertarPersona(p1);
 							JOptionPane.showMessageDialog(null, "Registro Exitoso", "Informacion", JOptionPane.INFORMATION_MESSAGE);
@@ -273,15 +270,13 @@ public class RegPersona extends JDialog {
 							auxPersona.setTelefono(txtTelefono.getText());
 							auxPersona.setEstado(cbxEstado.getSelectedItem().toString());
 						    if(auxPersona instanceof Universitario) {
-						    	((Universitario)auxPersona).setAnoGruaduacion(txtGraduacion.getText());
-						    	((Universitario)auxPersona).setCarrera(txtCarrera.getText());
+						    	
 						    }
 						    if(auxPersona instanceof Tecnico) {
-						    	((Tecnico)auxPersona).setAreaTrabajo(txtArea.getText());
-						    	((Tecnico)auxPersona).setAnosExp(Integer.parseInt(txtExperiencia.getText()));
+						    	
 						    }
 						    if(auxPersona instanceof Obrero) {
-						    	((Obrero)auxPersona).setOficios(txtOficio.getText());
+						    	
 						    }
 						    BolsaEmpleo.getInstance().modificarPersona(auxPersona);
 						    dispose();
@@ -313,10 +308,5 @@ public class RegPersona extends JDialog {
 		txtTelefono.setValue(null);
 		txtFecha.setValue(null);
 		cbxEstado.setSelectedIndex(0);
-		txtGraduacion.setText("");
-		txtArea.setText("");
-		txtOficio.setText("");
-		txtExperiencia.setText("");
-		txtCarrera.setText("");
 	}
 }
