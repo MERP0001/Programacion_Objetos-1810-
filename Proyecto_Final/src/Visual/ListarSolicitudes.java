@@ -119,6 +119,15 @@ public class ListarSolicitudes extends JDialog {
 						dispose();
 					}
 				});
+				{
+					JButton btnNewButton = new JButton("Buscar Empleados");
+					btnNewButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							
+						}
+					});
+					buttonPane.add(btnNewButton);
+				}
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}

@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import Logico.BolsaEmpleo;
 import Logico.Obrero;
 import Logico.Persona;
+import Logico.SolEmpresa;
 import Logico.Tecnico;
 import Logico.Universitario;
 
@@ -43,7 +44,7 @@ public class ListarPersana extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			ListarPersana dialog = new ListarPersana();
+			ListarPersana dialog = new ListarPersana(null);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -54,9 +55,14 @@ public class ListarPersana extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ListarPersana() {
+	public ListarPersana(SolEmpresa solicitud) {
 		setResizable(false);
-		setTitle("Listado De Personas Registradas");
+		if(solicitud != null) {
+			setTitle("Listado De Personas Registradas");
+		}else {
+			setTitle("Listado De Personas calificadas para "+ solicitud.getEmpresa().getNombreEmpresa());
+		}
+		
 		setBounds(100, 100, 694, 455);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());

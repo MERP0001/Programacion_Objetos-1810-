@@ -375,19 +375,12 @@ public class RegSoliEMP extends JDialog {
 					}
 					if(rdbtnVehiculoSi.isSelected()) {
 						trasp = true;
-					}
-					/*SolPersona solPer = new SolPersona("CP -"+String.valueOf(BolsaEmpleo.getInstance().getGeneradoqPerSol()),cbxCategoriaLaboral.getSelectedItem().toString(), 
-							cbxProvincia.getSelectedItem().toString(),"Desempleado", 
-							cbxProvincia.getSelectedItem().toString(), aux.getFechaNacimiento(), 
-							cbxGenero.getSelectedItem().toString(), aux, 
-							Integer.valueOf(spnAnnosExp.getValue().toString()), Integer.valueOf(spnSalarioMin.getValue().toString()), 
-							viaje, trasp);*/
-					
+					} 
 					SolPersona solPer = new SolPersona("CP-"+String.valueOf(BolsaEmpleo.getInstance().getGeneradoqPerSol()), cbxCategoriaLaboral.getSelectedItem().toString(), 
 							cbxProvincia.getSelectedItem().toString(), "Desempleado", Integer.valueOf(spnAnnosExp.getValue().toString()), 
 							 null, cbxGenero.getSelectedItem().toString(),cbxAreaTecnica.getSelectedItem().toString(), aux, 
 							 Integer.valueOf(spnAnnosExp.getValue().toString()), Float.valueOf(spnSalarioMin.getValue().toString()), 
-							 trasp, viaje);
+							 trasp, viaje,auxListaOficios);
 					BolsaEmpleo.getInstance().insertarSolpersonas(solPer);
 					
 					JOptionPane.showMessageDialog(null, "La solicitud se ha creado exitosamente.", "Información", JOptionPane.INFORMATION_MESSAGE);

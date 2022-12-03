@@ -1,6 +1,7 @@
 package Logico;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class SolPersona implements Serializable{
@@ -26,9 +27,10 @@ public class SolPersona implements Serializable{
 	private Date fechaVencimiento;
 	private float salario;
 	private String formAcademic;
+	private ArrayList<String> oficios;
 	
 	public SolPersona(String codigo, String categoriaLaboral, String provincia, String estado,
-			int horaslaborales, Date fechaVencimiento, String sexo,String formAcademic, Persona buscaEmpleos, int añosExp,float salarioMinino ,boolean transporte, boolean viajar) {
+			int horaslaborales, Date fechaVencimiento, String sexo,String formAcademic, Persona buscaEmpleos, int añosExp,float salarioMinino ,boolean transporte, boolean viajar, ArrayList<String> oficios) {
 		
 		this.buscaEmpleos = buscaEmpleos;
 		this.añosExp = añosExp;
@@ -44,6 +46,7 @@ public class SolPersona implements Serializable{
 		this.fechaVencimiento = fechaVencimiento;
 		this.sexo = sexo;
 		this.formAcademic = formAcademic;
+		this.oficios = oficios;
 	}
 
 	public Persona getBuscaEmpleos() {
@@ -164,5 +167,13 @@ public class SolPersona implements Serializable{
 
 	public void setFormAcademic(String formAcademic) {
 		this.formAcademic = formAcademic;
+	}
+
+	public ArrayList<String> getOficios() {
+		return oficios;
+	}
+
+	public void setOficios(ArrayList<String> oficios) {
+		this.oficios = oficios;
 	}
 }
