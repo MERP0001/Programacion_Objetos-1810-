@@ -45,6 +45,9 @@ public class RegSoliEMP extends JDialog {
 	private JComboBox cbxCategoriaLaboral;
 	private JComboBox cbxCarrera;
 	private Persona aux = null;
+	private JRadioButton rdbtnTecnico;
+	private JRadioButton rdbtnEducacionBasica;
+	private JRadioButton rdbtnUniversitario;
 
 	/**
 	 * Launch the application.
@@ -204,18 +207,17 @@ public class RegSoliEMP extends JDialog {
 			label_10.setBounds(228, 11, 99, 14);
 			panel_2.add(label_10);
 			
-			JRadioButton rdbtnUniversitario = new JRadioButton("Universitario");
-			rdbtnUniversitario.setSelected(true);
+			rdbtnUniversitario = new JRadioButton("Universitario");
 			rdbtnUniversitario.setFont(new Font("Tahoma", Font.PLAIN, 13));
 			rdbtnUniversitario.setBounds(48, 32, 99, 23);
 			panel_2.add(rdbtnUniversitario);
 			
-			JRadioButton rdbtnTecnico = new JRadioButton("T\u00E9cnico");
+			rdbtnTecnico = new JRadioButton("T\u00E9cnico");
 			rdbtnTecnico.setFont(new Font("Tahoma", Font.PLAIN, 13));
 			rdbtnTecnico.setBounds(241, 32, 74, 23);
 			panel_2.add(rdbtnTecnico);
 			
-			JRadioButton rdbtnEducacionBasica = new JRadioButton("Obrero");
+			rdbtnEducacionBasica = new JRadioButton("Obrero");
 			rdbtnEducacionBasica.setFont(new Font("Tahoma", Font.PLAIN, 13));
 			rdbtnEducacionBasica.setBounds(386, 32, 128, 23);
 			panel_2.add(rdbtnEducacionBasica);
@@ -314,31 +316,32 @@ public class RegSoliEMP extends JDialog {
 			
 			if(aux instanceof Universitario) {
 				rdbtnUniversitario.setSelected(true);
-				rdbtnTecnico.setSelected(false);
+				rdbtnTecnico.setEnabled(false);
+				rdbtnEducacionBasica.setEnabled(false);
 				txtCentroeducativo.setEnabled(true);
 				txtCentroeducativo.setEditable(true);
-				rdbtnEducacionBasica.setSelected(true);
 				cbxAreaTecnica.setEnabled(false);
 				cbxOficio.setEnabled(false);
 				cbxCarrera.setEnabled(true);
 				btnAnadirLista.setEnabled(false);
 			}
 			if(aux instanceof Tecnico) {
+				rdbtnUniversitario.setEnabled(false);
 				rdbtnTecnico.setSelected(true);
+				rdbtnEducacionBasica.setEnabled(false);
 				txtCentroeducativo.setEnabled(true);
 				txtCentroeducativo.setEditable(true);
-				rdbtnUniversitario.setSelected(false);
 				cbxAreaTecnica.setEnabled(true);
 				cbxOficio.setEnabled(false);
 				cbxCarrera.setEnabled(false);
 				btnAnadirLista.setEnabled(false);
 			}
 			if(aux instanceof Obrero) {
+				rdbtnUniversitario.setEnabled(false);
+				rdbtnTecnico.setEnabled(false);
 				rdbtnEducacionBasica.setSelected(true);
-				rdbtnTecnico.setSelected(false);
 				txtCentroeducativo.setEnabled(false);
 				txtCentroeducativo.setEditable(false);
-				rdbtnUniversitario.setSelected(false);
 				cbxAreaTecnica.setEnabled(false);
 				cbxOficio.setEnabled(true);
 				cbxCarrera.setEnabled(false);
