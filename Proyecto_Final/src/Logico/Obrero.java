@@ -17,7 +17,7 @@ public class Obrero extends Persona {
 		return oficios;
 	}
 
-	public void setOficios(String string) {
-		oficios.add(string);
+	public void setOficios(ArrayList<String> auxListaOficios) {
+		oficios.addAll(auxListaOficios);
 	}
 }

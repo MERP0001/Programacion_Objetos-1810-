@@ -30,7 +30,6 @@ public class BolsaEmpleo implements Serializable {
 		super();
 		this.misPersonas = new ArrayList<Persona>();
 		this.misEmpleos = new ArrayList<Empresa>();
-		//this.misSolicitudes = new ArrayList<Solicitud>();
 		this.misSolEmpresas = new ArrayList<SolEmpresa>(); 
 		this.misSolPersonas = new ArrayList<SolPersona>();
 		this.misUsuarios = new ArrayList<Usuario>();

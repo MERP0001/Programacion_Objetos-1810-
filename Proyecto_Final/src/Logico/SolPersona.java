@@ -30,7 +30,8 @@ public class SolPersona implements Serializable{
 	private ArrayList<String> oficios;
 	
 	public SolPersona(String codigo, String categoriaLaboral, String provincia, String estado,
-			int horaslaborales, Date fechaVencimiento, String sexo,String formAcademic, Persona buscaEmpleos, int añosExp,float salarioMinino ,boolean transporte, boolean viajar, ArrayList<String> oficios) {
+			int horaslaborales, Date fechaVencimiento, String sexo,String formAcademic, Persona buscaEmpleos, int añosExp,float salarioMinino 
+			,boolean transporte, boolean viajar, ArrayList<String> oficios) {
 		
 		this.buscaEmpleos = buscaEmpleos;
 		this.añosExp = añosExp;

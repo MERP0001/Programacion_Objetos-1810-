@@ -38,6 +38,7 @@ public class SolEmpresa implements Serializable{
 			,int cantVacantes, boolean viajar, boolean vehiculo,String carreraNec, String ofertaLaboral, String areatecnicoNec, int anosExp,ArrayList<String> oficiosNec) {
 		
 		this.empresa = empresa;
+		this.salario = salario;
 		this.añosMinimosExp = añosMinimosExp;
 		this.porcientoMach = porcientoMach;
 		this.cantVacantes = cantVacantes;

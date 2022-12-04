@@ -255,7 +255,6 @@ public class RegPersona extends JDialog {
 							}
 							if(rdbtnObrero.isSelected()) {
 								p1 = new Obrero(cedula, nombre, telefono, direccion, estado,fecha, null);
-								((Obrero)p1).setOficios("");
 							}
 							BolsaEmpleo.getInstance().insertarPersona(p1);
 							JOptionPane.showMessageDialog(null, "Registro Exitoso", "Informacion", JOptionPane.INFORMATION_MESSAGE);
@@ -269,15 +268,6 @@ public class RegPersona extends JDialog {
 							auxPersona.setFechaNacimiento(txtFecha.getText());
 							auxPersona.setTelefono(txtTelefono.getText());
 							auxPersona.setEstado(cbxEstado.getSelectedItem().toString());
-						    if(auxPersona instanceof Universitario) {
-						    	
-						    }
-						    if(auxPersona instanceof Tecnico) {
-						    	
-						    }
-						    if(auxPersona instanceof Obrero) {
-						    	
-						    }
 						    BolsaEmpleo.getInstance().modificarPersona(auxPersona);
 						    dispose();
 						}

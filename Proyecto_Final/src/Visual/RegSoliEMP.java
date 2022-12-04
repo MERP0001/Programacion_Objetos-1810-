@@ -45,6 +45,9 @@ public class RegSoliEMP extends JDialog {
 	private JComboBox cbxCategoriaLaboral;
 	private JComboBox cbxCarrera;
 	private Persona aux = null;
+	private Universitario auxUni = null;
+	private Tecnico auxTec = null;
+	private Obrero auxObre = null;
 	private JRadioButton rdbtnTecnico;
 	private JRadioButton rdbtnEducacionBasica;
 	private JRadioButton rdbtnUniversitario;
@@ -59,6 +62,15 @@ public class RegSoliEMP extends JDialog {
 	 */
 	public RegSoliEMP(Persona user) {
 		aux = user;
+		if(aux instanceof Universitario) {
+			auxUni = (Universitario)user;
+		}
+		if(aux instanceof Tecnico) {
+			auxTec = (Tecnico)user;
+		}
+		if(aux instanceof Obrero) {
+			auxObre = (Obrero)user;
+		}
 		setTitle("Solicitud de Empleo");
 		auxListaOficios=new ArrayList<String>();
 		setBounds(100, 100, 602, 801);
@@ -346,29 +358,7 @@ public class RegSoliEMP extends JDialog {
 				cbxOficio.setEnabled(true);
 				cbxCarrera.setEnabled(false);
 				btnAnadirLista.setEnabled(true);
-			}
-			/*rdbtnEducacionBasica.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					
-					
-				}
-			});
-			
-			rdbtnTecnico.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					
-				}
-			});
-			
-			rdbtnUniversitario.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					
-					
-				}
-			});
-			*/
-			
-			
+			}	
 			btnCrearPost.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {			
 					boolean trasp , viaje ;
@@ -378,14 +368,25 @@ public class RegSoliEMP extends JDialog {
 					}
 					if(rdbtnVehiculoSi.isSelected()) {
 						trasp = true;
-					} 
+					}
+					if(aux instanceof Universitario) {
+						auxUni.setCarrera(cbxCarrera.getSelectedItem().toString());
+						aux = auxUni;
+					}
+					if(aux instanceof Tecnico) {
+						auxTec.setAreaTrabajo(cbxAreaTecnica.getSelectedItem().toString());
+						aux = auxTec;
+					}
+					if(aux instanceof Obrero) {
+						auxObre.setOficios(auxListaOficios);
+						aux = auxObre;
+					}
 					SolPersona solPer = new SolPersona("CP-"+String.valueOf(BolsaEmpleo.getInstance().getGeneradoqPerSol()), cbxCategoriaLaboral.getSelectedItem().toString(), 
 							cbxProvincia.getSelectedItem().toString(), "Desempleado", Integer.valueOf(spnAnnosExp.getValue().toString()), 
 							 null, cbxGenero.getSelectedItem().toString(),cbxAreaTecnica.getSelectedItem().toString(), aux, 
 							 Integer.valueOf(spnAnnosExp.getValue().toString()), Float.valueOf(spnSalarioMin.getValue().toString()), 
 							 trasp, viaje,auxListaOficios);
 					BolsaEmpleo.getInstance().insertarSolpersonas(solPer);
-					
 					JOptionPane.showMessageDialog(null, "La solicitud se ha creado exitosamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
 					
 					dispose();
