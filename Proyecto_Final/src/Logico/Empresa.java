@@ -71,7 +71,9 @@ public class Empresa implements Serializable {
 	public void ingresarSolicitud(SolEmpresa aux) {
 		misSolicitudes.add(aux);
 	}
-
+	public void contratar(Persona aux) {
+		empleados.add(aux);
+	}
 
 	
 }

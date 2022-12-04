@@ -24,6 +24,7 @@ import javax.swing.ListSelectionModel;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -34,10 +35,12 @@ public class ListarPersana extends JDialog {
 	private static DefaultTableModel model;
 	private static Object[] rows;
 	private Persona aux = null;
+	private SolEmpresa auxSol = null;
 	private JButton macheobtn;
 	private JButton creaSolicitudbtn;
 	private JButton Eliminarbtn;
 	private JButton Modificarbtn;
+	private JButton signInbtn;
 
 	/**
 	 * Launch the application.
@@ -56,11 +59,12 @@ public class ListarPersana extends JDialog {
 	 * Create the dialog.
 	 */
 	public ListarPersana(SolEmpresa solicitud) {
+		auxSol = solicitud;
 		setResizable(false);
-		if(solicitud != null) {
+		if(solicitud == null) {
 			setTitle("Listado De Personas Registradas");
 		}else {
-			setTitle("Listado De Personas calificadas para "+ solicitud.getEmpresa().getNombreEmpresa());
+			setTitle("Listado De Personas calificadas para "+solicitud.getEmpresa().getNombreEmpresa());
 		}
 		
 		setBounds(100, 100, 694, 455);
@@ -97,7 +101,12 @@ public class ListarPersana extends JDialog {
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 					table.setModel(model);
 					scrollPane.setViewportView(table);
-					loadPersonas();
+					if(solicitud == null) {
+						loadPersonas();
+					}else {
+						loadCalificados();
+					}
+					
 				}
 			}
 		}
@@ -107,6 +116,7 @@ public class ListarPersana extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
+			if(solicitud == null) {
 				Eliminarbtn = new JButton("Eliminar");
 				Eliminarbtn.setEnabled(false);
 				Eliminarbtn.addActionListener(new ActionListener() {
@@ -143,38 +153,52 @@ public class ListarPersana extends JDialog {
 				Eliminarbtn.setActionCommand("OK");
 				buttonPane.add(Eliminarbtn);
 				getRootPane().setDefaultButton(Eliminarbtn);
-			}
-			{
-				JButton cancelButton = new JButton("Cancelar");
-				cancelButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						dispose();
+				{
+					
+					{
+						creaSolicitudbtn = new JButton("Crear Solicitud");
+						creaSolicitudbtn.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								RegSoliEMP regi = new RegSoliEMP(aux);
+								regi.setModal(true);
+								regi.setVisible(true);
+							}
+							
+						});
+						creaSolicitudbtn.setEnabled(false);
+						buttonPane.add(creaSolicitudbtn);
 					}
-				});
-				{
-					creaSolicitudbtn = new JButton("Crear Solicitud");
-					creaSolicitudbtn.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							RegSoliEMP regi = new RegSoliEMP(aux);
-							regi.setModal(true);
-							regi.setVisible(true);
-						}
-						
-					});
-					creaSolicitudbtn.setEnabled(false);
-					buttonPane.add(creaSolicitudbtn);
+					{
+						macheobtn = new JButton("ver Solicitudes");
+						macheobtn.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent arg0) {
+								ListarSolicitudes listSol = new ListarSolicitudes(null,aux);
+								listSol.setModal(true);
+								listSol.setVisible(true);
+							}
+						});
+						macheobtn.setEnabled(false);
+						buttonPane.add(macheobtn);
+					}
 				}
+			}else {
+				
+			}
+			
+			JButton cancelButton = new JButton("Cancelar");
+			cancelButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					dispose();
+				}
+			});
 				{
-					macheobtn = new JButton("ver Solicitudes");
-					macheobtn.addActionListener(new ActionListener() {
+					signInbtn = new JButton("contratar");
+					signInbtn.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
-							ListarSolicitudes listSol = new ListarSolicitudes(null,aux);
-							listSol.setModal(true);
-							listSol.setVisible(true);
+							BolsaEmpleo.getInstance().contratarPersona(aux,solicitud);
 						}
 					});
-					macheobtn.setEnabled(false);
-					buttonPane.add(macheobtn);
+					buttonPane.add(signInbtn);
 				}
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
@@ -213,5 +237,36 @@ public class ListarPersana extends JDialog {
 			
 		}
 	}
-
+	private void loadCalificados() {
+		model.setRowCount(0);
+		rows = new Object[model.getColumnCount()];
+		for (Persona person : BolsaEmpleo.getInstance().Macheo(auxSol)) {
+			if(person instanceof Universitario) {
+				rows[0] = person.getCedula(); 
+				rows[1] = person.getNombre(); 
+				rows[2] = person.getEstado(); 
+				rows[3] = "Universitario"; 
+				rows[4] = person.getFechaNacimiento();
+			}
+			
+			if(person instanceof Tecnico) {
+				rows[0] = person.getCedula(); 
+				rows[1] = person.getNombre(); 
+				rows[2] = person.getEstado(); 
+				rows[3] = "Tecnico"; 
+				rows[4] = person.getFechaNacimiento();
+			}
+			
+			if(person instanceof Obrero) {
+				rows[0] = person.getCedula(); 
+				rows[1] = person.getNombre(); 
+				rows[2] = person.getEstado(); 
+				rows[3] = "Obrero"; 
+				rows[4] = person.getFechaNacimiento();
+			}
+			model.addRow(rows);
+			
+		}
+		
+	}
 }

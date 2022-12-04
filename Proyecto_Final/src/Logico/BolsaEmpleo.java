@@ -150,12 +150,14 @@ public class BolsaEmpleo implements Serializable {
 		return indPersona;
 	}
 	
-	public int buscarIndSolicitudEmpresa(String codigo) {
-		int ind = 0;
-		while(ind < misSolEmpresas.size() && misSolEmpresas.get(ind).getCodigo().equalsIgnoreCase(codigo)) {
-			ind++;
+	public SolEmpresa buscarIndSolicitudEmpresa(String codigo) {
+		SolEmpresa aux = null;
+		for (SolEmpresa solic : misSolEmpresas) {
+			if(solic.getCodigo().equalsIgnoreCase(codigo)) {
+				aux = solic;
+			}
 		}
-		return ind;
+		return aux;
 	}
 	
 	public int buscarIndSolicitudPersona(String codigo) {
@@ -164,6 +166,14 @@ public class BolsaEmpleo implements Serializable {
 			ind++;
 		}
 		return ind;
+	}
+	
+	public SolPersona buscarSolicitudPersona(Persona aux) {
+		int ind = 0;
+		while(ind < misSolPersonas.size() && misSolPersonas.get(ind).getBuscaEmpleos() != aux) {
+			ind++;
+		}
+		return misSolPersonas.get(ind);
 	}
 	
 	public Empresa buscarEmpresa(String rcn) {
@@ -396,6 +406,12 @@ public class BolsaEmpleo implements Serializable {
 		return ind;
 	}
 
-
+	public void contratarPersona(Persona auxPer, SolEmpresa aux) {
+		SolPersona candidato = buscarSolicitudPersona(auxPer);
+		candidato.setEstado("Finalizado");
+		auxPer.setEstado("contratado");
+		aux.getEmpresa().IngresarEmpleado(auxPer);
+		aux.setCantVacantes(aux.getCantVacantes() - 1);
+	}
 
 }

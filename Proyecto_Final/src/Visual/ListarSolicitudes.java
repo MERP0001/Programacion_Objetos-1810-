@@ -37,6 +37,7 @@ public class ListarSolicitudes extends JDialog {
 	private JButton Eliminarbtn;
 	private Empresa empresaAux = null;
 	private Persona personaAux = null;
+	private SolEmpresa auxSol = null;
 	/**
 	 * Launch the application.
 	 */
@@ -85,6 +86,10 @@ public class ListarSolicitudes extends JDialog {
 					table.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent e) {
+							int rowSelecte = -1;
+							rowSelecte = table.getSelectedRow();
+							auxSol = BolsaEmpleo.getInstance().buscarIndSolicitudEmpresa(table.getValueAt(rowSelecte,0).toString());
+							
 						}
 					});
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -123,7 +128,9 @@ public class ListarSolicitudes extends JDialog {
 					JButton btnNewButton = new JButton("Buscar Empleados");
 					btnNewButton.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							
+							ListarPersana listper = new ListarPersana(auxSol);
+							listper.setModal(true);
+							listper.setVisible(true);
 						}
 					});
 					buttonPane.add(btnNewButton);
