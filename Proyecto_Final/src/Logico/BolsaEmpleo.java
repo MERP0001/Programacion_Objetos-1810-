@@ -280,7 +280,7 @@ public class BolsaEmpleo implements Serializable {
 	}
 	public Persona comparacionSolicitudes(SolPersona solictud, SolEmpresa empresa) {
 		double cantComun = 0;
-		Obrero obreros = (Obrero)solictud.getBuscaEmpleos();
+		Obrero obreros = null; //(Obrero)solictud.getBuscaEmpleos();
 		
 		double diferencia = ((solictud.getSalarioMinimo() - empresa.getSalario()) / empresa.getSalario()) * 100;
 		if(solictud.getEstado().equalsIgnoreCase("Activo")) {

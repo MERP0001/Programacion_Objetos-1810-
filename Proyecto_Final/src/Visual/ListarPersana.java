@@ -195,7 +195,7 @@ public class ListarPersana extends JDialog {
 					signInbtn = new JButton("contratar");
 					signInbtn.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
-							BolsaEmpleo.getInstance().contratarPersona(aux,solicitud);
+							BolsaEmpleo.getInstance().Macheo(solicitud);
 						}
 					});
 					buttonPane.add(signInbtn);
