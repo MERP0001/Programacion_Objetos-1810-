@@ -2,6 +2,7 @@ package Visual;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -74,7 +75,7 @@ public class RegSoliEMP extends JDialog {
 		setTitle("Solicitud de Empleo");
 		auxListaOficios=new ArrayList<String>();
 		setBounds(100, 100, 602, 801);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(ListaPersana.class.getResource("/post.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ListarPersana.class.getResource("/post.png")));
 		
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

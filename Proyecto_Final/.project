@@ -14,4 +14,21 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/imagenes/Maletin.png</name>
+			<type>1</type>
+			<location>C:/Users/hiros/Downloads/Maletin.png</location>
+		</link>
+		<link>
+			<name>src/imagenes/oferta.png</name>
+			<type>1</type>
+			<location>C:/Users/hiros/Downloads/oferta.png</location>
+		</link>
+		<link>
+			<name>src/imagenes/post.png</name>
+			<type>1</type>
+			<location>C:/Users/hiros/Downloads/post.png</location>
+		</link>
+	</linkedResources>
 </projectDescription>
