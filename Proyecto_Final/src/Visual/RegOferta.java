@@ -58,7 +58,8 @@ public class RegOferta extends JDialog {
 	public RegOferta(final Empresa user) {
 		setTitle("Crear oferta de trabajo");
 		setBounds(100, 100, 536, 713);
-
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ListarPersana.class.getResource("/oferta.png")));
+		
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
