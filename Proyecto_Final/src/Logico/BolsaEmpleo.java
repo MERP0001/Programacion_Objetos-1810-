@@ -25,6 +25,7 @@ public class BolsaEmpleo implements Serializable {
     public static BolsaEmpleo bolsaEmpleo;
     private int generadoEmpSol = 0;
 	private int generadoqPerSol = 0;
+	public static Usuario loginUser = null;
 	
 	public BolsaEmpleo() {
 		super();
@@ -41,6 +42,33 @@ public class BolsaEmpleo implements Serializable {
 		}
 		return bolsaEmpleo;
 	}
+	public static void setbolsa(BolsaEmpleo temp) {
+		BolsaEmpleo.bolsaEmpleo = temp;		
+	}
+	
+	public static Usuario getLoginUser() {
+		return loginUser;
+	}
+
+	public static void setLoginUser(Usuario loginUser) {
+		BolsaEmpleo.loginUser = loginUser;
+	}
+	
+
+	public boolean confirmarLogin(String usuario, String password) {
+		boolean validar = false;
+		for (Usuario aux : misUsuarios) {
+			if(aux.getUserId().equalsIgnoreCase(usuario) && aux.getPassword().equalsIgnoreCase(password)) {
+				setLoginUser(aux);
+				validar = true;
+			}
+		}
+		return validar;
+	}
+	public void insertarUsuario(Usuario auxUsuario) {
+		misUsuarios.add(auxUsuario);
+	}
+	
 	/*
 	public ArrayList<Solicitud> getMisSolicitudes() {
 		return misSolicitudes;
