@@ -3,6 +3,7 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -25,7 +26,12 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class Principal extends JFrame {
+	
 
+
+
+
+	
 	private JPanel contentPane;
 	private Dimension dim;
 
@@ -96,6 +102,7 @@ public class Principal extends JFrame {
 		dim = getToolkit().getScreenSize();
 		setSize(dim.width, dim.height-40);
 		setLocationRelativeTo(null);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ListarPersana.class.getResource("/Maletin.png")));
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);

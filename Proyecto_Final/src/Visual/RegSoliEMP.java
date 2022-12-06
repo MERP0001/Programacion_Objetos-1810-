@@ -74,7 +74,8 @@ public class RegSoliEMP extends JDialog {
 		setTitle("Solicitud de Empleo");
 		auxListaOficios=new ArrayList<String>();
 		setBounds(100, 100, 602, 801);
-
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ListaPersana.class.getResource("/post.png")));
+		
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
