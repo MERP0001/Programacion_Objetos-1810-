@@ -59,6 +59,7 @@ public class ListarPersana extends JDialog {
 	 * Create the dialog.
 	 */
 	public ListarPersana(SolEmpresa solicitud) {
+		ArrayList<Persona> candidatos = BolsaEmpleo.getInstance().Macheo(solicitud);
 		auxSol = solicitud;
 		setResizable(false);
 		if(solicitud == null) {
@@ -91,11 +92,14 @@ public class ListarPersana extends JDialog {
 						public void mouseClicked(MouseEvent e) {
 							int rowSelecte = -1;
 							rowSelecte = table.getSelectedRow();
-							Eliminarbtn.setEnabled(true);
-							Modificarbtn.setEnabled(true);
-							creaSolicitudbtn.setEnabled(true);
-							macheobtn.setEnabled(true);
+							if(solicitud == null) {
+								Eliminarbtn.setEnabled(true);
+								Modificarbtn.setEnabled(true);
+								creaSolicitudbtn.setEnabled(true);
+								macheobtn.setEnabled(true);
+							}
 							aux = BolsaEmpleo.getInstance().buscarPersona(table.getValueAt(rowSelecte,0).toString());
+
 						}
 					});
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -104,7 +108,7 @@ public class ListarPersana extends JDialog {
 					if(solicitud == null) {
 						loadPersonas();
 					}else {
-						loadCalificados();
+						loadCalificados(candidatos);
 					}
 					
 				}
@@ -195,7 +199,7 @@ public class ListarPersana extends JDialog {
 					signInbtn = new JButton("contratar");
 					signInbtn.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
-							BolsaEmpleo.getInstance().Macheo(solicitud);
+							BolsaEmpleo.getInstance().contratarPersona(aux, solicitud);;
 						}
 					});
 					buttonPane.add(signInbtn);
@@ -237,10 +241,10 @@ public class ListarPersana extends JDialog {
 			
 		}
 	}
-	private void loadCalificados() {
+	private void loadCalificados(ArrayList<Persona> candidatos) {
 		model.setRowCount(0);
 		rows = new Object[model.getColumnCount()];
-		for (Persona person : BolsaEmpleo.getInstance().Macheo(auxSol)) {
+		for (Persona person : candidatos) {
 			if(person instanceof Universitario) {
 				rows[0] = person.getCedula(); 
 				rows[1] = person.getNombre(); 

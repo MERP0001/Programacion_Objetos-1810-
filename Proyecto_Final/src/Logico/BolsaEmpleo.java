@@ -196,11 +196,13 @@ public class BolsaEmpleo implements Serializable {
 	}
 	
 	public SolPersona buscarSolicitudPersona(Persona aux) {
-		int ind = 0;
-		while(ind < misSolPersonas.size() && misSolPersonas.get(ind).getBuscaEmpleos() != aux) {
-			ind++;
+		SolPersona auxSol = null;
+		for (SolPersona solic : misSolPersonas) {
+			if(solic.getBuscaEmpleos() == aux) {
+				auxSol = solic;
+			}
 		}
-		return misSolPersonas.get(ind);
+		return auxSol;
 	}
 	
 	public Empresa buscarEmpresa(String rcn) {
