@@ -32,6 +32,8 @@ import Logico.Tecnico;
 import Logico.Universitario;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class RegSoliEMP extends JDialog {
 
@@ -52,6 +54,8 @@ public class RegSoliEMP extends JDialog {
 	private JRadioButton rdbtnTecnico;
 	private JRadioButton rdbtnEducacionBasica;
 	private JRadioButton rdbtnUniversitario;
+	private JRadioButton rdbtnViajarNo;
+	private JRadioButton rdbtnVehiculoNo;
 
 	/**
 	 * Launch the application.
@@ -75,7 +79,7 @@ public class RegSoliEMP extends JDialog {
 		setTitle("Solicitud de Empleo");
 		auxListaOficios=new ArrayList<String>();
 		setBounds(100, 100, 602, 801);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(ListarPersana.class.getResource("/post.png")));
+	//	setIconImage(Toolkit.getDefaultToolkit().getImage(ListarPersana.class.getResource("/post.png")));
 		
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -101,7 +105,7 @@ public class RegSoliEMP extends JDialog {
 			txtNombre.setEditable(false);
 			txtNombre.setColumns(10);
 			txtNombre.setBounds(10, 36, 260, 25);
-			txtNombre.setText(aux.getEstado());
+			txtNombre.setText(aux.getNombre());
 			panel_1.add(txtNombre);
 			
 
@@ -161,14 +165,30 @@ public class RegSoliEMP extends JDialog {
 			panel_1.add(label_7);
 			
 			final JRadioButton rdbtnViajarSi = new JRadioButton("Si");
+			rdbtnViajarSi.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					if(rdbtnViajarSi.isSelected()){
+						rdbtnViajarNo.setSelected(false);
+					}
+				}
+			});
 			rdbtnViajarSi.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			rdbtnViajarSi.setBounds(201, 251, 109, 23);
 			panel_1.add(rdbtnViajarSi);
 			
-			JRadioButton rdbtnViajar = new JRadioButton("No");
-			rdbtnViajar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-			rdbtnViajar.setBounds(343, 251, 109, 23);
-			panel_1.add(rdbtnViajar);
+			rdbtnViajarNo = new JRadioButton("No");
+			rdbtnViajarNo.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					if(rdbtnViajarNo.isSelected()){
+						rdbtnViajarSi.setSelected(false);
+					}
+				}
+			});
+			rdbtnViajarNo.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			rdbtnViajarNo.setBounds(343, 251, 109, 23);
+			panel_1.add(rdbtnViajarNo);
 			
 			JLabel label_8 = new JLabel("Vehiculo propio:");
 			label_8.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -176,11 +196,27 @@ public class RegSoliEMP extends JDialog {
 			panel_1.add(label_8);
 			
 			final JRadioButton rdbtnVehiculoSi = new JRadioButton("Si");
+			rdbtnVehiculoSi.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					if(rdbtnVehiculoSi.isSelected()){
+						rdbtnVehiculoNo.setSelected(false);
+					}
+				}
+			});
 			rdbtnVehiculoSi.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			rdbtnVehiculoSi.setBounds(201, 287, 109, 23);
 			panel_1.add(rdbtnVehiculoSi);
 			
-			JRadioButton rdbtnVehiculoNo = new JRadioButton("No");
+			rdbtnVehiculoNo = new JRadioButton("No");
+			rdbtnVehiculoNo.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					if(rdbtnVehiculoNo.isSelected()){
+						rdbtnVehiculoSi.setSelected(false);
+					}
+				}
+			});
 			rdbtnVehiculoNo.setFont(new Font("Tahoma", Font.PLAIN, 14));
 			rdbtnVehiculoNo.setBounds(343, 287, 109, 23);
 			panel_1.add(rdbtnVehiculoNo);

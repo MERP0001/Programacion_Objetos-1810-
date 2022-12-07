@@ -112,19 +112,23 @@ public class RegEmpresa extends JDialog {
 				}
 				btnRegistrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						if(auxEmpresa == null) {
-							Empresa e1 = null;
-							e1 = new Empresa(txtRCN.getText(), txtDireccion.getText(), txtNombre.getText());
-							BolsaEmpleo.getInstance().insertarEmpresa(e1);
-							JOptionPane.showMessageDialog(null, "Registro Exitoso", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-							clean();
-						}
-						else {
-							auxEmpresa.setRcn(txtRCN.getText());
-							auxEmpresa.setNombreEmpresa(txtNombre.getText());
-							auxEmpresa.setDireccion(txtDireccion.getText());
-							BolsaEmpleo.getInstance().modificarEmpresa(auxEmpresa);
-							dispose();
+						if(!txtRCN.getText().isEmpty() && !txtNombre.getText().isEmpty() && !txtDireccion.getText().isEmpty()) {
+							if(auxEmpresa == null) {
+								Empresa e1 = null;
+								e1 = new Empresa(txtRCN.getText(), txtDireccion.getText(), txtNombre.getText());
+								BolsaEmpleo.getInstance().insertarEmpresa(e1);
+								JOptionPane.showMessageDialog(null, "Registro Exitoso", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+								clean();
+							}
+							else {
+								auxEmpresa.setRcn(txtRCN.getText());
+								auxEmpresa.setNombreEmpresa(txtNombre.getText());
+								auxEmpresa.setDireccion(txtDireccion.getText());
+								BolsaEmpleo.getInstance().modificarEmpresa(auxEmpresa);
+								dispose();
+							}
+						}else {
+							JOptionPane.showMessageDialog(null, "Complete los espacios requeridos", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 						}
 					}
 				});

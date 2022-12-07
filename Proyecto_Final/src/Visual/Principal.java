@@ -102,7 +102,7 @@ public class Principal extends JFrame {
 		dim = getToolkit().getScreenSize();
 		setSize(dim.width, dim.height-40);
 		setLocationRelativeTo(null);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(ListarPersana.class.getResource("/Maletin.png")));
+	//	setIconImage(Toolkit.getDefaultToolkit().getImage(ListarPersana.class.getResource("/Maletin.png")));
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);

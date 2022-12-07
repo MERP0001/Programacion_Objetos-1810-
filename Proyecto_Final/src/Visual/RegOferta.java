@@ -58,7 +58,7 @@ public class RegOferta extends JDialog {
 	public RegOferta(final Empresa user) {
 		setTitle("Crear oferta de trabajo");
 		setBounds(100, 100, 536, 713);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(ListarPersana.class.getResource("/oferta.png")));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(ListarPersana.class.getResource("/oferta.png")));
 		
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -144,7 +144,7 @@ public class RegOferta extends JDialog {
 		panel.add(lblJornada);
 		JLabel lblFechaDeVencimiento = new JLabel("Genero:");
 		lblFechaDeVencimiento.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lblFechaDeVencimiento.setBounds(10, 208, 136, 14);
+		lblFechaDeVencimiento.setBounds(12, 183, 136, 14);
 		panel.add(lblFechaDeVencimiento);
 		final JComboBox cbxCategoriaLab = new JComboBox();
 		final JSpinner spnPorciento = new JSpinner();
@@ -294,7 +294,7 @@ public class RegOferta extends JDialog {
 		
 		cbxGenero = new JComboBox();
 		cbxGenero.setModel(new DefaultComboBoxModel(new String[] {"<Seleccionar>", "Hombre", "Mujer", "Otro"}));
-		cbxGenero.setBounds(54, 205, 193, 20);
+		cbxGenero.setBounds(13, 203, 234, 25);
 		panel.add(cbxGenero);
 		
 		JLabel lblNewLabel = new JLabel("A\u00F1os de Exp:");

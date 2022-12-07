@@ -28,6 +28,8 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JRadioButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class RegPersona extends JDialog {
 
@@ -193,14 +195,42 @@ public class RegPersona extends JDialog {
 		panel.setLayout(null);
 		
 		rdbtnUniversitario = new JRadioButton("Universitario");
+		rdbtnUniversitario.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				if(rdbtnUniversitario.isSelected()) {
+					rdbtnTecnico.setSelected(false);
+					rdbtnObrero.setSelected(false);
+				}
+			}
+		});
 		rdbtnUniversitario.setBounds(6, 20, 109, 23);
 		panel.add(rdbtnUniversitario);
 		
 		rdbtnTecnico = new JRadioButton("Tecnico");
+		rdbtnTecnico.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(rdbtnTecnico.isSelected()) {
+					rdbtnUniversitario.setSelected(false);
+					rdbtnObrero.setSelected(false);
+				}
+			}
+		});
+		
 		rdbtnTecnico.setBounds(183, 20, 109, 23);
 		panel.add(rdbtnTecnico);
 		
 		rdbtnObrero = new JRadioButton("Obrero");
+		rdbtnObrero.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(rdbtnObrero.isSelected()) {
+					rdbtnUniversitario.setSelected(false);
+					rdbtnTecnico.setSelected(false);
+				}
+			}
+		});
 		rdbtnObrero.setBounds(354, 20, 109, 23);
 		panel.add(rdbtnObrero);
 		
@@ -238,40 +268,44 @@ public class RegPersona extends JDialog {
 				}
 				btnRegistrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						if(auxPersona == null) {
-							Persona p1 = null;
-							String nombre = txtNombre.getText();
-							String cedula = txtCedula.getText();
-							String direccion = txtDireccion.getText();
-							String telefono = txtTelefono.getText();
-							String fecha = txtFecha.getText();
-							String estado = cbxEstado.getSelectedItem().toString();
-							
-							if(rdbtnUniversitario.isSelected()) {
-								p1 = new Universitario(cedula, nombre, telefono, direccion, estado,"", "", fecha);
+						if(!txtCedula.getText().isEmpty() && !txtNombre.getText().isEmpty() && !txtDireccion.getText().isEmpty() && !txtTelefono.getText().isEmpty() && cbxEstado.getSelectedIndex() > 0) {
+
+							if(auxPersona == null) {
+								Persona p1 = null;
+								String nombre = txtNombre.getText();
+								String cedula = txtCedula.getText();
+								String direccion = txtDireccion.getText();
+								String telefono = txtTelefono.getText();
+								String fecha = txtFecha.getText();
+								String estado = cbxEstado.getSelectedItem().toString();
+								
+								if(rdbtnUniversitario.isSelected()) {
+									p1 = new Universitario(cedula, nombre, telefono, direccion, estado,"", "", fecha);
+								}
+								if(rdbtnTecnico.isSelected()) {
+									p1 = new Tecnico(cedula, nombre, telefono, direccion, estado, "",0, fecha);
+								}
+								if(rdbtnObrero.isSelected()) {
+									p1 = new Obrero(cedula, nombre, telefono, direccion, estado,fecha, null);
+								}
+								BolsaEmpleo.getInstance().insertarPersona(p1);
+								JOptionPane.showMessageDialog(null, "Registro Exitoso", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+								System.out.println(BolsaEmpleo.getInstance().getMisPersonas().size());
+								clean();
 							}
-							if(rdbtnTecnico.isSelected()) {
-								p1 = new Tecnico(cedula, nombre, telefono, direccion, estado, "",0, fecha);
+							else {
+								auxPersona.setNombre(txtNombre.getText());
+								auxPersona.setCedula(txtCedula.getText());
+								auxPersona.setDireccion(txtDireccion.getText());
+								auxPersona.setFechaNacimiento(txtFecha.getText());
+								auxPersona.setTelefono(txtTelefono.getText());
+								auxPersona.setEstado(cbxEstado.getSelectedItem().toString());
+							    BolsaEmpleo.getInstance().modificarPersona(auxPersona);
+							    dispose();
 							}
-							if(rdbtnObrero.isSelected()) {
-								p1 = new Obrero(cedula, nombre, telefono, direccion, estado,fecha, null);
-							}
-							BolsaEmpleo.getInstance().insertarPersona(p1);
-							JOptionPane.showMessageDialog(null, "Registro Exitoso", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-							System.out.println(BolsaEmpleo.getInstance().getMisPersonas().size());
-							clean();
+						}else {
+							JOptionPane.showMessageDialog(null, "Complete los Espacios Requeridos", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 						}
-						else {
-							auxPersona.setNombre(txtNombre.getText());
-							auxPersona.setCedula(txtCedula.getText());
-							auxPersona.setDireccion(txtDireccion.getText());
-							auxPersona.setFechaNacimiento(txtFecha.getText());
-							auxPersona.setTelefono(txtTelefono.getText());
-							auxPersona.setEstado(cbxEstado.getSelectedItem().toString());
-						    BolsaEmpleo.getInstance().modificarPersona(auxPersona);
-						    dispose();
-						}
-						
 					}
 				});
 				btnRegistrar.setActionCommand("OK");
