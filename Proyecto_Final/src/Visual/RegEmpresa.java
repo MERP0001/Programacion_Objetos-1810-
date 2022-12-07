@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class RegEmpresa extends JDialog {
 
@@ -55,12 +56,14 @@ public class RegEmpresa extends JDialog {
 		setBounds(100, 100, 474, 346);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(173, 216, 230));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
 			JPanel panel = new JPanel();
-			panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Informacion General", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+			panel.setBackground(new Color(173, 216, 230));
+			panel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(null);
 			
@@ -102,7 +105,7 @@ public class RegEmpresa extends JDialog {
 		}
 		{
 			JPanel buttonPane = new JPanel();
-			buttonPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			buttonPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{

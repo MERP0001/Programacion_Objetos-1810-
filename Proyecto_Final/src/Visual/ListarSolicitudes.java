@@ -27,6 +27,8 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class ListarSolicitudes extends JDialog {
 
@@ -58,12 +60,14 @@ public class ListarSolicitudes extends JDialog {
 		
 		setBounds(100, 100, 662, 431);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(173, 216, 230));
 		contentPanel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
 			JPanel panel = new JPanel();
-			panel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			panel.setBackground(new Color(135, 206, 235));
+			panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(new BorderLayout(0, 0));
 			{
@@ -80,6 +84,7 @@ public class ListarSolicitudes extends JDialog {
 				}
 				
 				JScrollPane scrollPane = new JScrollPane();
+				scrollPane.setBackground(new Color(173, 216, 230));
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
 					
@@ -109,6 +114,7 @@ public class ListarSolicitudes extends JDialog {
 		}
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBackground(new Color(173, 216, 230));
 			buttonPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);

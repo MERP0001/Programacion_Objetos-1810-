@@ -66,6 +66,7 @@ public class RegSoliEMP extends JDialog {
 	 * Create the dialog.
 	 */
 	public RegSoliEMP(Persona user) {
+		setBackground(new Color(0, 0, 139));
 		aux = user;
 		if(aux instanceof Universitario) {
 			auxUni = (Universitario)user;
@@ -82,20 +83,23 @@ public class RegSoliEMP extends JDialog {
 	//	setIconImage(Toolkit.getDefaultToolkit().getImage(ListarPersana.class.getResource("/post.png")));
 		
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(173, 216, 230));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
 			JPanel panel = new JPanel();
+			panel.setBackground(new Color(173, 216, 230));
 			contentPanel.add(panel, BorderLayout.CENTER);
 			panel.setLayout(null);
 			
 			JButton btnCrearPost = new JButton("Crear Solicitud");
 
-			btnCrearPost.setBounds(414, 712, 152, 29);
+			btnCrearPost.setBounds(424, 712, 152, 29);
 			panel.add(btnCrearPost);
 			
 			JPanel panel_1 = new JPanel();
+			panel_1.setBackground(new Color(173, 216, 230));
 			panel_1.setLayout(null);
 			panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 			panel_1.setBounds(10, 11, 556, 329);
@@ -165,6 +169,7 @@ public class RegSoliEMP extends JDialog {
 			panel_1.add(label_7);
 			
 			final JRadioButton rdbtnViajarSi = new JRadioButton("Si");
+			rdbtnViajarSi.setBackground(new Color(173, 216, 230));
 			rdbtnViajarSi.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
@@ -174,10 +179,11 @@ public class RegSoliEMP extends JDialog {
 				}
 			});
 			rdbtnViajarSi.setFont(new Font("Tahoma", Font.PLAIN, 14));
-			rdbtnViajarSi.setBounds(201, 251, 109, 23);
+			rdbtnViajarSi.setBounds(201, 251, 45, 23);
 			panel_1.add(rdbtnViajarSi);
 			
 			rdbtnViajarNo = new JRadioButton("No");
+			rdbtnViajarNo.setBackground(new Color(173, 216, 230));
 			rdbtnViajarNo.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
@@ -187,7 +193,7 @@ public class RegSoliEMP extends JDialog {
 				}
 			});
 			rdbtnViajarNo.setFont(new Font("Tahoma", Font.PLAIN, 14));
-			rdbtnViajarNo.setBounds(343, 251, 109, 23);
+			rdbtnViajarNo.setBounds(343, 251, 45, 23);
 			panel_1.add(rdbtnViajarNo);
 			
 			JLabel label_8 = new JLabel("Vehiculo propio:");
@@ -196,6 +202,7 @@ public class RegSoliEMP extends JDialog {
 			panel_1.add(label_8);
 			
 			final JRadioButton rdbtnVehiculoSi = new JRadioButton("Si");
+			rdbtnVehiculoSi.setBackground(new Color(173, 216, 230));
 			rdbtnVehiculoSi.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
@@ -205,10 +212,11 @@ public class RegSoliEMP extends JDialog {
 				}
 			});
 			rdbtnVehiculoSi.setFont(new Font("Tahoma", Font.PLAIN, 14));
-			rdbtnVehiculoSi.setBounds(201, 287, 109, 23);
+			rdbtnVehiculoSi.setBounds(201, 287, 45, 23);
 			panel_1.add(rdbtnVehiculoSi);
 			
 			rdbtnVehiculoNo = new JRadioButton("No");
+			rdbtnVehiculoNo.setBackground(new Color(173, 216, 230));
 			rdbtnVehiculoNo.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
@@ -218,7 +226,7 @@ public class RegSoliEMP extends JDialog {
 				}
 			});
 			rdbtnVehiculoNo.setFont(new Font("Tahoma", Font.PLAIN, 14));
-			rdbtnVehiculoNo.setBounds(343, 287, 109, 23);
+			rdbtnVehiculoNo.setBounds(343, 287, 45, 23);
 			panel_1.add(rdbtnVehiculoNo);
 			
 			
@@ -247,6 +255,7 @@ public class RegSoliEMP extends JDialog {
 			panel_1.add(txtFechaNacimiento);
 			
 			JPanel panel_2 = new JPanel();
+			panel_2.setBackground(new Color(173, 216, 230));
 			panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
 			panel_2.setLayout(null);
 			panel_2.setBounds(10, 351, 556, 350);
@@ -258,18 +267,21 @@ public class RegSoliEMP extends JDialog {
 			panel_2.add(label_10);
 			
 			rdbtnUniversitario = new JRadioButton("Universitario");
+			rdbtnUniversitario.setBackground(new Color(173, 216, 230));
 			rdbtnUniversitario.setFont(new Font("Tahoma", Font.PLAIN, 13));
 			rdbtnUniversitario.setBounds(48, 32, 99, 23);
 			panel_2.add(rdbtnUniversitario);
 			
 			rdbtnTecnico = new JRadioButton("T\u00E9cnico");
+			rdbtnTecnico.setBackground(new Color(173, 216, 230));
 			rdbtnTecnico.setFont(new Font("Tahoma", Font.PLAIN, 13));
 			rdbtnTecnico.setBounds(241, 32, 74, 23);
 			panel_2.add(rdbtnTecnico);
 			
 			rdbtnEducacionBasica = new JRadioButton("Obrero");
+			rdbtnEducacionBasica.setBackground(new Color(173, 216, 230));
 			rdbtnEducacionBasica.setFont(new Font("Tahoma", Font.PLAIN, 13));
-			rdbtnEducacionBasica.setBounds(386, 32, 128, 23);
+			rdbtnEducacionBasica.setBounds(386, 32, 74, 23);
 			panel_2.add(rdbtnEducacionBasica);
 			
 			JLabel label_11 = new JLabel("Centro educativo:");

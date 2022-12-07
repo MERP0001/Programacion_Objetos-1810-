@@ -27,6 +27,8 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class ListarPersana extends JDialog {
 
@@ -59,6 +61,7 @@ public class ListarPersana extends JDialog {
 	 * Create the dialog.
 	 */
 	public ListarPersana(SolEmpresa solicitud) {
+		setBackground(new Color(173, 216, 230));
 		ArrayList<Persona> candidatos = BolsaEmpleo.getInstance().Macheo(solicitud);
 		auxSol = solicitud;
 		setResizable(false);
@@ -71,6 +74,7 @@ public class ListarPersana extends JDialog {
 		setBounds(100, 100, 694, 455);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(173, 216, 230));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
@@ -81,6 +85,7 @@ public class ListarPersana extends JDialog {
 			panel.setLayout(new BorderLayout(0, 0));
 			{
 				JScrollPane scrollPane = new JScrollPane();
+				scrollPane.setBackground(new Color(173, 216, 230));
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
 					model = new DefaultTableModel();
@@ -116,7 +121,8 @@ public class ListarPersana extends JDialog {
 		}
 		{
 			JPanel buttonPane = new JPanel();
-			buttonPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			buttonPane.setBackground(new Color(173, 216, 230));
+			buttonPane.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{

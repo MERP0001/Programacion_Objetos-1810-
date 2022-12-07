@@ -57,18 +57,22 @@ public class RegOferta extends JDialog {
 	
 	public RegOferta(final Empresa user) {
 		setTitle("Crear oferta de trabajo");
-		setBounds(100, 100, 536, 713);
+		setBounds(100, 100, 541, 713);
 		//setIconImage(Toolkit.getDefaultToolkit().getImage(ListarPersana.class.getResource("/oferta.png")));
 		
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(173, 216, 230));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		final JRadioButton rdbtnVehiculo = new JRadioButton("Vehiculo propio necesario");
+		rdbtnVehiculo.setBackground(new Color(173, 216, 230));
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(173, 216, 230));
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		contentPanel.add(panel, BorderLayout.CENTER);
 		final JRadioButton rdbtnViajar = new JRadioButton("Disponibilidad para viajar necesaria");
+		rdbtnViajar.setBackground(new Color(173, 216, 230));
 		panel.setLayout(null);
 		
 		JLabel lblNombreDeLa = new JLabel("Nombre de la empresa> ");
@@ -87,6 +91,7 @@ public class RegOferta extends JDialog {
 		final JLabel lblCarrera = new JLabel("Carrera:");
 		panel.add(txtNombre);
 		spnExperiencia = new JSpinner();
+		spnExperiencia.setForeground(new Color(210, 105, 30));
 		
 		final JSpinner spnVacantes = new JSpinner();
 		spnVacantes.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
@@ -285,11 +290,11 @@ public class RegOferta extends JDialog {
 		panel.add(lblAnnosexperiencia);
 		
 		
-		rdbtnVehiculo.setBounds(309, 322, 187, 23);
+		rdbtnVehiculo.setBounds(309, 322, 147, 23);
 		panel.add(rdbtnVehiculo);
 		
 		
-		rdbtnViajar.setBounds(10, 322, 242, 23);
+		rdbtnViajar.setBounds(10, 322, 195, 23);
 		panel.add(rdbtnViajar);
 		
 		cbxGenero = new JComboBox();
@@ -306,13 +311,15 @@ public class RegOferta extends JDialog {
 		panel.add(spnAExp);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(173, 216, 230));
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_1.setBounds(0, 367, 510, 243);
+		panel_1.setBounds(0, 367, 515, 243);
 		panel.add(panel_1);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(new Color(173, 216, 230));
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2.setBounds(0, 308, 510, 60);
+		panel_2.setBounds(0, 308, 515, 60);
 		panel.add(panel_2);
 	}
 	

@@ -26,6 +26,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class ListarEmpresa extends JDialog {
 
@@ -54,10 +56,12 @@ public class ListarEmpresa extends JDialog {
 	 * Create the dialog.
 	 */
 	public ListarEmpresa() {
+		setBackground(new Color(173, 216, 230));
 		setTitle("Empresas Registradas");
 		setBounds(100, 100, 657, 432);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(173, 216, 230));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
@@ -91,7 +95,9 @@ public class ListarEmpresa extends JDialog {
 		}
 		{
 			JPanel buttonPane = new JPanel();
-			buttonPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			buttonPane.setForeground(new Color(255, 255, 255));
+			buttonPane.setBackground(new Color(173, 216, 230));
+			buttonPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{

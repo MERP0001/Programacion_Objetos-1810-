@@ -30,6 +30,9 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JRadioButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
+import javax.swing.UIManager;
+import javax.swing.border.LineBorder;
 
 public class RegPersona extends JDialog {
 
@@ -76,12 +79,14 @@ public class RegPersona extends JDialog {
 		}
 		setBounds(100, 100, 535, 302);
 		setLocationRelativeTo(null);
+		contentPanel.setBackground(new Color(173, 216, 230));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
 		panel_Info = new JPanel();
-		panel_Info.setBorder(new TitledBorder(null, "Informacion Personal", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_Info.setBackground(new Color(173, 216, 230));
+		panel_Info.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		panel_Info.setBounds(10, 10, 505, 137);
 		contentPanel.add(panel_Info);
 		panel_Info.setLayout(null);
@@ -189,12 +194,14 @@ public class RegPersona extends JDialog {
 		txtDireccion.setColumns(10);
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel.setBackground(new Color(173, 216, 230));
+		panel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		panel.setBounds(10, 158, 505, 66);
 		contentPanel.add(panel);
 		panel.setLayout(null);
 		
 		rdbtnUniversitario = new JRadioButton("Universitario");
+		rdbtnUniversitario.setBackground(new Color(173, 216, 230));
 		rdbtnUniversitario.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -208,6 +215,7 @@ public class RegPersona extends JDialog {
 		panel.add(rdbtnUniversitario);
 		
 		rdbtnTecnico = new JRadioButton("Tecnico");
+		rdbtnTecnico.setBackground(new Color(173, 216, 230));
 		rdbtnTecnico.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -222,6 +230,7 @@ public class RegPersona extends JDialog {
 		panel.add(rdbtnTecnico);
 		
 		rdbtnObrero = new JRadioButton("Obrero");
+		rdbtnObrero.setBackground(new Color(173, 216, 230));
 		rdbtnObrero.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

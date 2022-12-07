@@ -24,6 +24,8 @@ import java.io.ObjectOutputStream;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class Principal extends JFrame {
 	
@@ -100,11 +102,12 @@ public class Principal extends JFrame {
 		setBounds(100, 100, 450, 300);
 		
 		dim = getToolkit().getScreenSize();
-		setSize(dim.width, dim.height-40);
+		setSize(789, 534);
 		setLocationRelativeTo(null);
 	//	setIconImage(Toolkit.getDefaultToolkit().getImage(ListarPersana.class.getResource("/Maletin.png")));
 		
 		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBackground(new Color(175, 238, 238));
 		setJMenuBar(menuBar);
 		
 		JMenu mnNewMenu = new JMenu("Persona");
@@ -167,7 +170,8 @@ public class Principal extends JFrame {
 		mnNewMenu_2.add(mntmNewMenuItem_4);
 		
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBackground(new Color(173, 216, 230));
+		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 	}
