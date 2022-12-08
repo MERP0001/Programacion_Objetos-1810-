@@ -3,6 +3,7 @@ package Visual;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -57,7 +58,8 @@ public class ListarSolicitudes extends JDialog {
 		else if(empresa == null && persona != null) {
 			setTitle("Solicitudes Registradas por "+personaAux.getNombre());
 		}
-		
+		ImageIcon logo = new ImageIcon("src/imagenes/empresa.jpg");
+		setIconImage(logo.getImage());
 		setBounds(100, 100, 662, 431);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(173, 216, 230));

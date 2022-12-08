@@ -3,6 +3,7 @@ package Visual;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -55,6 +56,8 @@ public class RegEmpresa extends JDialog {
 		}
 		setBounds(100, 100, 474, 346);
 		setLocationRelativeTo(null);
+		ImageIcon logo = new ImageIcon("src/imagenes/empresa.jpg");
+		setIconImage(logo.getImage());
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(173, 216, 230));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

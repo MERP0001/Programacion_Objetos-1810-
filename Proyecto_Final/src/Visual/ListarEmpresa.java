@@ -3,6 +3,7 @@ package Visual;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -60,6 +61,8 @@ public class ListarEmpresa extends JDialog {
 		setTitle("Empresas Registradas");
 		setBounds(100, 100, 657, 432);
 		setLocationRelativeTo(null);
+		ImageIcon logo = new ImageIcon("src/imagenes/empresa.jpg");
+		setIconImage(logo.getImage());
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(173, 216, 230));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

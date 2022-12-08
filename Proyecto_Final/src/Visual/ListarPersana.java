@@ -3,6 +3,7 @@ package Visual;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -73,6 +74,8 @@ public class ListarPersana extends JDialog {
 		
 		setBounds(100, 100, 694, 455);
 		setLocationRelativeTo(null);
+		ImageIcon logo = new ImageIcon("src/imagenes/oferta.jpeg");
+		setIconImage(logo.getImage());
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(173, 216, 230));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

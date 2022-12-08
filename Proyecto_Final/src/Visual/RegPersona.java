@@ -27,6 +27,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JRadioButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -79,6 +80,8 @@ public class RegPersona extends JDialog {
 		}
 		setBounds(100, 100, 535, 302);
 		setLocationRelativeTo(null);
+		ImageIcon logo = new ImageIcon("src/imagenes/oferta.jpeg");
+		setIconImage(logo.getImage());
 		contentPanel.setBackground(new Color(173, 216, 230));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
