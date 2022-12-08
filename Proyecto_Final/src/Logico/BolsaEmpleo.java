@@ -379,7 +379,7 @@ public class BolsaEmpleo implements Serializable {
 					cantComun += 5;	
 			}
 			}
-			else if(solictud.getBuscaEmpleos() instanceof Obrero && empresa.getFormAca().equalsIgnoreCase("Obrero")) { 
+			else if(solictud.getBuscaEmpleos() instanceof Obrero && empresa.getFormAca().equalsIgnoreCase("Educación Básica")) { 
 				if(solictud.getCategoriaLaboral().equalsIgnoreCase(empresa.getCategoriaLaboral())) {
 					cantComun += 20;
 				}

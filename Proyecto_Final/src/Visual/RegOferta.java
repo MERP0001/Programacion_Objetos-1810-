@@ -211,10 +211,8 @@ public class RegOferta extends JDialog {
 							transDip, carrera, null, 
 							null, 0, null);        
 					BolsaEmpleo.getInstance().insertarSolempresa(auxOfertaUni);
-					        System.out.println(spnSalario_1.getValue().toString());
-					        System.out.println(cbxVariable_1.getSelectedItem().toString());
-					        System.out.println(auxOfertaUni.getCategoriaLaboral()+" "+auxOfertaUni.getCarreraNec()+" "+auxOfertaUni.getEstado()+" "+auxOfertaUni.getPorcientoMach()+" "+auxOfertaUni.getSalario());
 					        JOptionPane.showMessageDialog(null, "La oferta se ha creado exitosamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
+					        dispose();
 				}
 				if (cbxAreaTecnica.getSelectedIndex() == 2) {
 					SolEmpresa auxOfertaTec = new SolEmpresa("CS-"+String.valueOf(BolsaEmpleo.getInstance().getGeneradoEmpSol()), String.valueOf(cbxCategoriaLab.getSelectedItem()),
@@ -224,6 +222,7 @@ public class RegOferta extends JDialog {
 							viaDip, transDip, cbxVariable_1.getSelectedItem().toString()/*TecnicoNec*/,null,null , Integer.valueOf(spnAExp.getValue().toString()), null);
 					BolsaEmpleo.getInstance().insertarSolempresa(auxOfertaTec);
 					JOptionPane.showMessageDialog(null, "La oferta se ha creado exitosamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
+					dispose();
 				}
 				if(cbxAreaTecnica.getSelectedIndex() == 3) {
 					SolEmpresa auxOfertaTec = new SolEmpresa("CS-"+String.valueOf(BolsaEmpleo.getInstance().getGeneradoEmpSol()), String.valueOf(cbxCategoriaLab.getSelectedItem()),
@@ -233,8 +232,9 @@ public class RegOferta extends JDialog {
 							viaDip, transDip, cbxVariable_1.getSelectedItem().toString()/*OficioNec*/,null,null , 0, null);
 					BolsaEmpleo.getInstance().insertarSolempresa(auxOfertaTec);
 					JOptionPane.showMessageDialog(null, "La oferta se ha creado exitosamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
+					dispose();
 				}
-
+				
 				clean();
 			}
 		});

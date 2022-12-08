@@ -44,6 +44,7 @@ public class ListarPersana extends JDialog {
 	private JButton Eliminarbtn;
 	private JButton Modificarbtn;
 	private JButton signInbtn;
+	private ArrayList<Persona> candidatos = null; 
 
 	/**
 	 * Launch the application.
@@ -63,7 +64,7 @@ public class ListarPersana extends JDialog {
 	 */
 	public ListarPersana(SolEmpresa solicitud) {
 		setBackground(new Color(173, 216, 230));
-		ArrayList<Persona> candidatos = null;
+		
 		auxSol = solicitud;
 		setResizable(false);
 		if(solicitud == null) {
@@ -215,6 +216,7 @@ public class ListarPersana extends JDialog {
 							JOptionPane.showMessageDialog(null, "El usuario se ha contratado.", "Información", JOptionPane.INFORMATION_MESSAGE);
 							BolsaEmpleo.getInstance().contratarPersona(aux, solicitud);
 							candidatos.remove(aux);
+							loadCalificados(candidatos);
 						}
 							
 						}
