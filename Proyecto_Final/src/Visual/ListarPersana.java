@@ -209,9 +209,14 @@ public class ListarPersana extends JDialog {
 					signInbtn = new JButton("Contratar");
 					signInbtn.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
-							BolsaEmpleo.getInstance().Macheo(solicitud);
+							int option = 0;
+							option = JOptionPane.showConfirmDialog(null, "Esta seguro que desea contratar esta Persona?", "Confirmacion", JOptionPane.YES_NO_OPTION);
+						if(option ==  JOptionPane.OK_OPTION) {
 							JOptionPane.showMessageDialog(null, "El usuario se ha contratado.", "Información", JOptionPane.INFORMATION_MESSAGE);
 							BolsaEmpleo.getInstance().contratarPersona(aux, solicitud);
+							candidatos.remove(aux);
+						}
+							
 						}
 					});
 					buttonPane.add(signInbtn);
