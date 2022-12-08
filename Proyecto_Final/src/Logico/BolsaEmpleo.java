@@ -121,6 +121,7 @@ public class BolsaEmpleo implements Serializable {
 	
 	public void insertarSolempresa(SolEmpresa aux) {
 		misSolEmpresas.add(aux);
+		generadoEmpSol++;
 	}
 	public void insertarSolpersonas(SolPersona aux) {
 		misSolPersonas.add(aux);
@@ -129,7 +130,7 @@ public class BolsaEmpleo implements Serializable {
 	
 	public void insertarEmpresa(Empresa auxEmpresa) {
 		misEmpleos.add(auxEmpresa);
-		generadoEmpSol++;
+		
 	}
 	//Cierre de creaciones==========================================================================================================
 	

@@ -138,7 +138,7 @@ public class ListarSolicitudes extends JDialog {
 					btnNewButton.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							if(auxSol.getCantVacantes() > 0) {
-								ListarPersana listper = new ListarPersana(auxSol);
+								ListarPersana listper = new ListarPersana(auxSol,null);
 								listper.setModal(true);
 								listper.setVisible(true);
 							}else {

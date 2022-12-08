@@ -40,6 +40,7 @@ public class ListarEmpresa extends JDialog {
 	private JButton btnEliminar;
 	private JButton btnModificar;
 	private JButton btnCrearSoli;
+	private JButton btnEmpleado;
 	/**
 	 * Launch the application.
 	 */
@@ -159,6 +160,18 @@ public class ListarEmpresa extends JDialog {
 						}
 					});
 					buttonPane.add(btnNewButton);
+				}
+				{
+					btnEmpleado = new JButton("Ver Empleados");
+					btnEmpleado.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent arg0) {
+							ListarPersana lisPer = new ListarPersana(null,aux);
+							lisPer.setModal(true);
+							lisPer.setVisible(true);
+							
+						}
+					});
+					buttonPane.add(btnEmpleado);
 				}
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);

@@ -13,6 +13,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 import Logico.BolsaEmpleo;
+import Logico.Empresa;
 import Logico.Obrero;
 import Logico.Persona;
 import Logico.SolEmpresa;
@@ -49,29 +50,21 @@ public class ListarPersana extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		try {
-			ListarPersana dialog = new ListarPersana(null);
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 	/**
 	 * Create the dialog.
 	 */
-	public ListarPersana(SolEmpresa solicitud) {
+	public ListarPersana(SolEmpresa solicitud, Empresa empresa) {
 		setBackground(new Color(173, 216, 230));
 		
 		auxSol = solicitud;
 		setResizable(false);
-		if(solicitud == null) {
+		if(solicitud == null && empresa == null) {
 			setTitle("Listado De Personas Registradas");
-		}else {
+		}else if(solicitud != null && empresa == null){
 			candidatos = BolsaEmpleo.getInstance().Macheo(solicitud);
 			setTitle("Listado De Personas calificadas para "+solicitud.getEmpresa().getNombreEmpresa());
+		}else if(solicitud == null && empresa != null) {
+			setTitle("Empleados De "+empresa.getNombreEmpresa());
 		}
 		
 		setBounds(100, 100, 694, 455);
@@ -115,10 +108,12 @@ public class ListarPersana extends JDialog {
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 					table.setModel(model);
 					scrollPane.setViewportView(table);
-					if(solicitud == null) {
+					if(solicitud == null && empresa == null) {
 						loadPersonas();
-					}else {
+					}else if(solicitud != null && empresa == null){
 						loadCalificados(candidatos);
+					}else {
+						loadCalificados(empresa.getEmpleados());
 					}
 					
 				}
