@@ -137,9 +137,14 @@ public class ListarSolicitudes extends JDialog {
 					JButton btnNewButton = new JButton("Buscar Empleados");
 					btnNewButton.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							ListarPersana listper = new ListarPersana(auxSol);
-							listper.setModal(true);
-							listper.setVisible(true);
+							if(auxSol.getCantVacantes() > 0) {
+								ListarPersana listper = new ListarPersana(auxSol);
+								listper.setModal(true);
+								listper.setVisible(true);
+							}else {
+								JOptionPane.showMessageDialog(null, "Accion no disponibles", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+							}
+							
 						}
 					});
 					buttonPane.add(btnNewButton);

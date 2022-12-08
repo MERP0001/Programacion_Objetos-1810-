@@ -63,12 +63,13 @@ public class ListarPersana extends JDialog {
 	 */
 	public ListarPersana(SolEmpresa solicitud) {
 		setBackground(new Color(173, 216, 230));
-		ArrayList<Persona> candidatos = BolsaEmpleo.getInstance().Macheo(solicitud);
+		ArrayList<Persona> candidatos = null;
 		auxSol = solicitud;
 		setResizable(false);
 		if(solicitud == null) {
 			setTitle("Listado De Personas Registradas");
 		}else {
+			candidatos = BolsaEmpleo.getInstance().Macheo(solicitud);
 			setTitle("Listado De Personas calificadas para "+solicitud.getEmpresa().getNombreEmpresa());
 		}
 		
