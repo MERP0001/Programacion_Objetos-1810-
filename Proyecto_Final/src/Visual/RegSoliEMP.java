@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -80,7 +81,8 @@ public class RegSoliEMP extends JDialog {
 		setTitle("Solicitud de Empleo");
 		auxListaOficios=new ArrayList<String>();
 		setBounds(100, 100, 602, 801);
-	//	setIconImage(Toolkit.getDefaultToolkit().getImage(ListarPersana.class.getResource("/post.png")));
+		ImageIcon logo = new ImageIcon("src/imagenes/empleados.jpeg");
+		setIconImage(logo.getImage());
 		
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(173, 216, 230));

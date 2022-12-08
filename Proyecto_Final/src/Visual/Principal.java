@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -104,8 +105,9 @@ public class Principal extends JFrame {
 		dim = getToolkit().getScreenSize();
 		setSize(789, 534);
 		setLocationRelativeTo(null);
-	//	setIconImage(Toolkit.getDefaultToolkit().getImage(ListarPersana.class.getResource("/Maletin.png")));
-		
+	
+		ImageIcon logo = new ImageIcon("src/imagenes/Maletin.jpeg");
+		setIconImage(logo.getImage());
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBackground(new Color(175, 238, 238));
 		setJMenuBar(menuBar);

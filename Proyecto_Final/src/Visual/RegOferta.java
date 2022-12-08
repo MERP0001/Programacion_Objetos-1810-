@@ -11,6 +11,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -58,7 +59,8 @@ public class RegOferta extends JDialog {
 	public RegOferta(final Empresa user) {
 		setTitle("Crear oferta de trabajo");
 		setBounds(100, 100, 541, 713);
-		//setIconImage(Toolkit.getDefaultToolkit().getImage(ListarPersana.class.getResource("/oferta.png")));
+		ImageIcon logo = new ImageIcon("src/imagenes/oferta.jpeg");
+		setIconImage(logo.getImage());
 		
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(173, 216, 230));
