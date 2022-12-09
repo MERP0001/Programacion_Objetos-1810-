@@ -127,12 +127,13 @@ public class ListarPersana extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 			if(solicitud == null) {
+				//signInbtn.setEnabled(false);
 				Eliminarbtn = new JButton("Eliminar");
 				Eliminarbtn.setEnabled(false);
 				Eliminarbtn.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						int option = 0;
-						option = JOptionPane.showConfirmDialog(null, "Esta seguro que desea eliminar esta Persona?", "Confirmacion", JOptionPane.YES_NO_OPTION);
+						option = JOptionPane.showConfirmDialog(null, "Esta seguro que desea eliminar a "+aux.getNombre()+" ?", "Confirmacion", JOptionPane.YES_NO_OPTION);
 					if(option ==  JOptionPane.OK_OPTION) {
 						 BolsaEmpleo.getInstance().eliminarPersona(aux);
 						 loadPersonas();
@@ -192,15 +193,6 @@ public class ListarPersana extends JDialog {
 					}
 				}
 			}else {
-				
-			}
-			
-			JButton cancelButton = new JButton("Cancelar");
-			cancelButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					dispose();
-				}
-			});
 				{
 					signInbtn = new JButton("Contratar");
 					signInbtn.addActionListener(new ActionListener() {
@@ -218,6 +210,15 @@ public class ListarPersana extends JDialog {
 					});
 					buttonPane.add(signInbtn);
 				}
+			}
+			
+			JButton cancelButton = new JButton("Cancelar");
+			cancelButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					dispose();
+				}
+			});
+				
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}

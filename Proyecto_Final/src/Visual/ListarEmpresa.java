@@ -109,7 +109,7 @@ public class ListarEmpresa extends JDialog {
 				btnEliminar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 					    int option = 0;
-						option = JOptionPane.showConfirmDialog(null, "Esta Seguro que desea elminar esta Persona?", "Confirmacion", JOptionPane.YES_NO_OPTION);
+						option = JOptionPane.showConfirmDialog(null, "Esta Seguro que desea elminar "+aux.getNombreEmpresa()+" ?", "Confirmacion", JOptionPane.YES_NO_OPTION);
 					    if(option ==  JOptionPane.OK_OPTION) {
 					    	BolsaEmpleo.getInstance().eliminarEmpresa(aux);
 							loadEmpresas();
